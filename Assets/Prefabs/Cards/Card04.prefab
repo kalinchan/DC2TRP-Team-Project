@@ -229,8 +229,8 @@ GameObject:
   - component: {fileID: 1517338015229073817}
   - component: {fileID: 6361453472111750481}
   m_Layer: 6
-  m_Name: Card06
-  m_TagString: Untagged
+  m_Name: Card04
+  m_TagString: Defence Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,13 +329,13 @@ MonoBehaviour:
     cardDescription: 
     usableWithoutTarget: 0
     cardSprite: {fileID: 0}
-  thisId: 5
+  thisId: 3
   id: 0
   cardName: 
   energyCost: 0
   group: 
   rarity: 0
-  damage: 0
+  damage: 5
   defence: 0
   cardDescription: 
   thisCardSprite: {fileID: 0}
