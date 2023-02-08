@@ -18,6 +18,10 @@ public class EntityStats : MonoBehaviour
         
     }
 
+    //Called when the enemy takes damage.
+    //Performs a check if the Health drops to 0 or below
+    //Sanity check by setting Health to 0 if negative (hopefully avoids janky funk)
+    //if Health is 0 then isDead becomes true! So we can do something with that! - JD
     public void TakeDamage (int damage)
     {
         Health -= damage;

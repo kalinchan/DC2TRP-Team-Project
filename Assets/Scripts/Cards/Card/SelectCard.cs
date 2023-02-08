@@ -16,6 +16,7 @@ public class SelectCard : MonoBehaviour
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
     }
     // when card is selected by player - CH
+    // Sets card to active, the active status can then be used for targeting & energy checking - JD
     public void OnClick()
     {
         // TODO: Alter Stats (Health, Energy, Defence, Attack) - depending on card played
@@ -24,11 +25,13 @@ public class SelectCard : MonoBehaviour
         playerHand.currentlySelectedCard = thisCard;
     }
 
+    //The card knows what enemy it is looking at. - JD
     public void GetEnemy(EntityStats enemy)
     {
         currentEnemy = enemy;
     }
 
+    //card tells the current enemy to take damage equal to its damage value - JD
     public void dealDamage()
     {
         currentEnemy.TakeDamage(thisCard.damage);
