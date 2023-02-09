@@ -23,7 +23,7 @@ public class DamageCalculation : MonoBehaviour
         thisCard = playerHand.currentlySelectedCard;
         if (thisCard.tag.Contains("Attack"))
         {
-            eS.TakeDamage(thisCard.damage);
+            eS.takeDamage(thisCard.damage);
         }
     }
 }

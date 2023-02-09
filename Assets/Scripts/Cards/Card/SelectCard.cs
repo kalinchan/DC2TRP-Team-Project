@@ -34,6 +34,6 @@ public class SelectCard : MonoBehaviour
     //card tells the current enemy to take damage equal to its damage value - JD
     public void dealDamage()
     {
-        currentEnemy.TakeDamage(thisCard.damage);
+        currentEnemy.takeDamage(thisCard.damage);
     }
 }
