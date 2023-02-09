@@ -28,6 +28,7 @@ public class EntityStats : MonoBehaviour
     //called to tidy it up, but right now this will do. - JD 09/02
 
     //NEEDS TESTING - JD 09/02
+    //Tested...funnily enough doing - on a - number adds so...changed that. lol - JD 09/02
     public void takeDamage (int damage)
     {
         int damageRemainder = 0;
@@ -36,7 +37,7 @@ public class EntityStats : MonoBehaviour
             Defence -= damage;
             if(Defence < 0)
             {
-                damageRemainder = Defence;
+                damageRemainder = -Defence;
                 Health -= damageRemainder;
                 Defence = 0;
                 if (Health <= 0)
