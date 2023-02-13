@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public int Health = 10, Defence = 0, Damage = 0, maxHealth = 100;
+    public int Health = 10, Defence = 0, maxHealth = 100;
     private bool IsDead;
     // Start is called before the first frame update
     void Start()
@@ -77,4 +77,6 @@ public class EntityStats : MonoBehaviour
     {
         Defence += defence;
     }
+
+    
 }
