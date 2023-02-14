@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyLogic : MonoBehaviour
 {
-    public int damage, charge, maxCharge, defence, moves, maxMoves;
+    public int damage, charge, maxCharge, defence, moves, maxMoves, attackCost, defenceCost, specialCost;
     bool myTurn;
+    private EntityStats self, player;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,11 @@ public class EnemyLogic : MonoBehaviour
         defence = 2;
         moves = 2;
         maxMoves = 2;
+        attackCost = 1;
+        defenceCost = 1;
+        specialCost = 2;
+        self =GetComponent<EntityStats>();
+        player = GameObject.Find("Player").GetComponent<EntityStats>();
     }
 
     // Update is called once per frame
@@ -27,30 +33,39 @@ public class EnemyLogic : MonoBehaviour
     //apply the damage int to player
     public void attack()
     {
-        //call the takeDamage method of player for damage value
-        //once max moves has been reached, end turn
+        player.takeDamage(damage);
+        moves -= attackCost;
     }
 
-    //use special attack if charge is available
+    //use special attack
     public void special()
     {
-        //each turn increase charge value
-        //if charge value >= threshold, allow use of special
-        //after use, reset charge to 0
-        //once max moves has been reached, end turn
+        //probably needs to call a separate script? each enemy type has its own special
+        //can that just be done here or is that too messy
+
+        //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
+
+
     }
 
     //gain defence equal to defend value
     public void defend()
     {
-        //gain defence == defence integer
-        //once max moves has been reached, end turn
+        self.gainDefence(defence);
+        moves -= defenceCost;
     }
 
+    public void startTurn()
+    {
+        myTurn = true;
+        turnTaker();
+    }
+
+    //tells the TurnManager that this turn is done
     public void endTurn()
     {
         myTurn = false;
-        //set player myTurn to true
+        GameObject.Find("Turn Manager").GetComponent<TurnManager>().switchTurn();
     }
 
     public void turnTaker()
@@ -61,4 +76,5 @@ public class EnemyLogic : MonoBehaviour
         //moves until move pool is empty
         //then uses endTurn 
     }
+
 }
