@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297163, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297163, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -229,6 +229,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3582135178927297163, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
   m_PrefabInstance: {fileID: 42767300}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &42767302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3582135178927297162, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+  m_PrefabInstance: {fileID: 42767300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &42767303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42767302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20568bef8772b194d86196c7b025ad51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  charge: 0
+  maxCharge: 0
+  defence: 0
+  moves: 0
+  maxMoves: 0
+  attackCost: 0
+  defenceCost: 0
+  specialCost: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +350,7 @@ GameObject:
   - component: {fileID: 587776604}
   - component: {fileID: 587776603}
   - component: {fileID: 587776605}
+  - component: {fileID: 587776606}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -343,9 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd049fcd88d2bc4409ab03363a974d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Defence: 0
-  Damage: 0
+  health: 10
+  defence: 0
   maxHealth: 100
 --- !u!4 &587776604
 Transform:
@@ -375,6 +401,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlySelectedCard: {fileID: 0}
+--- !u!114 &587776606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587776602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de5a701ebb57de4c852a34c312cdc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &699371876
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +584,52 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1550697195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550697197}
+  - component: {fileID: 1550697196}
+  m_Layer: 0
+  m_Name: Turn Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1550697196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550697195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0de83cf6d2b654eab38fa4ce2c10f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnCounter: 0
+  currentTurn: 0
+--- !u!4 &1550697197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550697195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552369086
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +987,7 @@ GameObject:
   - component: {fileID: 1900380998}
   m_Layer: 5
   m_Name: Main Canvas
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

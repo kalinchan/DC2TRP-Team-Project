@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public int Health = 10, Defence = 0, Damage = 0, maxHealth = 100;
-    private bool IsDead;
+    public int health = 10, defence = 0, maxHealth = 100;
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,29 +32,29 @@ public class EntityStats : MonoBehaviour
     public void takeDamage (int damage)
     {
         int damageRemainder = 0;
-        if(Defence > 0)
+        if(defence > 0)
         {
-            Defence -= damage;
-            if(Defence < 0)
+            defence -= damage;
+            if(defence < 0)
             {
-                damageRemainder = -Defence;
-                Health -= damageRemainder;
-                Defence = 0;
-                if (Health <= 0)
+                damageRemainder = -defence;
+                health -= damageRemainder;
+                defence = 0;
+                if (health <= 0)
                 {
-                    Health = 0;
-                    IsDead = true;
+                    health = 0;
+                    isDead = true;
                 }
 
             }
         }
         else
         {
-            Health -= damage;
-            if (Health <= 0)
+            health -= damage;
+            if (health <= 0)
             {
-                Health = 0;
-                IsDead = true;
+                health = 0;
+                isDead = true;
             }
         }
         
@@ -65,16 +65,18 @@ public class EntityStats : MonoBehaviour
     //Caps the max hp to the maxHealth. - JD 09/02
     public void heal (int healing)
     {
-        Health += healing;
-        if(Health > maxHealth)
+        health += healing;
+        if(health > maxHealth)
         {
-            Health = maxHealth;
+            health = maxHealth;
         }
     }
 
     //Called when an entity gains Defence
     public void gainDefence (int defence)
     {
-        Defence += defence;
+        this.defence += defence;
     }
+
+    
 }
