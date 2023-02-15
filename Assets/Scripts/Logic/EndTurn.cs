@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLogic : MonoBehaviour
+public class EndTurn : MonoBehaviour
 {
-    public int currentEnergy, energyMax;
-    public bool myTurn;
-    
+    private GameObject turnManager;
     // Start is called before the first frame update
     void Start()
     {
-       
-        energyMax= 1;
-        currentEnergy= energyMax;
+        turnManager = GameObject.Find("Turn Manager");
     }
 
     // Update is called once per frame
@@ -21,8 +17,9 @@ public class PlayerLogic : MonoBehaviour
         
     }
 
-    public void useEnergy(int energy)
+    public void OnClick()
     {
-        currentEnergy -= energy;
+  
+        turnManager.GetComponent<TurnManager>().switchTurn();
     }
 }

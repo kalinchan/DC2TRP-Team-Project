@@ -6,12 +6,21 @@ public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
     public turnStatus currentTurn;
-    public GameObject[] enemies;
+    //public GameObject[] enemies;
+    public GameObject enemy;
+    public GameObject player, eTButton;
+    
 
     // Start is called before the first frame update
+    // Starts the level on the players turn
     void Start()
     {
         currentTurn = turnStatus.playerTurn;
+        player = GameObject.Find("Player");
+        enablePlayer();
+        eTButton = GameObject.Find("End Turn Button");
+        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemy = GameObject.Find("Enemy");
     }
 
     // Update is called once per frame
@@ -33,12 +42,15 @@ public class TurnManager : MonoBehaviour
     {
         if(currentTurn == turnStatus.playerTurn)
         {
+            eTButton.SetActive(false); 
+            player.GetComponent<PlayerLogic>().myTurn = false;
             currentTurn = turnStatus.enemyTurn;
             enableEnemies();
             turnCounter++;
         }
         else if (currentTurn == turnStatus.enemyTurn)
         {
+            eTButton.SetActive(true);
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
             turnCounter++;
@@ -47,17 +59,20 @@ public class TurnManager : MonoBehaviour
     }
        
     //find all enemies, set myTurn to true and call the turnTaker method
+    //needs to be fixed to go through a list of all enemies with the enemy tag
     public void enableEnemies()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies) 
-        {
-            enemy.GetComponent<EnemyLogic>().startTurn();  
-        }
+        
+        enemy.GetComponent<EnemyLogic>().startTurn();
+        //foreach (GameObject enemy in enemies) 
+        //{
+        //    enemy.GetComponent<EnemyLogic>().startTurn();  
+        //}
+
     }
 
     public void enablePlayer()
     {
-        //allow the player to interact again, set player myTurn to true or however we're coding it
+        player.GetComponent<PlayerLogic>().myTurn = true;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageCalculation : MonoBehaviour
@@ -7,12 +8,14 @@ public class DamageCalculation : MonoBehaviour
     private EntityStats eS;
     private ThisCard thisCard;
     public Hand playerHand;
+    public GameObject player;
 
     //Get entity stats associated with this enemy
     //Find and get the Player's Hand - JD
     private void Start()
     {  
         eS = GetComponent<EntityStats>();
+        player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
     }
 
@@ -23,7 +26,9 @@ public class DamageCalculation : MonoBehaviour
         thisCard = playerHand.currentlySelectedCard;
         if (thisCard.tag.Contains("Attack"))
         {
+            player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
             eS.takeDamage(thisCard.damage);
+            thisCard.gameObject.SetActive(false);
         }
     }
 }
