@@ -5,17 +5,48 @@ using UnityEngine;
 public class EntityStats : MonoBehaviour
 {
     public int health = 10, defence = 0, maxHealth = 100;
-    private bool isDead;
+    public bool isDead;
+    public GameObject victoryScreen, optionsBackground, defeatScreen;
+    private List<GameObject> resultDisable;
+    private bool gameOver;
     // Start is called before the first frame update
     void Start()
     {
-        
+        isDead = false;
+        resultDisable = new List<GameObject>
+        {
+            GameObject.Find("Background"),
+            GameObject.Find("End Turn Button"),
+            GameObject.Find("Enemy"),
+            GameObject.Find("Player"),
+            GameObject.Find("ActiveArea"),
+            GameObject.Find("Turn Manager")
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameOver)
+        {
+            return;
+        }
+        if (isDead || health <= 0)
+        {
+
+            resultDisable.ForEach(x => x.SetActive(false));
+            optionsBackground.SetActive(true);
+            if (gameObject.name.Equals("Player"))
+            {
+                defeatScreen.SetActive(true);
+            } else
+            {
+                victoryScreen.SetActive(true);
+            }
+            
+            gameOver = true;
+
+        }
     }
 
     //Called when the enemy takes damage.
