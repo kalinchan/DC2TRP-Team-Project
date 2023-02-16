@@ -475,13 +475,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 65569d730dc3c534faf2026b69431bcd, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 283602581}
+        m_TargetAssemblyTypeName: EndTurn, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCounter: 0
   currentTurn: 0
-  enemies: []
+  enemy: {fileID: 0}
   player: {fileID: 0}
   eTButton: {fileID: 0}
 --- !u!4 &1550697197
