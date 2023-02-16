@@ -10,9 +10,12 @@ MonoImporter:
   - Card04: {fileID: 1060790213632547047, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
   - Card05: {fileID: 1060790213632547047, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
   - Card06: {fileID: 1060790213632547047, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
-  - Card07: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
-  - Card08: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
-  - Card09: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+  - Card07: {fileID: 1060790213632547047, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
+  - Card08: {fileID: 1060790213632547047, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
+  - Card09: {fileID: 1060790213632547047, guid: f94e739dd9f491949857633f640d650e, type: 3}
+  - Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
+  - Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
+  - Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
   - PlayerArea: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

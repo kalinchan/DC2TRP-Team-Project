@@ -226,10 +226,9 @@ GameObject:
   - component: {fileID: 4552689124707418317}
   - component: {fileID: 4552689124707418316}
   - component: {fileID: 1517338015229073816}
-  - component: {fileID: 1517338015229073817}
   - component: {fileID: 6361453472111750481}
   m_Layer: 6
-  m_Name: Card05
+  m_Name: Card09
   m_TagString: Defence Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +328,7 @@ MonoBehaviour:
     cardDescription: 
     usableWithoutTarget: 0
     cardSprite: {fileID: 0}
-  thisId: 4
+  thisId: 8
   id: 0
   cardName: 
   energyCost: 0
@@ -358,20 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: {fileID: 1060790213632547047}
---- !u!114 &1517338015229073817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060790213632547047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff0fc576c3f7b364f8d3b1e25176cf3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
-  Card: {fileID: 1060790213632547047}
 --- !u!114 &6361453472111750481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +374,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1517338015229073817}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
           m_MethodName: Hover
           m_Mode: 1
@@ -405,7 +390,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1517338015229073817}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
           m_MethodName: HoverExit
           m_Mode: 1
