@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public int health = 10, defence = 0, maxHealth = 100;
+    public int health = 10, defence = 0, maxHealth = 10;
     public bool isDead;
     public GameObject victoryScreen, optionsBackground, defeatScreen;
     private List<GameObject> resultDisable;
@@ -22,6 +22,8 @@ public class EntityStats : MonoBehaviour
             GameObject.Find("ActiveArea"),
             GameObject.Find("Turn Manager")
         };
+
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -108,6 +110,22 @@ public class EntityStats : MonoBehaviour
     public void gainDefence (int defence)
     {
         this.defence += defence;
+    }
+
+
+    public int getCurrentHealth()
+    {
+        return health;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public int getCurrentDefence()
+    {
+        return defence;
     }
 
     
