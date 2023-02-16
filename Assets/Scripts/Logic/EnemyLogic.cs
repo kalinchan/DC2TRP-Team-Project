@@ -76,9 +76,10 @@ public class EnemyLogic : MonoBehaviour
 
     public void turnTaker()
     {
+        
         movesRemaining = maxMoves;
         charge++;
-        while(movesRemaining > 0)
+        while (movesRemaining > 0)
         {
             int random = Random.Range(1, 3);
             switch (random)

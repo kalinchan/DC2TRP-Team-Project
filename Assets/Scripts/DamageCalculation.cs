@@ -20,7 +20,7 @@ public class DamageCalculation : MonoBehaviour
     }
 
     //using the players hand, find which card has been clicked (made active) and identify its tag.
-    //if the active card has a damage tag, deal appropriate damage to this enemy. - JD
+    //if the active card has a damage tag, deal appropriate damage to this enemy. Then set it as inactive (discard from Hand and remove as currentlySelectedCard - JD 16/02) - JD
     public void GetCard()
     {   
         thisCard = playerHand.currentlySelectedCard;

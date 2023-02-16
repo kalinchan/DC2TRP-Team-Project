@@ -37,7 +37,7 @@ public class TurnManager : MonoBehaviour
     }
 
     //end the current turn and switch to the opposition
-    //do we separate this into 2 methods?
+    //do we separate this into 2 methods? - JD 15/02
     public void switchTurn()
     {
         if(currentTurn == turnStatus.playerTurn)
@@ -59,7 +59,7 @@ public class TurnManager : MonoBehaviour
     }
        
     //find all enemies, set myTurn to true and call the turnTaker method
-    //needs to be fixed to go through a list of all enemies with the enemy tag
+    //needs to be fixed to go through a list of all enemies with the enemy tag - JD 15/02
     public void enableEnemies()
     {
         
