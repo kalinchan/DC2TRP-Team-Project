@@ -6,7 +6,7 @@ using TMPro;
 
 public class LevelLoad : MonoBehaviour
 {
-    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09;
+    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12;
     public GameObject PlayerArea;
 
     List<GameObject> cards = new List<GameObject>();
@@ -15,9 +15,10 @@ public class LevelLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get all cards
         cards.AddRange(new List<GameObject>
             {
-                Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09,
+                Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12
         }
         );
 
