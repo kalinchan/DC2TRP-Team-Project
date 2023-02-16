@@ -74,6 +74,6 @@ public class TurnManager : MonoBehaviour
     public void enablePlayer()
     {
         player.GetComponent<PlayerLogic>().myTurn = true;
-        player.GetComponent<PlayerLogic>().resetEnergy;
+        player.GetComponent<PlayerLogic>().resetEnergy();
     }
 }
