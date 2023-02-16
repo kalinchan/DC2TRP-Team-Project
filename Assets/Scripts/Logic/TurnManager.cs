@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
@@ -9,7 +10,8 @@ public class TurnManager : MonoBehaviour
     //public GameObject[] enemies;
     public GameObject enemy;
     public GameObject player, eTButton;
-    
+
+
 
     // Start is called before the first frame update
     // Starts the level on the players turn
@@ -64,6 +66,7 @@ public class TurnManager : MonoBehaviour
     {
         
         enemy.GetComponent<EnemyLogic>().startTurn();
+
         //foreach (GameObject enemy in enemies) 
         //{
         //    enemy.GetComponent<EnemyLogic>().startTurn();  
@@ -75,5 +78,6 @@ public class TurnManager : MonoBehaviour
     {
         player.GetComponent<PlayerLogic>().myTurn = true;
         player.GetComponent<PlayerLogic>().resetEnergy();
+
     }
 }
