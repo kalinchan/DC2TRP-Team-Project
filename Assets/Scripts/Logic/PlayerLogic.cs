@@ -25,4 +25,9 @@ public class PlayerLogic : MonoBehaviour
     {
         currentEnergy -= energy;
     }
+
+    public void resetEnergy()
+    {
+        currentEnergy = energyMax;
+    }
 }

@@ -43,5 +43,8 @@ public class SelectCard : MonoBehaviour
         currentEnemy.takeDamage(thisCard.damage);
     }
 
-
+    public void gainDefence()
+    {
+        player.GetComponent<DefenceApplication>().applyDefence();
+    }
 }
