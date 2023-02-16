@@ -3,7 +3,15 @@ guid: 444007b1a0e1aa245aebe1bd7dbd6b20
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - thisCardSprite: {instanceID: 0}
+  - spriteImage: {instanceID: 0}
+  - imgFrame: {instanceID: 0}
+  - cardFrame: {instanceID: 0}
+  - nameText: {instanceID: 0}
+  - energyCostText: {instanceID: 0}
+  - descriptionText: {instanceID: 0}
+  - hoverBorder: {fileID: 7287138823768828066, guid: b58b28e01eb2e024f9745f095e119059, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

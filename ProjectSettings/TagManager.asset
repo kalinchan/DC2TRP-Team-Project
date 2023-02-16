@@ -8,6 +8,7 @@ TagManager:
   - Defence Card
   - Special Card
   - Enemy
+  - Clone
   layers:
   - Default
   - TransparentFX

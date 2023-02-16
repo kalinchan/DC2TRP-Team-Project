@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    public int health = 10, defence = 0, maxHealth = 100;
+    public int health = 10, defence = 0, maxHealth = 10;
     private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -78,5 +78,20 @@ public class EntityStats : MonoBehaviour
         this.defence += defence;
     }
 
-    
+    public int getCurrentHealth()
+    {
+        return health;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public int getCurrentDefence()
+    {
+        return defence;
+    }
+
+
 }

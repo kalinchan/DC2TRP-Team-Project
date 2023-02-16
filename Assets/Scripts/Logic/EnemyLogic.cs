@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class EnemyLogic : MonoBehaviour
@@ -10,9 +11,10 @@ public class EnemyLogic : MonoBehaviour
     public int damage, charge, maxCharge, defence, movesRemaining, maxMoves, attackCost, defenceCost, specialCost;
     bool myTurn;
     private EntityStats self, player;
-    
-    // Start is called before the first frame update
-    void Start()
+    public TMP_Text HealthText, SpecialText, DefenceText;
+
+// Start is called before the first frame update
+void Start()
     {
         //tweak numbers to tune difficulty per enemy
         damage = 4;
@@ -24,14 +26,20 @@ public class EnemyLogic : MonoBehaviour
         attackCost = 1;
         defenceCost = 1;
         specialCost = 2;
-        self =GetComponent<EntityStats>();
+        self = GameObject.Find("Enemy").GetComponent<EntityStats>();
         player = GameObject.Find("Player").GetComponent<EntityStats>();
+        HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
+        SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
+        DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        SpecialText.text = "Moves until Enemy Special: " + movesRemaining + "";
+        DefenceText.text = "Enemy Defence: " + defence + "";
     }
     //apply the damage int to player
     public void attack()

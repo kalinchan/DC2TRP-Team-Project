@@ -31,17 +31,26 @@ public class ThisCard : MonoBehaviour
     public TextMeshProUGUI energyCostText;
     public TextMeshProUGUI descriptionText;
 
+    public GameObject Hand;
+
+    public int noOfCardsInDeck;
+
+    public Deck deck;
+
+
     // Start is called before the first frame update
     void Start()
     {
         thisCard[0] = CardDataBase.cardList[thisId];
         thisCardSprite = thisCard[0].cardSprite;
+        noOfCardsInDeck = deck.getDeckSize();
 
     }
 
     // Update is called once per frame - update info with data from card with matching id
     void Update()
     {
+        Hand = GameObject.Find("PlayerHand");
 
         id = thisCard[0].id;
         cardName = thisCard[0].cardName;
@@ -75,20 +84,34 @@ public class ThisCard : MonoBehaviour
             cardFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
         }
 
+        if (this.tag == "Clone")
+        {
+            thisCard[0] = deck.staticDeck[noOfCardsInDeck - 1];
+            noOfCardsInDeck -= 1;
+            deck.deckSize -= 1;
+            this.tag = thisCard[0].group;
+        }
 
     }
 
-    // for enemy attack cards - name text to appear on screen when enemy attacks - CH
-    void ChangeName(ThisCard card) // if Enemy turn
+    // highlight card hovering over
+    public void OnHover()
     {
-        // TODO: using Card.setName(name) method in Card class
+        cardFrame.GetComponent<Image>().color = new Color32(204, 255, 255, 255);
+    }
 
-        // Attack Cards:
-        // if turn = Enemy and id = 1 : Card.setName("Criticise Assignment!") else do nothing
-        // if turn = Enemy and id = 2 : Card.setName("Assign Pop Quiz!") else do nothing
-        // if turn = Enemy and id = 3 : Card.setName("Fail Exam!") else do nothing
-
-        // Text to appear on card for Player and on screen when Enemy makes their move
-
+    public void OnHoverExit() { 
+        if (thisCard[0].group == "Attack")
+        {
+            cardFrame.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+        }
+        if (thisCard[0].group == "Defence")
+        {
+            cardFrame.GetComponent<Image>().color = new Color32(18, 81, 243, 255);
+        }
+        if (thisCard[0].group == "Special")
+        {
+            cardFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
+        }
     }
 }

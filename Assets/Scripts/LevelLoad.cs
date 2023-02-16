@@ -12,13 +12,20 @@ public class LevelLoad : MonoBehaviour
     List<GameObject> cards = new List<GameObject>();
 
 
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         // get all cards
         cards.AddRange(new List<GameObject>
             {
                 Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12
+=======
+
+        cards.AddRange(new List<GameObject>
+            {
+                Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12,
+>>>>>>> Stashed changes
         }
         );
 
