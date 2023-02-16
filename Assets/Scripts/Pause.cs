@@ -7,10 +7,12 @@ public class Pause : MonoBehaviour
 
     public List<GameObject> gameObjects;
     public GameObject optionsMenu;
+    public GameObject optionsBackground;
+    public bool state;
     // Start is called before the first frame update
     void Start()
     {
-        
+        state = false;
     }
 
     // Update is called once per frame
@@ -18,10 +20,17 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            if (state)
+            {
+                return;
+            }
+            state = true;
             gameObjects.ForEach(obj =>
            {
-               obj.SetActive(false);
+               bool current = obj.activeSelf;
+               obj.SetActive(!current);
            });
+            optionsBackground.SetActive(true);
             optionsMenu.SetActive(true);
         }
     }
@@ -29,8 +38,11 @@ public class Pause : MonoBehaviour
     {
         gameObjects.ForEach(obj =>
         {
-            obj.SetActive(true);
+            bool current = obj.activeSelf;
+            obj.SetActive(!current);
         });
+        optionsBackground.SetActive(false);
         optionsMenu.SetActive(false);
+        state = false;
     }
 }
