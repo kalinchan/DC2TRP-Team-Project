@@ -16,4 +16,8 @@ public class Hand : MonoBehaviour
     {
         
     }
+    public void clearCard()
+    {
+        currentlySelectedCard = null;
+    }
 }
