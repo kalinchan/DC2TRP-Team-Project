@@ -42,4 +42,6 @@ public class SelectCard : MonoBehaviour
     {
         currentEnemy.takeDamage(thisCard.damage);
     }
+
+
 }

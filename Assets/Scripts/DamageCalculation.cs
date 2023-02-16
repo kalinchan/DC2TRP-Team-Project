@@ -29,6 +29,7 @@ public class DamageCalculation : MonoBehaviour
             player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
             eS.takeDamage(thisCard.damage);
             thisCard.gameObject.SetActive(false);
+            playerHand.clearCard();
         }
     }
 }
