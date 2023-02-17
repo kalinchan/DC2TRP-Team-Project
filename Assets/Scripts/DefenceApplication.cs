@@ -32,6 +32,7 @@ public class DefenceApplication : MonoBehaviour
             eS.gainDefence(thisCard.defence);
             thisCard.gameObject.SetActive(false);
             playerHand.clearCard();
+            //player.GetComponent<PlayerLogic>().EnergyText.text = "Energy: " + player.GetComponent<PlayerLogic>().currentEnergy + " / " + player.GetComponent<PlayerLogic>().energyMax + "";
         }
     }
 }

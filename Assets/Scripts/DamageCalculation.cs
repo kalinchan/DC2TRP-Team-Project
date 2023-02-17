@@ -30,6 +30,12 @@ public class DamageCalculation : MonoBehaviour
             eS.takeDamage(thisCard.damage);
             thisCard.gameObject.SetActive(false);
             playerHand.clearCard();
+            if(eS.gameObject.tag.Contains("Enemy"))
+            {
+                eS.gameObject.GetComponent<EnemyLogic>().updateUI();
+            }
+
+
         }
     }
 }
