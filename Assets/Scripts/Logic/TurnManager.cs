@@ -23,6 +23,7 @@ public class TurnManager : MonoBehaviour
         eTButton = GameObject.Find("End Turn Button");
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemy = GameObject.Find("Enemy");
+
     }
 
     // Update is called once per frame
@@ -56,6 +57,8 @@ public class TurnManager : MonoBehaviour
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
             turnCounter++;
+            //This is suuuuuuuper janky but works to update cards at the end of the turn
+            gameObject.GetComponent<DealCards>().OnClick();
         }
                 
     }
