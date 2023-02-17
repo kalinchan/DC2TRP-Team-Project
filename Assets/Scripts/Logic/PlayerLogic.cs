@@ -15,20 +15,21 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        energyMax = 1;
+        
         self = GameObject.Find("Player").GetComponent<EntityStats>();
         HealthText = GameObject.Find("PlayerHealthText").GetComponent<TextMeshProUGUI>();
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 3;
         currentEnergy = energyMax;
+        updateEnergy();
     }
 
     // Update is called once per frame
     void Update()
     {
         HealthText.text = "Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+        //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
 
     }
@@ -36,10 +37,17 @@ public class PlayerLogic : MonoBehaviour
     public void useEnergy(int energy)
     {
         currentEnergy -= energy;
+        updateEnergy();
     }
 
     public void resetEnergy()
     {
         currentEnergy = energyMax;
+        updateEnergy();
+    }
+
+    public void updateEnergy()
+    {
+        EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
     }
 }
