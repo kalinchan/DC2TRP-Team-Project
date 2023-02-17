@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297163, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297163, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1594,7 +1594,7 @@ RectTransform:
   m_Children:
   - {fileID: 610822656}
   m_Father: {fileID: 1900380997}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1881,7 +1881,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1900380997}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3721,15 +3721,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87134a19c53c9634882ae1dc31470e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card01: {fileID: 1060790213632547047, guid: 56f6c2d7baa851b43ac69e0ee258b624, type: 3}
-  Card02: {fileID: 1060790213632547047, guid: 8ade24247870b34409d974590125f958, type: 3}
-  Card03: {fileID: 1060790213632547047, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
-  Card04: {fileID: 1060790213632547047, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
-  Card05: {fileID: 1060790213632547047, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
-  Card06: {fileID: 1060790213632547047, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
-  Card07: {fileID: 1060790213632547047, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
-  Card08: {fileID: 1060790213632547047, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
-  Card09: {fileID: 1060790213632547047, guid: f94e739dd9f491949857633f640d650e, type: 3}
+  Card01: {fileID: 5143058733874367971, guid: 56f6c2d7baa851b43ac69e0ee258b624, type: 3}
+  Card02: {fileID: 7241026101412582193, guid: 8ade24247870b34409d974590125f958, type: 3}
+  Card03: {fileID: 1550772335203455360, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
+  Card04: {fileID: 7113903973978158019, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
+  Card05: {fileID: 3267529769625528447, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
+  Card06: {fileID: 8604379625322660539, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
+  Card07: {fileID: 2202660001311629488, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
+  Card08: {fileID: 4201483250616043627, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
+  Card09: {fileID: 4349225999290487272, guid: f94e739dd9f491949857633f640d650e, type: 3}
   PlayerArea: {fileID: 737675074}
   maxHandSize: 0
   cardsToDeal: 0
@@ -4819,9 +4819,9 @@ RectTransform:
   - {fileID: 1652737087}
   - {fileID: 283602577}
   - {fileID: 714309607}
-  - {fileID: 42767301}
   - {fileID: 587776612}
   - {fileID: 624319555}
+  - {fileID: 42767301}
   - {fileID: 1024976605}
   - {fileID: 709341086}
   - {fileID: 44449610}

@@ -11,6 +11,7 @@ public class LevelLoad : MonoBehaviour
     public int maxHandSize, cardsToDeal;
     public int handSize;
     public GameObject dCButton;
+ 
 
     public List<GameObject> cards = new List<GameObject>();
 
@@ -42,6 +43,8 @@ public class LevelLoad : MonoBehaviour
 
     }
 
+   
+
     // load 5 cards into hand
     public void initialiseHand()
     {
@@ -50,8 +53,10 @@ public class LevelLoad : MonoBehaviour
 
         for (var i = 0; i < calculateNoCardsToDeal(); i++)
         {
+
             GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
-            playerCard.transform.SetParent(PlayerArea.transform, false); 
+            playerCard.transform.SetParent(PlayerArea.transform, false);
+            
         }
         handSize = maxHandSize;
         Debug.Log("HandSize = " + handSize);
