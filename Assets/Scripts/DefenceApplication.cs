@@ -8,6 +8,7 @@ public class DefenceApplication : MonoBehaviour
     private ThisCard thisCard;
     public Hand playerHand;
     public GameObject player;
+    private GameObject levelL;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class DefenceApplication : MonoBehaviour
         eS = GetComponent<EntityStats>();
         player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
+        levelL = GameObject.Find("Background");
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class DefenceApplication : MonoBehaviour
             eS.gainDefence(thisCard.defence);
             thisCard.gameObject.SetActive(false);
             playerHand.clearCard();
+            levelL.GetComponent<LevelLoad>().reduceHandSize();
             //player.GetComponent<PlayerLogic>().EnergyText.text = "Energy: " + player.GetComponent<PlayerLogic>().currentEnergy + " / " + player.GetComponent<PlayerLogic>().energyMax + "";
         }
     }

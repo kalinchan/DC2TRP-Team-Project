@@ -9,6 +9,7 @@ public class DamageCalculation : MonoBehaviour
     private ThisCard thisCard;
     public Hand playerHand;
     public GameObject player;
+    private GameObject levelL;
 
     //Get entity stats associated with this enemy
     //Find and get the Player's Hand - JD
@@ -17,6 +18,7 @@ public class DamageCalculation : MonoBehaviour
         eS = GetComponent<EntityStats>();
         player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
+        levelL = GameObject.Find("Background");
     }
 
     //using the players hand, find which card has been clicked (made active) and identify its tag.
@@ -30,9 +32,12 @@ public class DamageCalculation : MonoBehaviour
             eS.takeDamage(thisCard.damage);
             thisCard.gameObject.SetActive(false);
             playerHand.clearCard();
+
+       
             if(eS.gameObject.tag.Contains("Enemy"))
             {
                 eS.gameObject.GetComponent<EnemyLogic>().updateUI();
+                levelL.GetComponent<LevelLoad>().reduceHandSize();
             }
 
 
