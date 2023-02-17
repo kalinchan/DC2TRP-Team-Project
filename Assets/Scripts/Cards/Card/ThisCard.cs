@@ -26,6 +26,7 @@ public class ThisCard : MonoBehaviour
     public Image spriteImage;
     public Image imgFrame;
     public Image cardFrame;
+    public GameObject cardBorder;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI energyCostText;
@@ -36,6 +37,8 @@ public class ThisCard : MonoBehaviour
     {
         thisCard[0] = CardDataBase.cardList[thisId];
         thisCardSprite = thisCard[0].cardSprite;
+        cardBorder = GameObject.Find("Border");
+        cardBorder.SetActive(false);
 
     }
 
@@ -75,20 +78,10 @@ public class ThisCard : MonoBehaviour
             cardFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
         }
 
-
     }
 
-    // for enemy attack cards - name text to appear on screen when enemy attacks - CH
-    void ChangeName(ThisCard card) // if Enemy turn
+    public void setBorderInactive()
     {
-        // TODO: using Card.setName(name) method in Card class
-
-        // Attack Cards:
-        // if turn = Enemy and id = 1 : Card.setName("Criticise Assignment!") else do nothing
-        // if turn = Enemy and id = 2 : Card.setName("Assign Pop Quiz!") else do nothing
-        // if turn = Enemy and id = 3 : Card.setName("Fail Exam!") else do nothing
-
-        // Text to appear on card for Player and on screen when Enemy makes their move
-
+        cardBorder.SetActive(false);
     }
 }
