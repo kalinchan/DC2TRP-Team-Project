@@ -9,6 +9,7 @@ public class EntityStats : MonoBehaviour
     public GameObject victoryScreen, optionsBackground, defeatScreen;
     private List<GameObject> resultDisable;
     private bool gameOver;
+
     // Start is called before the first frame update
     void Start()
     {
