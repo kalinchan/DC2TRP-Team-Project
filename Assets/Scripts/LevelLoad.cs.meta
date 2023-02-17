@@ -17,6 +17,10 @@ MonoImporter:
   - Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   - Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
   - PlayerArea: {instanceID: 0}
+  - Background01: {fileID: 21300000, guid: 0c6179260d772374b9159716a7eb32b8, type: 3}
+  - Background02: {fileID: 21300000, guid: c467b335b1a88401aa3a6d87df0bf7ef, type: 3}
+  - Background03: {fileID: 21300000, guid: d56afef1752fd40bd84a289e0b39dc84, type: 3}
+  - backgroundParent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
