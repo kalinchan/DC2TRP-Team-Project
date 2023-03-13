@@ -11,9 +11,12 @@ public class LevelLoad : MonoBehaviour
     public int maxHandSize, cardsToDeal;
     public int handSize;
     public GameObject dCButton;
+    public Sprite Background01, Background02, Background03;
+    public GameObject backgroundParent;
  
 
     public List<GameObject> cards = new List<GameObject>();
+    List<Sprite> backgrounds = new List<Sprite>();
 
     void Awake()
     {
@@ -40,6 +43,18 @@ public class LevelLoad : MonoBehaviour
         initialiseHand();
 
         // load 5 cards into hand
+
+        //change background
+        backgrounds.AddRange(new List<Sprite>
+            {
+                Background01, Background02, Background03
+        }
+        );
+        int randomIndex = Random.Range(0, backgrounds.Count);
+
+        // Enable the background image at the random index
+        backgroundParent.transform.GetChild(randomIndex).gameObject.SetActive(true);
+
 
     }
 
