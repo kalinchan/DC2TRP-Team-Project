@@ -33,7 +33,7 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         HealthText.text = "Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+        //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
         healthbar.SetHealth(self.getCurrentHealth());
 
