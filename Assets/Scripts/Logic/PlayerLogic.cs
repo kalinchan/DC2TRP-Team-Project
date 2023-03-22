@@ -11,6 +11,8 @@ public class PlayerLogic : MonoBehaviour
     private EntityStats self;
     public TMP_Text HealthText, EnergyText, DefenceText;
 
+    public HealthBarScript healthbar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class PlayerLogic : MonoBehaviour
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 3;
         currentEnergy = energyMax;
+    
+        healthbar.SetMaxHealth(self.getCurrentHealth());
         updateEnergy();
     }
 
@@ -29,8 +33,11 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         HealthText.text = "Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+        EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
+        healthbar.SetHealth(self.getCurrentHealth());
+
+
 
     }
 

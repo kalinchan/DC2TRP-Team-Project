@@ -14,6 +14,9 @@ public class EnemyLogic : MonoBehaviour
     private EntityStats self, player;
     public TMP_Text HealthText, SpecialText, DefenceText;
 
+    //Declaring the healthBar
+    public EnemyBarScript healthbar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,9 @@ public class EnemyLogic : MonoBehaviour
         HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
         DefenceText.text = "Enemy Defence: " + self.defence + "";
+
+        //Health Bar set to max Health for the enemy
+        healthbar.SetMaxHealth(self.getCurrentHealth());
     }
 
     // Update is called once per frame
@@ -52,6 +58,9 @@ public class EnemyLogic : MonoBehaviour
         HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
         DefenceText.text = "Enemy Defence: " + self.defence + "";
+
+        //Enemy health Bar us updated by getting the current health
+        healthbar.SetHealth(self.getCurrentHealth());
     }
 
     //apply the damage int to player
