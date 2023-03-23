@@ -12,6 +12,7 @@ public class PlayerLogic : MonoBehaviour
     public TMP_Text HealthText, EnergyText, DefenceText;
 
     public HealthBarScript healthbar;
+    public DefenceBarScript defencebar;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class PlayerLogic : MonoBehaviour
         currentEnergy = energyMax;
     
         healthbar.SetMaxHealth(self.getCurrentHealth());
+        defencebar.SetDefence(self.getCurrentDefence());
         updateEnergy();
     }
 
@@ -36,6 +38,7 @@ public class PlayerLogic : MonoBehaviour
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
         healthbar.SetHealth(self.getCurrentHealth());
+        defencebar.SetDefence(self.getCurrentDefence());
 
 
 
