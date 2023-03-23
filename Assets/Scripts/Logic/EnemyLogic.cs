@@ -16,7 +16,6 @@ public class EnemyLogic : MonoBehaviour
 
     //Declaring the healthBar
     public EnemyBarScript healthbar;
-    public EnemyDefenceBarScript defencebar;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +43,6 @@ public class EnemyLogic : MonoBehaviour
 
         //Health Bar set to max Health for the enemy
         healthbar.SetMaxHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
     }
 
     // Update is called once per frame
@@ -63,7 +61,6 @@ public class EnemyLogic : MonoBehaviour
 
         //Enemy health Bar us updated by getting the current health
         healthbar.SetHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
     }
 
     //apply the damage int to player
