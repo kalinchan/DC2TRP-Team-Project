@@ -330,6 +330,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 42767303}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 42767303}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 42767303}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnMouseEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnMouseExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: OnMouseEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: EnemyLogic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297167, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_Type
       value: 0
@@ -394,6 +438,9 @@ MonoBehaviour:
   DefenceText: {fileID: 0}
   healthbar: {fileID: 1715646193}
   defencebar: {fileID: 133827789}
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorMode: 1
 --- !u!95 &42767309
 Animator:
   serializedVersion: 4
@@ -414,6 +461,62 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &42767310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+  m_PrefabInstance: {fileID: 42767300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42767302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20568bef8772b194d86196c7b025ad51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &42767316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42767302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 42767310}
+          m_TargetAssemblyTypeName: EnemyLogic, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 42767310}
+          m_TargetAssemblyTypeName: EnemyLogic, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &44449609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2349,9 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
   energybar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &577916804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2291,6 +2397,7 @@ GameObject:
   - component: {fileID: 587776606}
   - component: {fileID: 587776607}
   - component: {fileID: 587776616}
+  - component: {fileID: 587776617}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2351,6 +2458,9 @@ MonoBehaviour:
   healthbar: {fileID: 945857647}
   defencebar: {fileID: 1599958194}
   energybar: {fileID: 1896212823}
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorMode: 1
 --- !u!114 &587776607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2500,6 +2610,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &587776617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587776602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 587776606}
+          m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 587776606}
+          m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &603999144
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,6 +3494,9 @@ MonoBehaviour:
   DefenceText: {fileID: 1484185253}
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &724649278
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4433,6 +4591,9 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
   energybar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &1285503819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4597,6 +4758,9 @@ MonoBehaviour:
   DefenceText: {fileID: 1484185253}
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &1484185255
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5288,6 +5452,9 @@ MonoBehaviour:
   DefenceText: {fileID: 1484185253}
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &1587173269
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5938,6 +6105,9 @@ MonoBehaviour:
   DefenceText: {fileID: 1484185253}
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!114 &1652737097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5959,6 +6129,9 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
   energybar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!114 &1652737098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6666,6 +6839,9 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
   energybar: {fileID: 0}
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!222 &1831248717
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class PlayerLogic : MonoBehaviour
     public DefenceBarScript defencebar;
     public EnergyBarScript energybar;
 
+    // cursor alteration
+    public Texture2D cursorArrow;
+    public Texture2D cursorHand;
+    public CursorMode cursorMode;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +48,9 @@ public class PlayerLogic : MonoBehaviour
 
         }
         updateEnergy();
+
+        //set cursor
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 
     // Update is called once per frame
@@ -85,5 +93,18 @@ public class PlayerLogic : MonoBehaviour
     public void updateEnergy()
     {
         EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+    }
+
+    // change cursor on player hover to show it is interactible
+    public void OnMouseEnter()
+    {
+        // if selected card is defence card -- need to implement
+        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+    }
+
+    // return cursor to arrow when exit interactable object
+    public void OnMouseExit()
+    {
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 }
