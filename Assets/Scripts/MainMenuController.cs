@@ -14,6 +14,11 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("BattleScene");
     }
 
+    public void tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void options()
     {
         mainMenu.SetActive(false);
