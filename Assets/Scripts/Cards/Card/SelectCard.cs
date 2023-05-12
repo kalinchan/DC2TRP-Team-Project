@@ -28,10 +28,12 @@ public class SelectCard : MonoBehaviour
     // This needs to no work if the current player energy is not enough to cover the card cost - JD 15/02
     public void OnClick()
     {
-        List<GameObject> cards = GameObject.Find("Background").GetComponent<LevelLoad>().cards;
-        foreach (GameObject card in cards)
+        foreach (GameObject gameObject in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
         {
-            card.GetComponent<ThisCard>().setBorderInactive();
+            if (gameObject.name.Equals("Border"))
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         // TODO: Alter Stats (Health, Energy, Defence, Attack) - depending on card played
@@ -45,8 +47,8 @@ public class SelectCard : MonoBehaviour
         }
         playerHand.currentlySelectedCard = thisCard;
 
-        cardBorder = thisCard.cardBorder;
         cardBorder.SetActive(true);
+        
 
     }
 

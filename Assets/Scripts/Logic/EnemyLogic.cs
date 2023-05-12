@@ -43,8 +43,16 @@ public class EnemyLogic : MonoBehaviour
         DefenceText.text = "Enemy Defence: " + self.defence + "";
 
         //Health Bar set to max Health for the enemy
-        healthbar.SetMaxHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
+        if (healthbar != null)
+        {
+            healthbar.SetMaxHealth(self.getCurrentHealth());
+
+        }
+        if (defencebar != null)
+        {
+            defencebar.SetDefence(self.getCurrentDefence());
+
+        }
     }
 
     // Update is called once per frame
@@ -62,8 +70,15 @@ public class EnemyLogic : MonoBehaviour
         DefenceText.text = "Enemy Defence: " + self.defence + "";
 
         //Enemy health Bar us updated by getting the current health
-        healthbar.SetHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
+        if(healthbar != null)
+        {
+            healthbar.SetHealth(self.getCurrentHealth());
+
+        }
+        if (defencebar != null)
+        {
+            defencebar.SetDefence(self.getCurrentDefence());
+        }
     }
 
     //apply the damage int to player
