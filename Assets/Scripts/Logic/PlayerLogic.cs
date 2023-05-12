@@ -25,11 +25,23 @@ public class PlayerLogic : MonoBehaviour
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 3;
-        energybar.SetMaxEnergy(energyMax);
+        if(energybar != null)
+        {
+            energybar.SetMaxEnergy(energyMax);
+
+        }
         currentEnergy = energyMax;
-    
-        healthbar.SetMaxHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
+        if (healthbar != null)
+        {
+            healthbar.SetMaxHealth(self.getCurrentHealth());
+
+        }
+
+        if (defencebar != null)
+        {
+            defencebar.SetDefence(self.getCurrentDefence());
+
+        }
         updateEnergy();
     }
 
@@ -40,13 +52,22 @@ public class PlayerLogic : MonoBehaviour
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
         
+        if (healthbar != null)
+        {
+            healthbar.SetHealth(self.getCurrentHealth());
+        }
         
-        healthbar.SetHealth(self.getCurrentHealth());
-        defencebar.SetDefence(self.getCurrentDefence());
-        energybar.SetEnergy(currentEnergy);
+        if(defencebar!= null)
+        {
+            defencebar.SetDefence(self.getCurrentDefence());
 
+        }
 
+        if(energybar != null)
+        {
+            energybar.SetEnergy(currentEnergy);
 
+        }
     }
 
     public void useEnergy(int energy)

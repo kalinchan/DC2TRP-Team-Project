@@ -26,7 +26,6 @@ public class ThisCard : MonoBehaviour
     public Image spriteImage;
     public Image imgFrame;
     public Image cardFrame;
-    public GameObject cardBorder;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI energyCostText;
@@ -37,8 +36,6 @@ public class ThisCard : MonoBehaviour
     {
         thisCard[0] = CardDataBase.cardList[thisId];
         thisCardSprite = thisCard[0].cardSprite;
-        cardBorder = GameObject.Find("Border");
-        cardBorder.SetActive(false);
 
     }
 
@@ -78,10 +75,5 @@ public class ThisCard : MonoBehaviour
             cardFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
         }
 
-    }
-
-    public void setBorderInactive()
-    {
-        cardBorder.SetActive(false);
     }
 }
