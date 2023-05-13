@@ -711,10 +711,12 @@ MonoBehaviour:
   spriteImage: {fileID: 7339422672924865440}
   imgFrame: {fileID: 8916749102779220993}
   cardFrame: {fileID: 6420221844476137314}
-  cardBorder: {fileID: 7440040221993529278}
   nameText: {fileID: 2079909517744383510}
   energyCostText: {fileID: 3816306366678959528}
   descriptionText: {fileID: 8173662988764228791}
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorMode: 1
 --- !u!114 &2879365919561292246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,9 +750,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
-          m_MethodName: Hover
+        - m_Target: {fileID: 4729592912642223099}
+          m_TargetAssemblyTypeName: ThisCard, Assembly-CSharp
+          m_MethodName: OnMouseEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -764,9 +766,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
-          m_MethodName: HoverExit
+        - m_Target: {fileID: 4729592912642223099}
+          m_TargetAssemblyTypeName: ThisCard, Assembly-CSharp
+          m_MethodName: OnMouseExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -13,6 +13,7 @@ public class ThisCard : MonoBehaviour
     public List<Card> thisCard = new List<Card>();
     public int thisId; // use this id to get info with corresponding card id
 
+    // card info
     public int id;
     public string cardName;
     public int energyCost;
@@ -22,20 +23,28 @@ public class ThisCard : MonoBehaviour
     public int defence;
     public string cardDescription;
 
+    // card images
     public Sprite thisCardSprite;
     public Image spriteImage;
     public Image imgFrame;
     public Image cardFrame;
 
+    // card text
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI energyCostText;
     public TextMeshProUGUI descriptionText;
+
+    // cursor alteration
+    public Texture2D cursorArrow;
+    public Texture2D cursorHand;
+    public CursorMode cursorMode;
 
     // Start is called before the first frame update
     void Start()
     {
         thisCard[0] = CardDataBase.cardList[thisId];
         thisCardSprite = thisCard[0].cardSprite;
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
 
     }
 
@@ -76,4 +85,17 @@ public class ThisCard : MonoBehaviour
         }
 
     }
+
+    // change cursor on card hover to show it is interactible
+    public void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+    }
+
+    // return cursor to arrow when exit interactable object
+    public void OnMouseExit()
+    {
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
+    }
+
 }

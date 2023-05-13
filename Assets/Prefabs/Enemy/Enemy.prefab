@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3582135178927297166}
   - component: {fileID: 3582135178927297161}
   - component: {fileID: 3582135178927297160}
+  - component: {fileID: 154292239205054649}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Enemy
@@ -136,6 +137,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 154292239205054649}
+        m_TargetAssemblyTypeName: EnemyLogic, Assembly-CSharp
+        m_MethodName: OnMouseEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 154292239205054649}
+        m_TargetAssemblyTypeName: EnemyLogic, Assembly-CSharp
+        m_MethodName: OnMouseExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3582135178927297161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +176,10 @@ MonoBehaviour:
   health: 10
   defence: 0
   maxHealth: 100
+  isDead: 0
+  victoryScreen: {fileID: 0}
+  optionsBackground: {fileID: 0}
+  defeatScreen: {fileID: 0}
 --- !u!114 &3582135178927297160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +193,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHand: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &154292239205054649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582135178927297162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20568bef8772b194d86196c7b025ad51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  charge: 0
+  maxCharge: 0
+  defence: 0
+  movesRemaining: 0
+  maxMoves: 0
+  attackCost: 0
+  defenceCost: 0
+  specialCost: 0
+  wait: 0
+  myTurn: 0
+  HealthText: {fileID: 0}
+  SpecialText: {fileID: 0}
+  DefenceText: {fileID: 0}
+  healthbar: {fileID: 0}
+  defencebar: {fileID: 0}
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorMode: 1
 --- !u!1 &3582135179253271620
 GameObject:
   m_ObjectHideFlags: 0

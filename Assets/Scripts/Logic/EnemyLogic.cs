@@ -18,6 +18,11 @@ public class EnemyLogic : MonoBehaviour
     public EnemyBarScript healthbar;
     public EnemyDefenceBarScript defencebar;
 
+    // cursor alteration
+    public Texture2D cursorArrow;
+    public Texture2D cursorHand;
+    public CursorMode cursorMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +58,9 @@ public class EnemyLogic : MonoBehaviour
             defencebar.SetDefence(self.getCurrentDefence());
 
         }
+
+        //set cursor
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 
     // Update is called once per frame
@@ -165,46 +173,59 @@ public class EnemyLogic : MonoBehaviour
         endTurn();
     }
 
+    // change cursor on enemy hover to show it is interactible
+    public void OnMouseEnter()
+    {
+        // if selected card is attack card -- need to implement
+        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+    }
+
+    // return cursor to arrow when exit interactable object
+    public void OnMouseExit()
+    {
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
+    }
+
 
     //This might need an additonal check in the while loop for if there are moves in the pool but no moves costs that fit, i.e. if theres 1 move left in the pool but attack, defend and special all cost 2 or more
     //this loop would run indefinitely in that case - JD 16/02 
     //public void turnTaker()
     //{
-        //movesRemaining = maxMoves;
-        //charge++;
-        //while (movesRemaining > 0)
-        //{
-        //    int random = Random.Range(1, 3);
-        //    switch (random)
-        //    {
-        //        case 1:
-        //            if (movesRemaining < attackCost)
-        //            {
-        //                defend();
-        //                break;
-        //            }
-        //                attack();
-        //                break;
-        //        case 2:
-        //            defend();
-        //            break;
-        //        case 3:
-        //            if (charge == maxCharge)
-        //            {
-        //                special();
-        //                break;
-        //            }
-        //            attack();
-        //            break;
+    //movesRemaining = maxMoves;
+    //charge++;
+    //while (movesRemaining > 0)
+    //{
+    //    int random = Random.Range(1, 3);
+    //    switch (random)
+    //    {
+    //        case 1:
+    //            if (movesRemaining < attackCost)
+    //            {
+    //                defend();
+    //                break;
+    //            }
+    //                attack();
+    //                break;
+    //        case 2:
+    //            defend();
+    //            break;
+    //        case 3:
+    //            if (charge == maxCharge)
+    //            {
+    //                special();
+    //                break;
+    //            }
+    //            attack();
+    //            break;
 
-        //    }
-        //}
-        //endTurn();
-        //if myTurn = true this method runs
-        //resets moves to max, increases charge by one
-        //using as many moves as the enemy has available carry out, random
-        //moves until move pool is empty
-        //then uses endTurn 
+    //    }
+    //}
+    //endTurn();
+    //if myTurn = true this method runs
+    //resets moves to max, increases charge by one
+    //using as many moves as the enemy has available carry out, random
+    //moves until move pool is empty
+    //then uses endTurn 
     //}
 
 }
