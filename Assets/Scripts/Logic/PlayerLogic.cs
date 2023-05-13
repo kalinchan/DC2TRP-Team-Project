@@ -19,6 +19,8 @@ public class PlayerLogic : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D cursorHand;
     public CursorMode cursorMode;
+    public GameObject player;
+    private Hand playerHand;
 
 
     // Start is called before the first frame update
@@ -51,6 +53,8 @@ public class PlayerLogic : MonoBehaviour
 
         //set cursor
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
+        player = GameObject.Find("Player");
+        playerHand = player.GetComponent<Hand>();
     }
 
     // Update is called once per frame
@@ -98,11 +102,15 @@ public class PlayerLogic : MonoBehaviour
     // change cursor on player hover to show it is interactible
     public void OnMouseEnter()
     {
-        // if selected card is defence card -- need to implement
-        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        // if selected card is defence card, ability to interact with player only and not enemies --
+        if (playerHand.currentlySelectedCard.group == "Defence")
+        {
+            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        }
+        else { OnMouseExit(); }
     }
 
-    // return cursor to arrow when exit interactable object
+    // cursor to arrow when exit interactable object
     public void OnMouseExit()
     {
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
