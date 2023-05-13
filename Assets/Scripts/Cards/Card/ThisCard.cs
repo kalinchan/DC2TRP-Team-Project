@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-// Version 1.0 / Date: 09/01/2023 / Author CH
+
+// Version 1.0 / Date: 09/01/2023 / Author CH -- initial implementation of ThisCard and images
+// Version 1.1 / Date: 13/05/2023 / Author CH -- adding cursor changes
 
 // script for This Card - references Card script
 // used to obtain data using card id and apply it to Card prefab object, plus alter some features
@@ -39,12 +41,16 @@ public class ThisCard : MonoBehaviour
     public Texture2D cursorHand;
     public CursorMode cursorMode;
 
+    // turn manager for cursor
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         thisCard[0] = CardDataBase.cardList[thisId];
         thisCardSprite = thisCard[0].cardSprite;
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
+        player = GameObject.Find("Player");
 
     }
 
@@ -89,10 +95,15 @@ public class ThisCard : MonoBehaviour
     // change cursor on card hover to show it is interactible
     public void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        // if player turn
+        if (player.GetComponent<PlayerLogic>().myTurn == true)
+        {
+            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        }
+        else { OnMouseExit(); }
     }
 
-    // return cursor to arrow when exit interactable object
+    // cursor to arrow when exit / not over interactable object
     public void OnMouseExit()
     {
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);

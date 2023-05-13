@@ -22,6 +22,7 @@ public class EnemyLogic : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D cursorHand;
     public CursorMode cursorMode;
+    private Hand playerHand;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,7 @@ public class EnemyLogic : MonoBehaviour
 
         //set cursor
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
+        playerHand = player.GetComponent<Hand>();
     }
 
     // Update is called once per frame
@@ -176,8 +178,12 @@ public class EnemyLogic : MonoBehaviour
     // change cursor on enemy hover to show it is interactible
     public void OnMouseEnter()
     {
-        // if selected card is attack card -- need to implement
-        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        // if selected card is attack card - ability to interact with enemies only and not player --
+        if (playerHand.currentlySelectedCard.group == "Attack")
+        {
+            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+        }
+        else { OnMouseExit(); }
     }
 
     // return cursor to arrow when exit interactable object

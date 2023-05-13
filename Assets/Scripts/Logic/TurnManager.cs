@@ -29,7 +29,7 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public enum turnStatus
@@ -43,9 +43,9 @@ public class TurnManager : MonoBehaviour
     //do we separate this into 2 methods? - JD 15/02
     public void switchTurn()
     {
-        if(currentTurn == turnStatus.playerTurn)
+        if (currentTurn == turnStatus.playerTurn)
         {
-            eTButton.SetActive(false); 
+            eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;
             currentTurn = turnStatus.enemyTurn;
             enableEnemies();
@@ -60,14 +60,14 @@ public class TurnManager : MonoBehaviour
             //This is suuuuuuuper janky but works to update cards at the end of the turn
             gameObject.GetComponent<DealCards>().OnClick();
         }
-                
+
     }
-       
+
     //find all enemies, set myTurn to true and call the turnTaker method
     //needs to be fixed to go through a list of all enemies with the enemy tag - JD 15/02
     public void enableEnemies()
     {
-        
+
         enemy.GetComponent<EnemyLogic>().startTurn();
 
         //foreach (GameObject enemy in enemies) 
@@ -83,4 +83,5 @@ public class TurnManager : MonoBehaviour
         player.GetComponent<PlayerLogic>().resetEnergy();
 
     }
+
 }
