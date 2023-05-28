@@ -5,6 +5,13 @@ using UnityEngine;
 public class EndTurn : MonoBehaviour
 {
     private GameObject turnManager;
+
+    // cursor alteration
+    public Texture2D cursorArrow; //default pointer
+    public Texture2D cursorHand; //interactable
+    public CursorMode cursorMode;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +28,17 @@ public class EndTurn : MonoBehaviour
     {
   
         turnManager.GetComponent<TurnManager>().switchTurn();
+    }
+
+    // change cursor on button hover to show it is interactible
+    public void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+    }
+
+    // return cursor to arrow when exit interactable object
+    public void OnMouseExit()
+    {
+        Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 }

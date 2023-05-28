@@ -16,11 +16,15 @@ public class PlayerLogic : MonoBehaviour
     public EnergyBarScript energybar;
 
     // cursor alteration
-    public Texture2D cursorArrow;
-    public Texture2D cursorHand;
+    public Texture2D cursorArrow; //default pointer
+    public Texture2D cursorHand; //interactable
+    public Texture2D cursorShield; //defence
+    public Texture2D cursorSpecial; //special
+    public Texture2D cursorX; //not interactable
     public CursorMode cursorMode;
     public GameObject player;
     private Hand playerHand;
+    // attack not needed for player
 
 
     // Start is called before the first frame update
@@ -105,7 +109,15 @@ public class PlayerLogic : MonoBehaviour
         // if selected card is defence card, ability to interact with player only and not enemies --
         if (playerHand.currentlySelectedCard.group == "Defence")
         {
-            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+            Cursor.SetCursor(cursorShield, Vector2.zero, cursorMode);
+        }
+        else if (playerHand.currentlySelectedCard.group == "Special")
+        {
+            Cursor.SetCursor(cursorSpecial, Vector2.zero, cursorMode);
+        }
+        else if (playerHand.currentlySelectedCard.group == "Attack")
+        {
+            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
         }
         else { OnMouseExit(); }
     }
