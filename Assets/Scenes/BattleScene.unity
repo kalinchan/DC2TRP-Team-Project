@@ -206,6 +206,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1900380997}
     m_Modifications:
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorX
+      value: 
+      objectReference: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorSword
+      value: 
+      objectReference: {fileID: 2800000, guid: ad61196f5bc5e654297de8c578b6f100, type: 3}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorSpecial
+      value: 
+      objectReference: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: Defence
       value: 10
@@ -440,6 +452,8 @@ MonoBehaviour:
   defencebar: {fileID: 133827789}
   cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorSword: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 1
 --- !u!95 &42767309
 Animator:
@@ -1316,6 +1330,7 @@ GameObject:
   - component: {fileID: 283602579}
   - component: {fileID: 283602578}
   - component: {fileID: 283602581}
+  - component: {fileID: 283602582}
   m_Layer: 0
   m_Name: End Turn Button
   m_TagString: Untagged
@@ -1450,6 +1465,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65569d730dc3c534faf2026b69431bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorMode: 1
+--- !u!114 &283602582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283602576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 283602581}
+          m_TargetAssemblyTypeName: EndTurn, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 283602581}
+          m_TargetAssemblyTypeName: EndTurn, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &285879295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,6 +2683,9 @@ MonoBehaviour:
   energybar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorShield: {fileID: 0}
+  cursorSpecial: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
 --- !u!222 &577916804
@@ -2730,6 +2796,9 @@ MonoBehaviour:
   energybar: {fileID: 1896212823}
   cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorShield: {fileID: 2800000, guid: 5063d0287a83a1148bb2c599737255db, type: 3}
+  cursorSpecial: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
+  cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 0}
 --- !u!114 &587776607
@@ -3767,6 +3836,8 @@ MonoBehaviour:
   defencebar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorSword: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
 --- !u!222 &724649278
 CanvasRenderer:
@@ -4865,6 +4936,9 @@ MonoBehaviour:
   energybar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorShield: {fileID: 0}
+  cursorSpecial: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
 --- !u!222 &1285503819
@@ -5033,6 +5107,8 @@ MonoBehaviour:
   defencebar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorSword: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
 --- !u!222 &1484185255
 CanvasRenderer:
@@ -5727,6 +5803,8 @@ MonoBehaviour:
   defencebar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorSword: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
 --- !u!222 &1587173269
 CanvasRenderer:
@@ -6314,7 +6392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87134a19c53c9634882ae1dc31470e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card01: {fileID: 5143058733874367971, guid: 56f6c2d7baa851b43ac69e0ee258b624, type: 3}
+  Card01: {fileID: 7241026101412582193, guid: c0be5b0377af75b4fb71738b9221eef7, type: 3}
   Card02: {fileID: 7241026101412582193, guid: 8ade24247870b34409d974590125f958, type: 3}
   Card03: {fileID: 1550772335203455360, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
   Card04: {fileID: 7113903973978158019, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
@@ -6380,6 +6458,8 @@ MonoBehaviour:
   defencebar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorSword: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
 --- !u!114 &1652737097
 MonoBehaviour:
@@ -6404,6 +6484,9 @@ MonoBehaviour:
   energybar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorShield: {fileID: 0}
+  cursorSpecial: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
 --- !u!114 &1652737098
@@ -7115,6 +7198,9 @@ MonoBehaviour:
   energybar: {fileID: 0}
   cursorArrow: {fileID: 0}
   cursorHand: {fileID: 0}
+  cursorShield: {fileID: 0}
+  cursorSpecial: {fileID: 0}
+  cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
 --- !u!222 &1831248717

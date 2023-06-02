@@ -37,8 +37,8 @@ public class ThisCard : MonoBehaviour
     public TextMeshProUGUI descriptionText;
 
     // cursor alteration
-    public Texture2D cursorArrow;
-    public Texture2D cursorHand;
+    public Texture2D cursorArrow; //default pointer
+    public Texture2D cursorHand; //interactable
     public CursorMode cursorMode;
 
     // turn manager for cursor

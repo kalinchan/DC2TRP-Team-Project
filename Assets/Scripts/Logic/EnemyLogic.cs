@@ -19,10 +19,13 @@ public class EnemyLogic : MonoBehaviour
     public EnemyDefenceBarScript defencebar;
 
     // cursor alteration
-    public Texture2D cursorArrow;
-    public Texture2D cursorHand;
+    public Texture2D cursorArrow; //default pointer
+    public Texture2D cursorHand; //interactable
+    public Texture2D cursorSword; //attack
+    public Texture2D cursorX; //not interactable
     public CursorMode cursorMode;
     private Hand playerHand;
+    //defence & special not needed for enemy
 
     // Start is called before the first frame update
     void Start()
@@ -181,7 +184,15 @@ public class EnemyLogic : MonoBehaviour
         // if selected card is attack card - ability to interact with enemies only and not player --
         if (playerHand.currentlySelectedCard.group == "Attack")
         {
-            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+            Cursor.SetCursor(cursorSword, Vector2.zero, cursorMode);
+        }
+        else if (playerHand.currentlySelectedCard.group == "Defence")
+        {
+            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
+        }
+        else if (playerHand.currentlySelectedCard.group == "Special")
+        {
+            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
         }
         else { OnMouseExit(); }
     }

@@ -10,6 +10,7 @@ public class TurnManager : MonoBehaviour
     //public GameObject[] enemies;
     public GameObject enemy;
     public GameObject player, eTButton;
+    private Hand playerHand;
 
 
 
@@ -29,7 +30,6 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public enum turnStatus
@@ -59,9 +59,9 @@ public class TurnManager : MonoBehaviour
             turnCounter++;
             //This is suuuuuuuper janky but works to update cards at the end of the turn
             gameObject.GetComponent<DealCards>().OnClick();
-        }
+            }
 
-    }
+        }
 
     //find all enemies, set myTurn to true and call the turnTaker method
     //needs to be fixed to go through a list of all enemies with the enemy tag - JD 15/02
@@ -83,5 +83,6 @@ public class TurnManager : MonoBehaviour
         player.GetComponent<PlayerLogic>().resetEnergy();
 
     }
+
 
 }
