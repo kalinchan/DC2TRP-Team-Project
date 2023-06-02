@@ -207,6 +207,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1900380997}
     m_Modifications:
     - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 1715646193}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: defencebar
+      value: 
+      objectReference: {fileID: 133827789}
       propertyPath: cursorX
       value: 
       objectReference: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
