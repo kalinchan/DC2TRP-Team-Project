@@ -10,6 +10,12 @@ public class EntityStats : MonoBehaviour
     private List<GameObject> resultDisable;
     private bool gameOver;
 
+    //special card at end of level
+    public GameObject SpecialCard01, SpecialCard02, SpecialCard03;
+    public GameObject SpecialCardArea;
+    public int noSpecialCards = 1;
+    public List<GameObject> SpecialCards = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +51,7 @@ public class EntityStats : MonoBehaviour
             }
             else
             {
+                AddSpecialCard();
                 victoryScreen.SetActive(true);
             }
 
@@ -127,6 +134,26 @@ public class EntityStats : MonoBehaviour
     public int getCurrentDefence()
     {
         return defence;
+    }
+
+    private void AddSpecialCard()
+    {
+        // get all special cards
+        SpecialCards.AddRange(new List<GameObject>
+            {
+                SpecialCard01, SpecialCard02, SpecialCard03
+            }
+        );
+
+        for (var i = 0; i < noSpecialCards; i++)
+        {
+
+            GameObject specialCard = Instantiate(SpecialCards[Random.Range(0, SpecialCards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            specialCard.transform.SetParent(SpecialCardArea.transform, false);
+            
+        }
+
+
     }
 
     
