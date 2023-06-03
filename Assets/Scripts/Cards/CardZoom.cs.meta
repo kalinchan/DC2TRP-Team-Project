@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff0fc576c3f7b364f8d3b1e25176cf3d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hand: {instanceID: 0}
+  - active: {instanceID: 0}
+  - ZoomCard: {fileID: 4202022625393056555, guid: 62cae1a8a0470384cae8911997945911, type: 3}
+  - Canvas: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
