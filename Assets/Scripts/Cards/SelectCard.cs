@@ -40,7 +40,7 @@ public class SelectCard : MonoBehaviour
         //GetEnemy();
         //Card.SetActive(false); // remove card from hand
 
-        
+
         if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy)
         {
             return;
@@ -48,7 +48,7 @@ public class SelectCard : MonoBehaviour
         playerHand.currentlySelectedCard = thisCard;
 
         cardBorder.SetActive(true);
-        
+
 
     }
 
@@ -64,8 +64,10 @@ public class SelectCard : MonoBehaviour
         currentEnemy.takeDamage(thisCard.damage);
     }
 
-    public void gainDefence()
+    public void applyCard()
     {
-        player.GetComponent<DefenceApplication>().applyDefence();
+        player.GetComponent<DefenceApplication>().applyCard();
     }
+
+
 }

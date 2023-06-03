@@ -36,7 +36,7 @@ public class LevelLoad : MonoBehaviour
         string sceneName = currentScene.name;
 
         // ensure only 5 cards added to hand
-        specialInt = 0;
+        specialInt = currentScene.buildIndex - 3;
         maxHandSize = 5;
         backgroundInt = currentScene.buildIndex - 3;
         // level 1 = build index 3, so for first item in list [0] we must -3 from the build index // level 2 = index 4 so background list item [1]
@@ -44,7 +44,7 @@ public class LevelLoad : MonoBehaviour
         // set backgrounds list
         backgrounds.AddRange(new List<Sprite>
             {
-                Background01, Background02, Background03
+                Background01, Background02, Background03, Background01
         }
         );
 
@@ -112,18 +112,21 @@ public class LevelLoad : MonoBehaviour
         return cardsToDeal;
     }
 
-    
+
     public void addSpecial()
     {
-        cards.Add(specialcards[specialInt]);
-        if (specialInt == 2)
+        if (specialInt == 4)
         {
             specialInt = 0;
         }
-        else { specialInt++; }
+
+        for (var i = 0; i < specialInt; i++)
+        {
+
+            cards.Add(specialcards[i]);
+        }
+
     }
-
-
 
 }
 

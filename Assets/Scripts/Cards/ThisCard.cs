@@ -44,6 +44,8 @@ public class ThisCard : MonoBehaviour
     // turn manager for cursor
     public GameObject player;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,11 @@ public class ThisCard : MonoBehaviour
         group = thisCard[0].group;
         rarity = thisCard[0].rarity;
         damage = thisCard[0].damage;
+        if (player.GetComponent<PlayerLogic>().specialx2 == true)
+        {
+            damage = damage * 2;
+        }
+
         defence = thisCard[0].defence;
         cardDescription = thisCard[0].cardDescription;
 
@@ -108,5 +115,8 @@ public class ThisCard : MonoBehaviour
     {
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
+
+
+
 
 }

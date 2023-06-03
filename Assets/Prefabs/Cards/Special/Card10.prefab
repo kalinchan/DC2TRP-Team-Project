@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 6361453472111750481}
   m_Layer: 6
   m_Name: Card10
-  m_TagString: Special Card
+  m_TagString: Special01
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

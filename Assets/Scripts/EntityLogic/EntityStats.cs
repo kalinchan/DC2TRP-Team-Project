@@ -74,6 +74,7 @@ public class EntityStats : MonoBehaviour
     //Tested...funnily enough doing - on a - number adds so...changed that. lol - JD 09/02
     public void takeDamage (int damage)
     {
+
         int damageRemainder = 0;
         if(defence > 0)
         {
@@ -157,5 +158,5 @@ public class EntityStats : MonoBehaviour
     }
 
 
-    
+
 }
