@@ -480,8 +480,8 @@ MonoBehaviour:
   defencebar: {fileID: 133827789}
   cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
-  cursorSword: {fileID: 0}
-  cursorX: {fileID: 0}
+  cursorSword: {fileID: 2800000, guid: ad61196f5bc5e654297de8c578b6f100, type: 3}
+  cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
 --- !u!95 &42767309
 Animator:
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   energybar: {fileID: 1896212823}
   cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
-  cursorShield: {fileID: 2800000, guid: 5063d0287a83a1148bb2c599737255db, type: 3}
+  cursorShield: {fileID: 2800000, guid: 6cb8ef2c9995095448f39eddad3cc957, type: 3}
   cursorSpecial: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
@@ -6873,9 +6873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCounter: 0
   currentTurn: 0
-  enemy: {fileID: 0}
-  player: {fileID: 0}
-  eTButton: {fileID: 0}
+  enemy: {fileID: 42767302}
+  player: {fileID: 587776602}
+  eTButton: {fileID: 283602576}
 --- !u!114 &1652737096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6904,11 +6904,11 @@ MonoBehaviour:
   DefenceText: {fileID: 1484185253}
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
-  cursorArrow: {fileID: 0}
-  cursorHand: {fileID: 0}
-  cursorSword: {fileID: 0}
-  cursorX: {fileID: 0}
-  cursorMode: 0
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorSword: {fileID: 2800000, guid: ad61196f5bc5e654297de8c578b6f100, type: 3}
+  cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+  cursorMode: 1
 --- !u!114 &1652737097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6930,13 +6930,13 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defencebar: {fileID: 0}
   energybar: {fileID: 0}
-  cursorArrow: {fileID: 0}
-  cursorHand: {fileID: 0}
-  cursorShield: {fileID: 0}
-  cursorSpecial: {fileID: 0}
-  cursorX: {fileID: 0}
-  cursorMode: 0
-  player: {fileID: 0}
+  cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
+  cursorShield: {fileID: 2800000, guid: 6cb8ef2c9995095448f39eddad3cc957, type: 3}
+  cursorSpecial: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
+  cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+  cursorMode: 1
+  player: {fileID: 587776602}
 --- !u!114 &1652737098
 MonoBehaviour:
   m_ObjectHideFlags: 0

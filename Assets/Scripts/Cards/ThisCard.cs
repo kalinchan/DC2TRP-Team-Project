@@ -86,8 +86,8 @@ public class ThisCard : MonoBehaviour
         }
         if (thisCard[0].group == "Special")
         {
-            imgFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
-            cardFrame.GetComponent<Image>().color = new Color32(0, 255, 9, 255);
+            imgFrame.GetComponent<Image>().color = new Color32(9, 251, 52, 217);
+            cardFrame.GetComponent<Image>().color = new Color32(9, 251, 52, 217);
         }
 
     }
