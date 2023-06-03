@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 87134a19c53c9634882ae1dc31470e17
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Card01: {fileID: 7241026101412582193, guid: c0be5b0377af75b4fb71738b9221eef7, type: 3}
+  - Card02: {fileID: 7241026101412582193, guid: 8ade24247870b34409d974590125f958, type: 3}
+  - Card03: {fileID: 1550772335203455360, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
+  - Card04: {fileID: 7113903973978158019, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
+  - Card05: {fileID: 3267529769625528447, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
+  - Card06: {fileID: 8604379625322660539, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
+  - Card07: {fileID: 2202660001311629488, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
+  - Card08: {fileID: 4201483250616043627, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
+  - Card09: {fileID: 4349225999290487272, guid: f94e739dd9f491949857633f640d650e, type: 3}
+  - Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
+  - Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
+  - Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+  - PlayerArea: {instanceID: 0}
+  - dCButton: {instanceID: 0}
+  - Background01: {fileID: 21300000, guid: 0c6179260d772374b9159716a7eb32b8, type: 3}
+  - Background02: {fileID: 21300000, guid: 5fd752a08e2f04a66ae9b5a05ed51b51, type: 3}
+  - Background03: {fileID: 21300000, guid: f9a45a995c5c146aa86e1b4371f3ac72, type: 3}
+  - backgroundParent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
