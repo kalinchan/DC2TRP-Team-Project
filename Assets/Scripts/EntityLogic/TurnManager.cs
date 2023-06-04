@@ -58,8 +58,12 @@ public class TurnManager : MonoBehaviour
             enablePlayer();
             turnCounter++;
             //This is suuuuuuuper janky but works to update cards at the end of the turn
-            gameObject.GetComponent<DealCards>().OnClick();
+            if (!player.GetComponent<EntityStats>().skipDraw)
+            {
+                gameObject.GetComponent<DealCards>().OnClick();
             }
+            player.GetComponent<EntityStats>().skipDraw = false;
+         }
 
         }
 
@@ -81,7 +85,15 @@ public class TurnManager : MonoBehaviour
     public void enablePlayer()
     {
         player.GetComponent<PlayerLogic>().myTurn = true;
-        player.GetComponent<PlayerLogic>().resetEnergy();
+        if (!player.GetComponent<EntityStats>().drained)
+        {
+            player.GetComponent<PlayerLogic>().resetEnergy();
+        }
+        else
+        {
+            player.GetComponent<PlayerLogic>().drainedEnergyReset();
+        }
+
 
     }
 
