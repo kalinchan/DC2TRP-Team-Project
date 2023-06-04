@@ -110,7 +110,7 @@ public class EnemyLogic : MonoBehaviour
 
         //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
         int random = Random.Range(1, 5);
-        switch (4)
+        switch (random)
         {
             case 1:
                 player.skipDraw = true;
@@ -133,10 +133,7 @@ public class EnemyLogic : MonoBehaviour
                 charge = 0;
                 break;
 
-            case 5:
-                player.skipDraw = true;
-                charge = 0;
-                break;
+
         }
 
 

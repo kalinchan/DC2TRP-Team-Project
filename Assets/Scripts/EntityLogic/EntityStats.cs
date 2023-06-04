@@ -14,7 +14,7 @@ public class EntityStats : MonoBehaviour
     public int currentScene;
 
     //special card at end of level
-    public GameObject SpecialCard01, SpecialCard02, SpecialCard03;
+    public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
     public GameObject SpecialCardArea;
     public List<GameObject> SpecialCards = new List<GameObject>();
 
@@ -162,7 +162,8 @@ public class EntityStats : MonoBehaviour
         // get all special cards
         SpecialCards.AddRange(new List<GameObject>
             {
-                SpecialCard01, SpecialCard02, SpecialCard03
+                SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04
+
             }
         );
 
@@ -171,7 +172,7 @@ public class EntityStats : MonoBehaviour
         specialCard.transform.SetParent(SpecialCardArea.transform, false);
 
         // to get int for special card list --
-        if (specialInt == 3)
+        if (specialInt == 4)
         {
             specialInt = 0;
         }
