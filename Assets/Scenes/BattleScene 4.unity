@@ -207,6 +207,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1900380997}
     m_Modifications:
     - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorX
+      value: 
+      objectReference: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1715646193}
@@ -228,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: health
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: Defence
@@ -236,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: defeatScreen
@@ -254,6 +258,10 @@ PrefabInstance:
       propertyPath: SpecialCard03
       value: 
       objectReference: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+    - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: SpecialCard04
+      value: 
+      objectReference: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: victoryScreen
       value: 
@@ -2889,7 +2897,6 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
-  tS: {fileID: 0}
 --- !u!222 &577916804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2959,6 +2966,8 @@ MonoBehaviour:
   defence: 0
   maxHealth: 100
   isDead: 0
+  skipDraw: 0
+  drained: 0
   victoryScreen: {fileID: 709341085}
   optionsBackground: {fileID: 624319554}
   defeatScreen: {fileID: 44449609}
@@ -2966,6 +2975,7 @@ MonoBehaviour:
   SpecialCard01: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   SpecialCard02: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   SpecialCard03: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+  SpecialCard04: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
   SpecialCardArea: {fileID: 1427697935}
   SpecialCards: []
   specialx2: 0
@@ -3010,7 +3020,6 @@ MonoBehaviour:
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 0}
-  tS: {fileID: 0}
 --- !u!224 &587776612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5155,7 +5164,6 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
-  tS: {fileID: 0}
 --- !u!222 &1285503819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6875,6 +6883,7 @@ MonoBehaviour:
   Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+  Card13: {fileID: 0}
   PlayerArea: {fileID: 737675074}
   maxHandSize: 0
   cardsToDeal: 0
@@ -6967,7 +6976,6 @@ MonoBehaviour:
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 587776602}
-  tS: {fileID: 0}
 --- !u!114 &1652737098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7550,7 +7558,6 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
-  tS: {fileID: 0}
 --- !u!222 &1831248717
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoad : MonoBehaviour
 {
-    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12;
+    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12, Card13;
     public GameObject PlayerArea;
     public int maxHandSize, cardsToDeal;
     public int handSize;
@@ -62,7 +62,7 @@ public class LevelLoad : MonoBehaviour
         // list of special cards to iterate through and add in next levels
         specialcards.AddRange(new List<GameObject>
         {
-            Card10, Card11, Card12
+            Card10, Card11, Card12, Card13
         }
         );
 
@@ -115,7 +115,7 @@ public class LevelLoad : MonoBehaviour
 
     public void addSpecial()
     {
-        if (specialInt == 4)
+        if (specialInt == 5)
         {
             specialInt = 0;
         }

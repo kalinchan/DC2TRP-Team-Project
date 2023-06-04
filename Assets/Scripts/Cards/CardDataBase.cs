@@ -26,6 +26,7 @@ public class CardDataBase : MonoBehaviour {
         cardList.Add(new Card(9, "Get Enough Sleep", 0, "Special", 0, 0, 0, " +10", true, Resources.Load<Sprite>("Sprites/Cards/Alarm"))); // Health +10
         cardList.Add(new Card(10, "Drink Energy Drink", 0, "Special", 0, 0, 0, " +5", true, Resources.Load<Sprite>("Sprites/Cards/EnergyDrink"))); // Energy +5
         cardList.Add(new Card(11, "Workout", 4, "Special", 0, 0, 0, " x2", true, Resources.Load<Sprite>("Sprites/Cards/Workout"))); // Attack x2
+        cardList.Add(new Card(12, "Extension", 3,"Special", 0, 0, 0, "+10", true, Resources.Load<Sprite>("Sprites/Cards/Workout")));
     }
 
 }

@@ -55,12 +55,17 @@ public class DefenceApplication : MonoBehaviour
             applySpecialThree();
         }
 
+        if (thisCard.tag.Contains("Special04"))
+        {
+            applySpecialFour();
+        }
+
     }
 
     public void applySpecialOne()
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-        eS.heal(10);
+        eS.heal(10);//hardcoded, should be changed at some point
         eS.takeDamage(thisCard.damage);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
@@ -81,6 +86,15 @@ public class DefenceApplication : MonoBehaviour
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eES.setMultiplierToTrue();
         eS.takeDamage(thisCard.damage);
+        thisCard.gameObject.SetActive(false);
+        playerHand.clearCard();
+        levelL.GetComponent<LevelLoad>().reduceHandSize();
+    }
+
+    public void applySpecialFour()
+    {
+        player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+        eS.gainDefence(10);//hardcoded, should be changed at some point
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
