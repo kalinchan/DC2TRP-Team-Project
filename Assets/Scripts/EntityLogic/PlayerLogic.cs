@@ -26,10 +26,6 @@ public class PlayerLogic : MonoBehaviour
     private Hand playerHand;
     // attack not needed for player
 
-    // for special card attack multiplier
-    public bool specialx2;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +36,11 @@ public class PlayerLogic : MonoBehaviour
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 10;
-        if(energybar != null)
+
+
+
+
+        if (energybar != null)
         {
             energybar.SetMaxEnergy(energyMax);
 
@@ -58,7 +58,7 @@ public class PlayerLogic : MonoBehaviour
 
         }
         updateEnergy();
-        specialx2 = false;
+        self.specialx2 = false;
 
         //set cursor
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
@@ -144,14 +144,6 @@ public class PlayerLogic : MonoBehaviour
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 
-    public void setMultiplierToTrue()
-    {
-        specialx2 = true;
-    }
 
-    public void setMultiplierToFalse()
-    {
-        specialx2 = false;
-    }
 
 }

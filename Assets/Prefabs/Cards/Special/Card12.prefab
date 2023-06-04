@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03529412, g: 0.98449504, b: 0.20392157, a: 0.8509804}
+  m_Color: {r: 0.3882353, g: 0.023529412, b: 0.023529412, a: 0.8509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -343,6 +343,7 @@ MonoBehaviour:
   spriteImage: {fileID: 1060790214292442804}
   imgFrame: {fileID: 1060790212829708932}
   cardFrame: {fileID: 1060790213632547045}
+  groupImage: {fileID: 7664251062215558953}
   nameText: {fileID: 1060790212815705324}
   energyCostText: {fileID: 5826124433367950839}
   descriptionText: {fileID: 2826333917655798467}
@@ -350,6 +351,7 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
   cursorMode: 1
   player: {fileID: 0}
+  pl: {fileID: 0}
 --- !u!114 &1517338015229073816
 MonoBehaviour:
   m_ObjectHideFlags: 0

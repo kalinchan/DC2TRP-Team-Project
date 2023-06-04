@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: health
-      value: 50
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: Defence
@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: defeatScreen
@@ -2889,6 +2889,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  specialx2: 0
 --- !u!222 &577916804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2961,7 +2962,6 @@ MonoBehaviour:
   victoryScreen: {fileID: 709341085}
   optionsBackground: {fileID: 624319554}
   defeatScreen: {fileID: 44449609}
-  specialx2: 0
   SpecialCard01: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   SpecialCard02: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   SpecialCard03: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
@@ -3008,6 +3008,7 @@ MonoBehaviour:
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 0}
+  specialx2: 0
 --- !u!224 &587776612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4937,7 +4938,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have won this special card
+  m_text: 'You have won this special card!
+
+    It has been added to your deck!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c41a3631588878944a23e60934bab5cd, type: 2}
   m_sharedMaterial: {fileID: 5299523933457976649, guid: c41a3631588878944a23e60934bab5cd, type: 2}
@@ -4964,8 +4967,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5150,6 +5153,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  specialx2: 0
 --- !u!222 &1285503819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6961,6 +6965,7 @@ MonoBehaviour:
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 587776602}
+  specialx2: 0
 --- !u!114 &1652737098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7543,6 +7548,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  specialx2: 0
 --- !u!222 &1831248717
 CanvasRenderer:
   m_ObjectHideFlags: 0

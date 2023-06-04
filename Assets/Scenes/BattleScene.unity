@@ -207,6 +207,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1900380997}
     m_Modifications:
     - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorX
+      value: 
+      objectReference: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1715646193}
@@ -2961,12 +2965,13 @@ MonoBehaviour:
   victoryScreen: {fileID: 709341085}
   optionsBackground: {fileID: 624319554}
   defeatScreen: {fileID: 44449609}
-  specialx2: 0
+  currentScene: 0
   SpecialCard01: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   SpecialCard02: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   SpecialCard03: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
   SpecialCardArea: {fileID: 1427697935}
   SpecialCards: []
+  specialx2: 0
 --- !u!114 &587776605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,7 +3207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHand: {fileID: 0}
   player: {fileID: 587776602}
-  specialCardsApp: {fileID: 0}
 --- !u!1 &603999144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4938,7 +4942,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have won this special card
+  m_text: 'You have won this special card!
+
+    It has been added to your deck!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c41a3631588878944a23e60934bab5cd, type: 2}
   m_sharedMaterial: {fileID: 5299523933457976649, guid: c41a3631588878944a23e60934bab5cd, type: 2}
@@ -4965,8 +4971,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

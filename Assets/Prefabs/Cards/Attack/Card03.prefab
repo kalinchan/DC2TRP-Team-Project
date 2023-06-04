@@ -284,6 +284,7 @@ MonoBehaviour:
   spriteImage: {fileID: 289509506453575479}
   imgFrame: {fileID: 604522488561662214}
   cardFrame: {fileID: 2699489594758574050}
+  groupImage: {fileID: 90793456267283056}
   nameText: {fileID: 3253817105368997122}
   energyCostText: {fileID: 5585466019442670504}
   descriptionText: {fileID: 2498245635310088676}

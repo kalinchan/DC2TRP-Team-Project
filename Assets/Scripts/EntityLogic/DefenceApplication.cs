@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefenceApplication : MonoBehaviour
 {
-    private EntityStats eS;
+    private EntityStats eS, eES;
     private ThisCard thisCard;
     public Hand playerHand;
     public GameObject player;
@@ -17,6 +17,7 @@ public class DefenceApplication : MonoBehaviour
         player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
         levelL = GameObject.Find("Background");
+        eES = GameObject.Find("Enemy").GetComponent<EntityStats>();
     }
 
     // Update is called once per frame
@@ -78,7 +79,7 @@ public class DefenceApplication : MonoBehaviour
     public void applySpecialThree()
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-        player.GetComponent<PlayerLogic>().setMultiplierToTrue();
+        eES.setMultiplierToTrue();
         eS.takeDamage(thisCard.damage);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
