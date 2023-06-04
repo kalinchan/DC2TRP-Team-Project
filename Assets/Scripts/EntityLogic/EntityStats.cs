@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EntityStats : MonoBehaviour
 {
     public int health = 10, defence = 0, maxHealth = 10;
-    public bool isDead;
+    public bool isDead, skipDraw, drained;
     public GameObject victoryScreen, optionsBackground, defeatScreen;
     private List<GameObject> resultDisable;
     private bool gameOver;
@@ -20,6 +20,7 @@ public class EntityStats : MonoBehaviour
 
     // for special card attack multiplier
     public bool specialx2 = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,8 @@ public class EntityStats : MonoBehaviour
         health = maxHealth;
         currentScene = SceneManager.GetActiveScene().buildIndex;
         specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
+        skipDraw = false;
+        drained = false;
     }
 
     // Update is called once per frame

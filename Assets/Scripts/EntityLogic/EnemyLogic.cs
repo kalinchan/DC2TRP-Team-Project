@@ -109,6 +109,38 @@ public class EnemyLogic : MonoBehaviour
         //can that just be done here or is that too messy
 
         //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
+        int random = Random.Range(1, 5);
+        switch (4)
+        {
+            case 1:
+                player.skipDraw = true;
+                charge = 0;
+                break;
+
+            case 2:
+                damage++;
+                damage++;
+                charge = 0;
+                break;
+
+            case 3:
+                self.gainDefence(defence * 3);
+                charge = 0;
+                break;
+
+            case 4:
+                player.drained = true;
+                charge = 0;
+                break;
+
+            case 5:
+                player.skipDraw = true;
+                charge = 0;
+                break;
+        }
+
+
+
         HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         movesRemaining -= specialCost;
     }
@@ -144,12 +176,20 @@ public class EnemyLogic : MonoBehaviour
     {
         Debug.Log("TurnTaker Called");
         movesRemaining = maxMoves;
-        charge++;
+        if(charge < maxCharge)
+        {
+            charge++;
+        }
+
         while (movesRemaining > 0)
         {
             Debug.Log("entering while loop");
             yield return new WaitForSeconds(wait);
             int random = Random.Range(1, 3);
+            if(charge == maxCharge)
+            {
+                random = 3;
+            }
             switch (random)
             {
                 case 1:

@@ -103,6 +103,13 @@ public class PlayerLogic : MonoBehaviour
         updateEnergy();
     }
 
+    public void drainedEnergyReset()
+    {
+        currentEnergy = (energyMax - 2);
+        updateEnergy();
+        self.drained = false;
+    }
+
     public void updateEnergy()
     {
         EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
