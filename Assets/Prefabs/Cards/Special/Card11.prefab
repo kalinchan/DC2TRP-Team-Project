@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 6361453472111750481}
   m_Layer: 6
   m_Name: Card11
-  m_TagString: Special Card
+  m_TagString: Special02
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03529412, g: 0.9882353, b: 0.20392157, a: 0.8509804}
+  m_Color: {r: 0.3882353, g: 0.023529412, b: 0.023529412, a: 0.8509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -478,6 +478,7 @@ MonoBehaviour:
   spriteImage: {fileID: 1060790214292442804}
   imgFrame: {fileID: 1060790212829708932}
   cardFrame: {fileID: 1060790213632547045}
+  groupImage: {fileID: 60753015000306616}
   nameText: {fileID: 1060790212815705324}
   energyCostText: {fileID: 3030799330231450123}
   descriptionText: {fileID: 4868427236172599243}
@@ -485,6 +486,7 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
   cursorMode: 1
   player: {fileID: 0}
+  pl: {fileID: 0}
 --- !u!114 &1517338015229073816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,8 +1197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.7, y: 0.5}
-  m_SizeDelta: {x: 34.2442, y: 39}
+  m_AnchoredPosition: {x: -19.493, y: 0}
+  m_SizeDelta: {x: 28.9861, y: 34}
   m_Pivot: {x: 0.5000003, y: 0.5}
 --- !u!222 &331251848199645171
 CanvasRenderer:

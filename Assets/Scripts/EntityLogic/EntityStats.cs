@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityStats : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class EntityStats : MonoBehaviour
     private List<GameObject> resultDisable;
     private bool gameOver;
     private int specialInt;
+    public int currentScene;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03;
     public GameObject SpecialCardArea;
     public List<GameObject> SpecialCards = new List<GameObject>();
+
+    // for special card attack multiplier
+    public bool specialx2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +35,10 @@ public class EntityStats : MonoBehaviour
             GameObject.Find("Turn Manager")
         };
 
+
         health = maxHealth;
-        specialInt = 0;
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
     }
 
     // Update is called once per frame
@@ -41,6 +48,7 @@ public class EntityStats : MonoBehaviour
         {
             return;
         }
+
         if (isDead || health <= 0)
         {
 
@@ -74,6 +82,12 @@ public class EntityStats : MonoBehaviour
     //Tested...funnily enough doing - on a - number adds so...changed that. lol - JD 09/02
     public void takeDamage (int damage)
     {
+
+        if (specialx2 == true)
+        {
+            damage = damage * 2;
+        }
+
         int damageRemainder = 0;
         if(defence > 0)
         {
@@ -100,8 +114,8 @@ public class EntityStats : MonoBehaviour
                 isDead = true;
             }
         }
-        
-       
+
+        specialx2 = false; // after one turn  
     }
 
     //Called when the entity (player or enemy) is healed
@@ -121,22 +135,25 @@ public class EntityStats : MonoBehaviour
         this.defence += defence;
     }
 
-
+    // get cuttent health velue
     public int getCurrentHealth()
     {
         return health;
     }
 
+    // get maximum health value
     public int getMaxHealth()
     {
         return maxHealth;
     }
 
+    // get current defence value 
     public int getCurrentDefence()
     {
         return defence;
     }
 
+    // add special card to victory screen, showing what was rewarded
     private void AddSpecialCard()
     {
         // get all special cards
@@ -146,9 +163,12 @@ public class EntityStats : MonoBehaviour
             }
         );
 
+        // instantiate special card depending on which level is completed --
         GameObject specialCard = Instantiate(SpecialCards[specialInt], new Vector3(0, 0, 0), Quaternion.identity);
         specialCard.transform.SetParent(SpecialCardArea.transform, false);
-        if (specialInt == 2)
+
+        // to get int for special card list --
+        if (specialInt == 3)
         {
             specialInt = 0;
         }
@@ -156,6 +176,17 @@ public class EntityStats : MonoBehaviour
 
     }
 
+    public void setMultiplierToTrue()
+    {
+        specialx2 = true;
+    }
 
-    
+    public void setMultiplierToFalse()
+    {
+        specialx2 = false;
+    }
+
+
+
+
 }

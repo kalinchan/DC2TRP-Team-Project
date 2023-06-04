@@ -573,6 +573,7 @@ MonoBehaviour:
   spriteImage: {fileID: 6641629072190035895}
   imgFrame: {fileID: 8827099748218588806}
   cardFrame: {fileID: 6670673164490763321}
+  groupImage: {fileID: 5077805594567638116}
   nameText: {fileID: 1662450235209767992}
   energyCostText: {fileID: 1098567961128929216}
   descriptionText: {fileID: 3737384532010059487}

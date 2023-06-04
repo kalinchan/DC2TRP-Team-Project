@@ -23,7 +23,43 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/BattleScene2.unity
-    guid: e70baf5ac535a17468350e3cf6010ba4
+    guid: d3938989be0495644a86ca31187aab6e
+  - enabled: 1
+    path: Assets/Scenes/BattleScene3.unity
+    guid: e4b412998e08a2244a3d8cc4f394ee32
+  - enabled: 1
+    path: Assets/Scenes/BattleScene4.unity
+    guid: 2029f3b98f97ca34a82c1bac59426295
   m_configObjects: {}

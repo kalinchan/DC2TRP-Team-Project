@@ -207,6 +207,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1900380997}
     m_Modifications:
     - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: cursorX
+      value: 
+      objectReference: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
+    - target: {fileID: 154292239205054649, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1715646193}
@@ -222,6 +226,10 @@ PrefabInstance:
       propertyPath: cursorSpecial
       value: 
       objectReference: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
+    - target: {fileID: 3582135178927297160, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 587776602}
     - target: {fileID: 3582135178927297161, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: health
       value: 3
@@ -379,6 +387,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 42767317}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 42767303}
@@ -393,6 +405,10 @@ PrefabInstance:
     - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetCard
       objectReference: {fileID: 0}
     - target: {fileID: 3582135178927297166, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -559,6 +575,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &42767317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3582135178927297160, guid: 43ab0de2d786c0c4195485b73a362be3, type: 3}
+  m_PrefabInstance: {fileID: 42767300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42767302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d703884958ea44eb8135f92aad0f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &44449609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,7 +2936,7 @@ GameObject:
   - component: {fileID: 587776603}
   - component: {fileID: 587776605}
   - component: {fileID: 587776606}
-  - component: {fileID: 587776607}
+  - component: {fileID: 587776618}
   - component: {fileID: 587776616}
   - component: {fileID: 587776617}
   m_Layer: 0
@@ -2938,11 +2965,13 @@ MonoBehaviour:
   victoryScreen: {fileID: 709341085}
   optionsBackground: {fileID: 624319554}
   defeatScreen: {fileID: 44449609}
+  currentScene: 0
   SpecialCard01: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   SpecialCard02: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   SpecialCard03: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
   SpecialCardArea: {fileID: 1427697935}
   SpecialCards: []
+  specialx2: 0
 --- !u!114 &587776605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,20 +3012,6 @@ MonoBehaviour:
   cursorSpecial: {fileID: 2800000, guid: cc6fc1e265a43c54fa9577ab582a2060, type: 3}
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
-  player: {fileID: 0}
---- !u!114 &587776607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587776602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c37b836e9dc0944c966cd0bf01214af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHand: {fileID: 0}
   player: {fileID: 0}
 --- !u!224 &587776612
 RectTransform:
@@ -3063,9 +3078,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 587776607}
+      - m_Target: {fileID: 587776618}
         m_TargetAssemblyTypeName: DefenceApplication, Assembly-CSharp
-        m_MethodName: applyDefence
+        m_MethodName: applyCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3178,6 +3193,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &587776618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587776602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c37b836e9dc0944c966cd0bf01214af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 0}
+  player: {fileID: 587776602}
 --- !u!1 &603999144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,7 +4942,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have won this special card
+  m_text: 'You have won this special card!
+
+    It has been added to your deck!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c41a3631588878944a23e60934bab5cd, type: 2}
   m_sharedMaterial: {fileID: 5299523933457976649, guid: c41a3631588878944a23e60934bab5cd, type: 2}
@@ -4940,8 +4971,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

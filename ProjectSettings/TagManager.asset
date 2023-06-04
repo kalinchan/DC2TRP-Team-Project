@@ -9,6 +9,9 @@ TagManager:
   - Special Card
   - Enemy
   - Border
+  - Special03
+  - Special01
+  - Special02
   layers:
   - Default
   - TransparentFX

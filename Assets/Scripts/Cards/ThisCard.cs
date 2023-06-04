@@ -30,6 +30,7 @@ public class ThisCard : MonoBehaviour
     public Image spriteImage;
     public Image imgFrame;
     public Image cardFrame;
+    public Image groupImage;
 
     // card text
     public TextMeshProUGUI nameText;
@@ -51,7 +52,6 @@ public class ThisCard : MonoBehaviour
         thisCardSprite = thisCard[0].cardSprite;
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
         player = GameObject.Find("Player");
-
     }
 
     // Update is called once per frame - update info with data from card with matching id
@@ -64,6 +64,8 @@ public class ThisCard : MonoBehaviour
         group = thisCard[0].group;
         rarity = thisCard[0].rarity;
         damage = thisCard[0].damage;
+
+
         defence = thisCard[0].defence;
         cardDescription = thisCard[0].cardDescription;
 
@@ -108,5 +110,9 @@ public class ThisCard : MonoBehaviour
     {
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
+
+
+
+
 
 }

@@ -69,6 +69,7 @@ public class TurnManager : MonoBehaviour
     {
 
         enemy.GetComponent<EnemyLogic>().startTurn();
+       
 
         //foreach (GameObject enemy in enemies) 
         //{

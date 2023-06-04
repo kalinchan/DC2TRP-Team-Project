@@ -3,7 +3,19 @@ guid: 4de5a701ebb57de4c852a34c312cdc1c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - HealthText: {instanceID: 0}
+  - EnergyText: {instanceID: 0}
+  - DefenceText: {instanceID: 0}
+  - healthbar: {instanceID: 0}
+  - defencebar: {instanceID: 0}
+  - energybar: {instanceID: 0}
+  - cursorArrow: {instanceID: 0}
+  - cursorHand: {instanceID: 0}
+  - cursorShield: {instanceID: 0}
+  - cursorSpecial: {instanceID: 0}
+  - cursorX: {instanceID: 0}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

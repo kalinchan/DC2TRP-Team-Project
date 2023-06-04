@@ -40,7 +40,8 @@ public class DamageCalculation : MonoBehaviour
                 levelL.GetComponent<LevelLoad>().reduceHandSize();
             }
 
-
         }
+
+      
     }
 }
