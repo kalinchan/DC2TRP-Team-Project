@@ -6883,7 +6883,7 @@ MonoBehaviour:
   Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
   Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
-  Card13: {fileID: 0}
+  Card13: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
   PlayerArea: {fileID: 737675074}
   maxHandSize: 0
   cardsToDeal: 0

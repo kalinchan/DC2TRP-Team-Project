@@ -44,7 +44,7 @@ public class LevelLoad : MonoBehaviour
         // set backgrounds list
         backgrounds.AddRange(new List<Sprite>
             {
-                Background01, Background02, Background03, Background01
+                Background01, Background02, Background03, Background01, Background02, Background03
         }
         );
 
