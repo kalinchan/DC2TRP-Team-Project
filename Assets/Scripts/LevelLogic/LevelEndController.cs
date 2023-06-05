@@ -24,7 +24,7 @@ public class LevelEndController : MonoBehaviour
         nextLevelButton = GameObject.Find("NextLevelButton");
         levelSelectButton = GameObject.Find("LevelSelectButton");
         mainMenuButton = GameObject.Find("MainMenuButton");
-        levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
+        levelManager = GetComponent<LevelManager>();
 
 
     }
