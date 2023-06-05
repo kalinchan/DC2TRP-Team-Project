@@ -30,6 +30,9 @@ public class LevelManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         nextSceneId = currentScene + 1;
+
+    
+
     }
 
     public void increaseCurrentScene()
@@ -46,7 +49,6 @@ public class LevelManager : MonoBehaviour
 
         // to use for showing EOL - if finalScene is true, show an end of game screen
     }
-
 
 
 }
