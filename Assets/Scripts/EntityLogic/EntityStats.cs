@@ -12,6 +12,7 @@ public class EntityStats : MonoBehaviour
     private bool gameOver;
     private int specialInt;
     public int currentScene;
+    public LevelManager levelManager;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
@@ -42,6 +43,7 @@ public class EntityStats : MonoBehaviour
         specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
         skipDraw = false;
         drained = false;
+        levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -56,16 +58,20 @@ public class EntityStats : MonoBehaviour
         {
 
             resultDisable.ForEach(x => x.SetActive(false));
-            optionsBackground.SetActive(true);
+            
             if (gameObject.name.Equals("Player"))
             {
+                optionsBackground.SetActive(true);
                 defeatScreen.SetActive(true);
             }
-            else
+            else if (currentScene < levelManager.finalSceneId)
             {
+                optionsBackground.SetActive(true);
                 AddSpecialCard();
                 victoryScreen.SetActive(true);
             }
+
+            else { SceneManager.LoadScene("EndGame"); }
 
             gameOver = true;
 
