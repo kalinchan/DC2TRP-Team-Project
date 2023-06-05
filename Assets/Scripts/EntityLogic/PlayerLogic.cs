@@ -27,6 +27,8 @@ public class PlayerLogic : MonoBehaviour
     // attack not needed for player
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class PlayerLogic : MonoBehaviour
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 10;
 
-
+        
 
 
         if (energybar != null)
@@ -150,6 +152,7 @@ public class PlayerLogic : MonoBehaviour
     {
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
+
 
 
 
