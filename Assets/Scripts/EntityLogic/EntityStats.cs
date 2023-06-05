@@ -64,7 +64,8 @@ public class EntityStats : MonoBehaviour
             else
             {
                 AddSpecialCard();
-                victoryScreen.SetActive(true);
+                victoryScreen.SetActive(true);      
+
             }
 
             gameOver = true;
