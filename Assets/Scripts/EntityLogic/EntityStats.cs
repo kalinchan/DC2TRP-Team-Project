@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class EntityStats : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EntityStats : MonoBehaviour
     private int specialInt;
     public int currentScene;
     public LevelManager levelManager;
+    public GameObject self;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
@@ -21,7 +23,10 @@ public class EntityStats : MonoBehaviour
 
     // for special card attack multiplier
     public bool specialx2 = false;
-    
+
+    //animation
+    public Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,8 @@ public class EntityStats : MonoBehaviour
         skipDraw = false;
         drained = false;
         levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
+        self = GameObject.Find("Player");
+        anim = self.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,26 +64,54 @@ public class EntityStats : MonoBehaviour
         if (isDead || health <= 0)
         {
 
-            resultDisable.ForEach(x => x.SetActive(false));
-            
             if (gameObject.name.Equals("Player"))
             {
-                optionsBackground.SetActive(true);
-                defeatScreen.SetActive(true);
+                applyPlayerDeathAnim();
+                StartCoroutine(DefeatScreenCoroutine());
+
             }
             else if (currentScene < levelManager.finalSceneId)
             {
-                optionsBackground.SetActive(true);
-                AddSpecialCard();
-                victoryScreen.SetActive(true);
+                StartCoroutine(VictoryScreenCoroutine());
             }
 
-            else { SceneManager.LoadScene("EndGame"); }
+            else {
+                StartCoroutine(EndGameScreenCoroutine());
+            }
 
             gameOver = true;
 
         }
+
+
     }
+
+    IEnumerator DefeatScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        resultDisable.ForEach(x => x.SetActive(false));
+        optionsBackground.SetActive(true);
+        defeatScreen.SetActive(true);
+    }
+
+    IEnumerator VictoryScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        resultDisable.ForEach(x => x.SetActive(false));
+        optionsBackground.SetActive(true);
+        AddSpecialCard();
+        victoryScreen.SetActive(true);
+    }
+
+    IEnumerator EndGameScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        resultDisable.ForEach(x => x.SetActive(false));
+        SceneManager.LoadScene("EndGame");
+
+    }
+
+
 
     //Called when the enemy takes damage.
     //Performs a check if the Health drops to 0 or below
@@ -121,6 +156,7 @@ public class EntityStats : MonoBehaviour
             {
                 health = 0;
                 isDead = true;
+                
             }
         }
 
@@ -142,6 +178,8 @@ public class EntityStats : MonoBehaviour
     public void gainDefence (int defence)
     {
         this.defence += defence;
+
+
     }
 
     // get cuttent health velue
@@ -196,6 +234,59 @@ public class EntityStats : MonoBehaviour
         specialx2 = false;
     }
 
+    // player animations
+
+    public void applyPlayerDefenceAnim()
+    {
+        anim.SetBool("playerAddDefence", true);
+    }
+
+    public void applyPlayerTakeDamageAnim()
+    {
+        anim.SetBool("playerTakeDamage", true);
+    }
+
+    public void applyPlayerAttackAnim()
+    {
+        anim.SetBool("playerAttack", true);
+    }
+
+    public void applyPlayerSpecialAnim()
+    {
+        anim.SetBool("playerSpecial", true);
+    }
+
+    public void applyPlayerDeathAnim()
+    {
+        anim.SetBool("playerIsDead", true);
+    }
+
+    // enemy anmiations
+
+    public void applyEnemyDefenceAnim()
+    {
+        anim.SetBool("enemyAddDefence", true);
+    }
+
+    public void applyEnemyTakeDamageAnim()
+    {
+        anim.SetBool("enemyTakeDamage", true);
+    }
+
+    public void applyEnemyAttackAnim()
+    {
+        anim.SetBool("enemyAttack", true);
+    }
+
+    public void applyEnemySpecialAnim()
+    {
+        anim.SetBool("enemySpecial", true);
+    }
+
+    public void applyEnemyDeathAnim()
+    {
+        anim.SetBool("enemyIsDead", true);
+    }
 
 
 
