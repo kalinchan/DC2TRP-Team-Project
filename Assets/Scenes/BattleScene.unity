@@ -578,9 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d703884958ea44eb8135f92aad0f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &42767322
-Animator:
-  serializedVersion: 4
+--- !u!114 &42767318
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -598,6 +597,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f411093e3272147890a18de1c9f5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneLoad: 0
 --- !u!1 &44449609
 GameObject:
   m_ObjectHideFlags: 0

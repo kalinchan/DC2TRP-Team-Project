@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 372550655}
   - component: {fileID: 372550654}
   - component: {fileID: 372550653}
+  - component: {fileID: 372550656}
   m_Layer: 5
   m_Name: Level 4
   m_TagString: Untagged
@@ -207,10 +208,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 372550656}
+        m_TargetAssemblyTypeName: ButtonFunctionPt2, Assembly-CSharp
+        m_MethodName: OpenScenes
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -257,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372550651}
   m_CullTransparentMesh: 0
+--- !u!114 &372550656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372550651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b68792330039543a6127b464be8e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 4
 --- !u!1 &372708089
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +522,7 @@ GameObject:
   - component: {fileID: 599980044}
   - component: {fileID: 599980043}
   - component: {fileID: 599980042}
+  - component: {fileID: 599980045}
   m_Layer: 5
   m_Name: Level 5
   m_TagString: Untagged
@@ -580,10 +595,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 599980045}
+        m_TargetAssemblyTypeName: ButtonFunctionPt2, Assembly-CSharp
+        m_MethodName: OpenScenes
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -630,6 +645,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599980040}
   m_CullTransparentMesh: 0
+--- !u!114 &599980045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599980040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b68792330039543a6127b464be8e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 5
 --- !u!1 &676171072
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +994,7 @@ GameObject:
   - component: {fileID: 1507469789}
   - component: {fileID: 1507469788}
   - component: {fileID: 1507469787}
+  - component: {fileID: 1507469790}
   m_Layer: 5
   m_Name: Level 3
   m_TagString: Untagged
@@ -1038,10 +1067,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 1507469790}
+        m_TargetAssemblyTypeName: ButtonFunctionPt2, Assembly-CSharp
+        m_MethodName: OpenScenes
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1088,6 +1117,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507469785}
   m_CullTransparentMesh: 0
+--- !u!114 &1507469790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507469785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b68792330039543a6127b464be8e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 3
 --- !u!1 &1549288042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1446,7 @@ GameObject:
   - component: {fileID: 1719356262}
   - component: {fileID: 1719356261}
   - component: {fileID: 1719356260}
+  - component: {fileID: 1719356263}
   m_Layer: 5
   m_Name: Level 1
   m_TagString: Untagged
@@ -1476,14 +1519,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 1719356263}
+        m_TargetAssemblyTypeName: ButtonFunction, Assembly-CSharp
+        m_MethodName: OpenScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1526,6 +1569,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719356258}
   m_CullTransparentMesh: 0
+--- !u!114 &1719356263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719356258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6967cc8a9f34c7458d6fcfa2acf79da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744083842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1593,7 @@ GameObject:
   - component: {fileID: 1744083846}
   - component: {fileID: 1744083845}
   - component: {fileID: 1744083844}
+  - component: {fileID: 1744083847}
   m_Layer: 5
   m_Name: Level 2
   m_TagString: Untagged
@@ -1610,10 +1666,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 1744083847}
+        m_TargetAssemblyTypeName: ButtonFunctionPt2, Assembly-CSharp
+        m_MethodName: OpenScenes
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1660,6 +1716,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744083842}
   m_CullTransparentMesh: 0
+--- !u!114 &1744083847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744083842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b68792330039543a6127b464be8e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 2
 --- !u!1 &1788601869
 GameObject:
   m_ObjectHideFlags: 0

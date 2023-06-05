@@ -14,6 +14,8 @@ public class LevelEndController : MonoBehaviour
     public int currentScene;
     public int nextSceneId;
 
+
+
     //public GameObject mainMenu;
 
     // Start is called before the first frame update
@@ -53,6 +55,9 @@ public class LevelEndController : MonoBehaviour
         nextSceneId = currentScene + 1;
         SceneManager.LoadScene(nextSceneId);
         levelManager.increaseCurrentScene();
+
+    
+
 
     }
 
