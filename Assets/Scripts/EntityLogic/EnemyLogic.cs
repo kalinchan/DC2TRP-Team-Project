@@ -41,7 +41,7 @@ public class EnemyLogic : MonoBehaviour
         defenceCost = 1;
         specialCost = 2;
         myTurn = false;
-        wait = 1.5f;
+        wait = 1.7f;
         self = GameObject.Find("Enemy").GetComponent<EntityStats>();
         player = GameObject.Find("Player").GetComponent<EntityStats>();
         HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
@@ -105,6 +105,10 @@ public class EnemyLogic : MonoBehaviour
     //use special attack
     public void special()
     {
+
+        // special animation to play
+        self.applyEnemyAnim("enemySpecial");
+
         //probably needs to call a separate script? each enemy type has its own special
         //can that just be done here or is that too messy
 

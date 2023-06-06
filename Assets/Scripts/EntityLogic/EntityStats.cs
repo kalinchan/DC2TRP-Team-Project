@@ -25,7 +25,8 @@ public class EntityStats : MonoBehaviour
     public bool specialx2 = false;
 
     //animation
-    public Animator anim;
+    public Animator animP;
+    public Animator animE;
 
 
     // Start is called before the first frame update
@@ -51,7 +52,8 @@ public class EntityStats : MonoBehaviour
         levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
         self = GameObject.Find("Player");
         enemy = GameObject.Find("Enemy");
-        anim = self.GetComponent<Animator>();
+        animP = self.GetComponent<Animator>();
+        animE = enemy.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -68,20 +70,25 @@ public class EntityStats : MonoBehaviour
             if (gameObject.name.Equals("Player"))
             {
                 applyPlayerAnim("isDead");
+                StartCoroutine(DefeatScreenCoroutine());
 
             }
             else if (currentScene < levelManager.finalSceneId)
             {
+                applyEnemyAnim("isDead");
                 StartCoroutine(VictoryScreenCoroutine());
             }
 
-            else {
+            else 
+            {
+                applyEnemyAnim("isDead");
                 StartCoroutine(EndGameScreenCoroutine());
             }
 
             gameOver = true;
 
         }
+
 
 
     }
@@ -96,7 +103,7 @@ public class EntityStats : MonoBehaviour
 
     IEnumerator VictoryScreenCoroutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
         AddSpecialCard();
@@ -111,10 +118,16 @@ public class EntityStats : MonoBehaviour
 
     }
 
-    IEnumerator MoveCoroutine(string animation)
+    IEnumerator PlayerMoveCoroutine(string animation)
     {
         yield return new WaitForSeconds(1);
         disablePlayerAnim(animation);
+    }
+
+    IEnumerator EnemyMoveCoroutine(string animation)
+    {
+        yield return new WaitForSeconds(0.7f);
+        disableEnemyAnim(animation);
     }
 
 
@@ -136,8 +149,15 @@ public class EntityStats : MonoBehaviour
         if (gameObject.name.Equals("Enemy"))
         {
             applyPlayerAnim("playerAttack");
+            applyEnemyAnim("enemyTakeDamage");
         }
-        applyPlayerAnim("playerTakeDamage");
+
+        else
+        {
+            // for enemy attacks
+            applyPlayerAnim("playerTakeDamage");
+            applyEnemyAnim("enemyAttack");
+        }
 
 
         if (specialx2 == true)
@@ -195,6 +215,11 @@ public class EntityStats : MonoBehaviour
         if (gameObject.name.Equals("Player"))
         {
             applyPlayerAnim("playerAddDefence");
+        }
+
+        else
+        {
+            applyEnemyAnim("enemyDefence");
         }
 
 
@@ -256,27 +281,28 @@ public class EntityStats : MonoBehaviour
 
     public void applyPlayerAnim(string animation)
     {
-        anim.SetBool(animation, true);
-        StartCoroutine(MoveCoroutine(animation));
+        animP.SetBool(animation, true);
+        StartCoroutine(PlayerMoveCoroutine(animation));
     }
 
     public void disablePlayerAnim(string animation)
     {
-        anim.SetBool(animation, false);
-        anim.SetBool("playerIdle", true);
+        animP.SetBool(animation, false);
+        animP.SetBool("playerIdle", true);
     }
 
     // enemy anmiations
 
     public void applyEnemyAnim(string animation)
     {
-        anim.SetBool(animation, true);
+        animE.SetBool(animation, true);
+        StartCoroutine(EnemyMoveCoroutine(animation));
     }
 
     public void disableEnemyAnim(string animation)
     {
-        anim.SetBool(animation, false);
-        anim.SetBool("enemyIdle", true);
+        animE.SetBool(animation, false);
+        animE.SetBool("enemyIdle", true);
     }
 
 
