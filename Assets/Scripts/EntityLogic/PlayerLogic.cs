@@ -71,9 +71,13 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthText.text = "Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        //HealthText.text = "Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
-        DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
+
+        //DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
+        DefenceText.text = self.getCurrentDefence() + "";
         
         if (healthbar != null)
         {
@@ -114,7 +118,8 @@ public class PlayerLogic : MonoBehaviour
 
     public void updateEnergy()
     {
-        EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+        //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
+        EnergyText.text = currentEnergy + " / " + energyMax + "";
     }
 
     public void addEnergy(int energy)

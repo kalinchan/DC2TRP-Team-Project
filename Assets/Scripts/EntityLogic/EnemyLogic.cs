@@ -48,9 +48,15 @@ public class EnemyLogic : MonoBehaviour
         HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        
+        
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        
         SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+        
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text =  self.defence + "";
 
 
         specialbar.SetMaxSpecial(maxCharge);
@@ -83,9 +89,13 @@ public class EnemyLogic : MonoBehaviour
 
     public void updateUI()
     {
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+
         SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+        
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text =  self.defence + "";
 
         specialbar.SetSpecial(charge);
 
