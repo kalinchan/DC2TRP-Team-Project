@@ -17,6 +17,7 @@ public class EnemyLogic : MonoBehaviour
     //Declaring the healthBar
     public EnemyBarScript healthbar;
     public EnemyDefenceBarScript defencebar;
+    public EnemySpecialBarScript specialbar;
 
     // cursor alteration
     public Texture2D cursorArrow; //default pointer
@@ -47,9 +48,18 @@ public class EnemyLogic : MonoBehaviour
         HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+
+
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+
+        //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
+        SpecialText.text = "Enemy Special in: " + (maxCharge - charge) + "";
+        
+
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text =  self.defence + "";
+
 
         //Health Bar set to max Health for the enemy
         if (healthbar != null)
@@ -78,9 +88,14 @@ public class EnemyLogic : MonoBehaviour
 
     public void updateUI()
     {
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+
+        //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
+        SpecialText.text = "Enemy Special in: " + (maxCharge - charge) + "";
+
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text =  self.defence + "";
 
         //Enemy health Bar us updated by getting the current health
         if(healthbar != null)
@@ -138,7 +153,8 @@ public class EnemyLogic : MonoBehaviour
 
 
 
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         movesRemaining -= specialCost;
     }
 
@@ -148,7 +164,7 @@ public class EnemyLogic : MonoBehaviour
         Debug.Log("Defending");
         self.gainDefence(defence);
         movesRemaining -= defenceCost;
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text = self.defence + "";
     }
 
     public void startTurn()
