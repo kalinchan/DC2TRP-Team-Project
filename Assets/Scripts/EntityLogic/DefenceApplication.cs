@@ -43,21 +43,25 @@ public class DefenceApplication : MonoBehaviour
         if (thisCard.tag.Contains("Special01"))
         {
             applySpecialOne();
+            eS.applyPlayerAnim("playerSpecial");
         }
 
         if (thisCard.tag.Contains("Special02"))
         {
             applySpecialTwo();
+            eS.applyPlayerAnim("playerSpecial");
         }
 
         if (thisCard.tag.Contains("Special03"))
         {
             applySpecialThree();
+            eS.applyPlayerAnim("playerSpecial");
         }
 
         if (thisCard.tag.Contains("Special04"))
         {
             applySpecialFour();
+            eS.applyPlayerAnim("playerSpecial");
         }
 
     }
