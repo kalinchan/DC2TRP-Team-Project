@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EnemySpecialBarScript : MonoBehaviour
 {
+
+    //comment
      public Slider slider;
 
    public void SetMaxSpecial(int special){
