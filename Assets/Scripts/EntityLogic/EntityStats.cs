@@ -68,7 +68,6 @@ public class EntityStats : MonoBehaviour
             if (gameObject.name.Equals("Player"))
             {
                 applyPlayerAnim("isDead");
-                StartCoroutine(DefeatScreenCoroutine());
 
             }
             else if (currentScene < levelManager.finalSceneId)
@@ -134,6 +133,13 @@ public class EntityStats : MonoBehaviour
     public void takeDamage (int damage)
     {
 
+        if (gameObject.name.Equals("Enemy"))
+        {
+            applyPlayerAnim("playerAttack");
+        }
+        applyPlayerAnim("playerTakeDamage");
+
+
         if (specialx2 == true)
         {
             damage = damage * 2;
@@ -189,7 +195,6 @@ public class EntityStats : MonoBehaviour
         if (gameObject.name.Equals("Player"))
         {
             applyPlayerAnim("playerAddDefence");
-            StartCoroutine(MoveCoroutine("playerAddDefence"));
         }
 
 
@@ -252,6 +257,7 @@ public class EntityStats : MonoBehaviour
     public void applyPlayerAnim(string animation)
     {
         anim.SetBool(animation, true);
+        StartCoroutine(MoveCoroutine(animation));
     }
 
     public void disablePlayerAnim(string animation)
