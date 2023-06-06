@@ -126,9 +126,18 @@ public class EntityStats : MonoBehaviour
 
     IEnumerator EnemyMoveCoroutine(string animation)
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         disableEnemyAnim(animation);
     }
+
+    // for enemy attacks -- ensures enemy attacks before player hurt animation displays
+    IEnumerator EnemyAttack()
+    {
+        applyEnemyAnim("enemyAttack");
+        yield return new WaitForSeconds(0.5f);
+        applyPlayerAnim("playerTakeDamage");
+    }
+
 
 
 
@@ -153,10 +162,8 @@ public class EntityStats : MonoBehaviour
         }
 
         else
-        {
-            // for enemy attacks
-            applyPlayerAnim("playerTakeDamage");
-            applyEnemyAnim("enemyAttack");
+        {   
+            StartCoroutine(EnemyAttack());           
         }
 
 
