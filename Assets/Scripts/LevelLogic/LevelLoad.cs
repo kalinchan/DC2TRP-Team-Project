@@ -12,7 +12,7 @@ public class LevelLoad : MonoBehaviour
     public int maxHandSize, cardsToDeal;
     public int handSize;
     public GameObject dCButton;
-    public Sprite Background01, Background02, Background03;
+    public Sprite Background01, Background02, Background03, Background04, Background05;
     public GameObject backgroundParent;
     public int specialInt;
     public int level;
@@ -31,6 +31,7 @@ public class LevelLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        backgroundParent = GameObject.Find("Background");
         // get current scene (current level) --
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
@@ -44,7 +45,7 @@ public class LevelLoad : MonoBehaviour
         // set backgrounds list
         backgrounds.AddRange(new List<Sprite>
             {
-                Background01, Background02, Background03, Background01, Background02, Background03
+                Background01, Background02, Background03, Background04, Background05
         }
         );
 
