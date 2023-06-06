@@ -14,7 +14,7 @@ public class EntityStats : MonoBehaviour
     private int specialInt;
     public int currentScene;
     public LevelManager levelManager;
-    public GameObject self;
+    public GameObject self, enemy;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
@@ -50,6 +50,7 @@ public class EntityStats : MonoBehaviour
         drained = false;
         levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
         self = GameObject.Find("Player");
+        enemy = GameObject.Find("Enemy");
         anim = self.GetComponent<Animator>();
     }
 
@@ -66,7 +67,7 @@ public class EntityStats : MonoBehaviour
 
             if (gameObject.name.Equals("Player"))
             {
-                applyPlayerDeathAnim();
+                applyPlayerAnim("isDead");
                 StartCoroutine(DefeatScreenCoroutine());
 
             }
@@ -109,6 +110,12 @@ public class EntityStats : MonoBehaviour
         resultDisable.ForEach(x => x.SetActive(false));
         SceneManager.LoadScene("EndGame");
 
+    }
+
+    IEnumerator MoveCoroutine(string animation)
+    {
+        yield return new WaitForSeconds(1);
+        disablePlayerAnim(animation);
     }
 
 
@@ -179,6 +186,12 @@ public class EntityStats : MonoBehaviour
     {
         this.defence += defence;
 
+        if (gameObject.name.Equals("Player"))
+        {
+            applyPlayerAnim("playerAddDefence");
+            StartCoroutine(MoveCoroutine("playerAddDefence"));
+        }
+
 
     }
 
@@ -236,58 +249,29 @@ public class EntityStats : MonoBehaviour
 
     // player animations
 
-    public void applyPlayerDefenceAnim()
+    public void applyPlayerAnim(string animation)
     {
-        anim.SetBool("playerAddDefence", true);
+        anim.SetBool(animation, true);
     }
 
-    public void applyPlayerTakeDamageAnim()
+    public void disablePlayerAnim(string animation)
     {
-        anim.SetBool("playerTakeDamage", true);
-    }
-
-    public void applyPlayerAttackAnim()
-    {
-        anim.SetBool("playerAttack", true);
-    }
-
-    public void applyPlayerSpecialAnim()
-    {
-        anim.SetBool("playerSpecial", true);
-    }
-
-    public void applyPlayerDeathAnim()
-    {
-        anim.SetBool("playerIsDead", true);
+        anim.SetBool(animation, false);
+        anim.SetBool("playerIdle", true);
     }
 
     // enemy anmiations
 
-    public void applyEnemyDefenceAnim()
+    public void applyEnemyAnim(string animation)
     {
-        anim.SetBool("enemyAddDefence", true);
+        anim.SetBool(animation, true);
     }
 
-    public void applyEnemyTakeDamageAnim()
+    public void disableEnemyAnim(string animation)
     {
-        anim.SetBool("enemyTakeDamage", true);
+        anim.SetBool(animation, false);
+        anim.SetBool("enemyIdle", true);
     }
-
-    public void applyEnemyAttackAnim()
-    {
-        anim.SetBool("enemyAttack", true);
-    }
-
-    public void applyEnemySpecialAnim()
-    {
-        anim.SetBool("enemySpecial", true);
-    }
-
-    public void applyEnemyDeathAnim()
-    {
-        anim.SetBool("enemyIsDead", true);
-    }
-
 
 
 }
