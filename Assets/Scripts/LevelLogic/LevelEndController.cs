@@ -55,10 +55,6 @@ public class LevelEndController : MonoBehaviour
         nextSceneId = currentScene + 1;
         SceneManager.LoadScene(nextSceneId);
         levelManager.increaseCurrentScene();
-
-    
-
-
     }
 
     // load level selection screen --
