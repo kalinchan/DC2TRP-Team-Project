@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
 
     public void playGame()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("VS_L1");
         AudioManager.instance.PlaySound("Button Click");
     }
 

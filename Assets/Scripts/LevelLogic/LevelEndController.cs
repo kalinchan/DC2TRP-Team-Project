@@ -52,7 +52,7 @@ public class LevelEndController : MonoBehaviour
 
         // load next level using level manager --
         currentScene = SceneManager.GetActiveScene().buildIndex;
-        nextSceneId = currentScene + 1;
+        nextSceneId = currentScene + 7;
         SceneManager.LoadScene(nextSceneId);
         levelManager.increaseCurrentScene();
     }
@@ -62,6 +62,8 @@ public class LevelEndController : MonoBehaviour
     {
         SceneManager.LoadScene("Level Selections");
     }
+
+
    
 
 }

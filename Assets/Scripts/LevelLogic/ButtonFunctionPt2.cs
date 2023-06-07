@@ -17,6 +17,7 @@ public class ButtonFunctionPt2 : MonoBehaviour {
     }
 
     public void OpenScenes() {
-        SceneManager.LoadScene("BattleScene" + Level);
+        Level = Level;
+        SceneManager.LoadScene("VS_L" + Level);
     }
 }
