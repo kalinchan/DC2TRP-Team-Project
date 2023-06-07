@@ -70,7 +70,6 @@ public class DefenceApplication : MonoBehaviour
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eS.heal(10);//hardcoded, should be changed at some point
-        eS.takeDamage(thisCard.damage);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
@@ -79,7 +78,6 @@ public class DefenceApplication : MonoBehaviour
     public void applySpecialTwo()
     {
         player.GetComponent<PlayerLogic>().addEnergy(5);
-        eS.takeDamage(thisCard.damage);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
@@ -89,7 +87,6 @@ public class DefenceApplication : MonoBehaviour
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eES.setMultiplierToTrue();
-        eS.takeDamage(thisCard.damage);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
