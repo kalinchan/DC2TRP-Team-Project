@@ -159,7 +159,8 @@ public class EnemyLogic : MonoBehaviour
 
 
 
-        HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         movesRemaining -= specialCost;
     }
 
@@ -169,7 +170,8 @@ public class EnemyLogic : MonoBehaviour
         Debug.Log("Defending");
         self.gainDefence(defence);
         movesRemaining -= defenceCost;
-        DefenceText.text = "Enemy Defence: " + self.defence + "";
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        DefenceText.text = self.defence + "";
     }
 
     public void startTurn()
