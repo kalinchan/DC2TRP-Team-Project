@@ -42,26 +42,30 @@ public class DefenceApplication : MonoBehaviour
 
         if (thisCard.tag.Contains("Special01"))
         {
-            applySpecialThree();
+            applySpecialOne();
             eS.applyPlayerAnim("playerSpecial");
+            AudioManager.instance.PlaySound("Special Move");
         }
 
         if (thisCard.tag.Contains("Special02"))
         {
             applySpecialTwo();
             eS.applyPlayerAnim("playerSpecial");
+            AudioManager.instance.PlaySound("Special Move");
         }
 
         if (thisCard.tag.Contains("Special03"))
         {
             applySpecialThree();
             eS.applyPlayerAnim("playerSpecial");
+            AudioManager.instance.PlaySound("Special Move");
         }
 
         if (thisCard.tag.Contains("Special04"))
         {
             applySpecialFour();
             eS.applyPlayerAnim("playerSpecial");
+            AudioManager.instance.PlaySound("Special Move");
         }
 
     }
