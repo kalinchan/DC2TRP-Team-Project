@@ -28,6 +28,7 @@ public class EndTurn : MonoBehaviour
     {
   
         turnManager.GetComponent<TurnManager>().switchTurn();
+        AudioManager.instance.PlaySound("Button Click");
     }
 
     // change cursor on button hover to show it is interactible
