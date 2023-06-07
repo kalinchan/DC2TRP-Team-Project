@@ -152,4 +152,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 7fb784570b94cc94a98dbdd64f440d47
+  - enabled: 1
+    path: Assets/Scenes/VS_L1.unity
+    guid: 091730583f8c1d74ea7c7b1940152624
+  - enabled: 1
+    path: Assets/Scenes/VS_L2.unity
+    guid: c98c4118648547a4a94b00b4375a0afb
+  - enabled: 1
+    path: Assets/Scenes/VS_L3.unity
+    guid: ee6a86a092c7afc4fabc447b8ec0087d
+  - enabled: 1
+    path: Assets/Scenes/VS_L4.unity
+    guid: 485871556cb738b4780ad6b926f184a3
+  - enabled: 1
+    path: Assets/Scenes/VS_L5.unity
+    guid: 603a0ad7142705044869df3139248104
   m_configObjects: {}

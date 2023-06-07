@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public int finalSceneId;
     public bool finalScene;
     public int nextSceneId;
+    public int nextLevel;
 
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         finalSceneId = 7; // index for final level
+        nextLevel = 0;  
         
     }
 
@@ -48,6 +50,12 @@ public class LevelManager : MonoBehaviour
         }
 
         // to use for showing EOL - if finalScene is true, show an end of game screen
+    }
+
+    public void loadLevel() { // for vs screen, janky but works for now
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        nextLevel = currentScene - 6;
+        SceneManager.LoadScene(nextLevel);
     }
 
 

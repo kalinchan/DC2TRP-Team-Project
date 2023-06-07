@@ -23,7 +23,7 @@ public class ButtonFunction : MonoBehaviour{
     }
 
     public void OpenScene(){
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("VS_L");
     }
 
 }
