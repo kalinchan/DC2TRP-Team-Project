@@ -12,7 +12,10 @@ public class EnemyLogic : MonoBehaviour
     public float wait;
     public bool myTurn;
     private EntityStats self, player;
-    public TMP_Text HealthText, SpecialText, DefenceText;
+    public TMP_Text HealthText, SpecialText, DefenceText, MoveText;
+    public List<string> attacks = new List<string>();
+    public List<string> defences = new List<string>();
+    public List<string> specials = new List<string>();
 
     //Declaring the healthBar
     public EnemyBarScript healthbar;
@@ -42,12 +45,13 @@ public class EnemyLogic : MonoBehaviour
         defenceCost = 1;
         specialCost = 2;
         myTurn = false;
-        wait = 1.7f;
+        wait = 2f;
         self = GameObject.Find("Enemy").GetComponent<EntityStats>();
         player = GameObject.Find("Player").GetComponent<EntityStats>();
         HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
+        MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
         
         
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
@@ -77,6 +81,18 @@ public class EnemyLogic : MonoBehaviour
         //set cursor
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
         playerHand = player.GetComponent<Hand>();
+
+        attacks.AddRange(new List<string>{
+            "Pop Quiz! \n" + damage + " damage taken", "Assign Exam!\n" + damage + " damage taken", "Harsh Feedback!\n" + damage + " damage taken"
+        });
+
+        defences.AddRange(new List<string>{
+            "Union Strike!\nDefence +" + defence, "Take a Holiday!\nDefence +" + defence
+        });
+
+        specials.AddRange(new List<string>{
+            "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence WAY up! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
+        });
     }
 
     // Update is called once per frame
@@ -85,6 +101,17 @@ public class EnemyLogic : MonoBehaviour
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
+        attacks.AddRange(new List<string>{
+            "Pop Quiz! \n" + damage + " damage taken", "Assign Exam!\n" + damage + " damage taken", "Harsh Feedback!\n" + damage + " damage taken"
+        });
+
+        defences.AddRange(new List<string>{
+            "Union Strike!\nDefence +" + defence, "Take a Holiday!\nDefence +" + defence
+        });
+
+        specials.AddRange(new List<string>{
+            "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence WAY up! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
+        });
     }
 
     public void updateUI()
@@ -115,7 +142,9 @@ public class EnemyLogic : MonoBehaviour
     public void attack()
     {
         Debug.Log("Attacking");
+        int random = Random.Range(0, attacks.Count);
         player.takeDamage(damage);
+        MoveText.text = attacks[random];
         movesRemaining -= attackCost;
     }
 
@@ -131,28 +160,36 @@ public class EnemyLogic : MonoBehaviour
         //can that just be done here or is that too messy
 
         //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
-        int random = Random.Range(1, 5);
-        switch (random)
+        int random = Random.Range(1, 4);
+        switch (2)
         {
             case 1:
                 player.skipDraw = true;
                 charge = 0;
+                MoveText.text = specials[0];
                 break;
 
             case 2:
                 damage++;
                 damage++;
                 charge = 0;
+                attacks.Clear();
+                attacks.AddRange(new List<string>{
+                "Pop Quiz! \n" + damage + " damage taken", "Assign Exam!\n" + damage + " damage taken", "Harsh Feedback!\n" + damage + " damage taken"
+                });
+                MoveText.text = specials[1];
                 break;
 
             case 3:
                 self.gainDefence(defence * 3);
                 charge = 0;
+                MoveText.text = specials[2];
                 break;
 
             case 4:
                 player.drained = true;
                 charge = 0;
+                MoveText.text = specials[3];
                 break;
 
 
@@ -168,8 +205,10 @@ public class EnemyLogic : MonoBehaviour
     //gain defence equal to defend value
     public void defend()
     {
+        int random = Random.Range(0, defences.Count);
         Debug.Log("Defending");
         self.gainDefence(defence);
+        MoveText.text = defences[random];
         movesRemaining -= defenceCost;
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
         DefenceText.text = self.defence + "";
@@ -235,6 +274,7 @@ public class EnemyLogic : MonoBehaviour
 
             }
         }
+        yield return new WaitForSeconds(wait);
         updateUI();
         endTurn();
     }

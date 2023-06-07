@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using TMPro;
 
 public class EntityStats : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EntityStats : MonoBehaviour
     public int currentScene;
     public LevelManager levelManager;
     public GameObject self, enemy;
+    public TMP_Text specialx2Text;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
@@ -54,11 +56,14 @@ public class EntityStats : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         animP = self.GetComponent<Animator>();
         animE = enemy.GetComponent<Animator>();
+        specialx2Text = GameObject.Find("DoubleDamageActive").GetComponent<TextMeshProUGUI>();
+        specialx2Text.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (gameOver)
         {
             return;
@@ -207,8 +212,11 @@ public class EntityStats : MonoBehaviour
                 
             }
         }
-
-        specialx2 = false; // after one turn  
+        if (gameObject.name.Equals("Enemy") && specialx2)
+        {
+            specialx2 = false;// after one turn
+            changeSpecialx2Text();
+        }
     }
 
     //Called when the entity (player or enemy) is healed
@@ -323,5 +331,16 @@ public class EntityStats : MonoBehaviour
         animE.SetBool("enemyIdle", true);
     }
 
+    public void changeSpecialx2Text()
+    {
+        if (specialx2) { 
+            specialx2Text.enabled = true;
+        }
 
+        if (!specialx2)
+        {
+            specialx2Text.enabled = false;
+        }
+
+    }
 }
