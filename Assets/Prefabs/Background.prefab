@@ -1805,8 +1805,8 @@ MonoBehaviour:
   Background01: {fileID: 21300000, guid: cb230aa16fbe5d34696549c62b5709fe, type: 3}
   Background02: {fileID: 21300000, guid: 95793b29f8c5c1a4582e6b3b45ddd572, type: 3}
   Background03: {fileID: 21300000, guid: 9871881f5b7377b4aaf152a3742748b0, type: 3}
-  Background04: {fileID: 0}
-  Background05: {fileID: 0}
+  Background04: {fileID: 21300000, guid: 829bb9e3882d97d479e8457f59d6eac3, type: 3}
+  Background05: {fileID: 21300000, guid: c434b50fcb5ab774fa82ca524c57964a, type: 3}
   backgroundParent: {fileID: 5352355755694601950}
   specialInt: 0
   level: 1

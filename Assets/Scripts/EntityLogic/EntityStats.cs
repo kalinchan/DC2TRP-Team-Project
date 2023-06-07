@@ -311,6 +311,7 @@ public class EntityStats : MonoBehaviour
 
     public void applyEnemyAnim(string animation)
     {
+        animE.SetBool("enemyIdle", false); 
         animE.SetBool(animation, true);
         StartCoroutine(EnemyMoveCoroutine(animation));
     }

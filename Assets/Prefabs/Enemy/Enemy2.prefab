@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1156600704309164280}
   - component: {fileID: 1156600704309164282}
   m_Layer: 5
-  m_Name: Enemy
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -717245531, guid: 2ac6287938815ec4cbf741c5df4b9710, type: 3}
+  m_Sprite: {fileID: 1243867853, guid: 0c15a7e3531044f4da94897358af6455, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
