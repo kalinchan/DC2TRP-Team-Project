@@ -26,6 +26,7 @@ public class tutorial : MonoBehaviour
 
     public void playerNext()
     {
+        AudioManager.instance.PlaySound("Button Click");
         playerStats.SetActive(false);
         cards.SetActive(false);
         enemyStats.SetActive(true);
@@ -33,6 +34,7 @@ public class tutorial : MonoBehaviour
 
     public void enemyNext()
     {
+        AudioManager.instance.PlaySound("Button Click");
         playerStats.SetActive(false);
         cards.SetActive(true);
         enemyStats.SetActive(false);
@@ -40,6 +42,7 @@ public class tutorial : MonoBehaviour
 
     public void finish()
     {
+        AudioManager.instance.PlaySound("Button Click");
         SceneManager.LoadScene("BattleScene");
     }
 }
