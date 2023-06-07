@@ -8,6 +8,8 @@ public class Pause : MonoBehaviour
     public List<GameObject> gameObjects;
     public GameObject optionsMenu;
     public GameObject optionsBackground;
+    public GameObject victory;
+    public GameObject defeat;
     public bool state;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,15 @@ public class Pause : MonoBehaviour
             {
                 return;
             }
+            if (victory.activeInHierarchy)
+            {
+                return;
+            }
+            if (defeat.activeInHierarchy)
+            {
+                return;
+            }
+
             state = true;
             gameObjects.ForEach(obj =>
             {
