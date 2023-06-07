@@ -106,6 +106,7 @@ public class EntityStats : MonoBehaviour
         optionsBackground.SetActive(true);
         AudioManager.instance.PlaySound("Defeat Screen");
         defeatScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator VictoryScreenCoroutine()
@@ -116,6 +117,7 @@ public class EntityStats : MonoBehaviour
         AddSpecialCard();
         AudioManager.instance.PlaySound("End Level");
         victoryScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator EndGameScreenCoroutine()
@@ -124,6 +126,7 @@ public class EntityStats : MonoBehaviour
         resultDisable.ForEach(x => x.SetActive(false));
         AudioManager.instance.PlaySound("Victory Screen");
         SceneManager.LoadScene("EndGame");
+        Cursor.lockState = CursorLockMode.None;
 
     }
 
