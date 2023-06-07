@@ -42,7 +42,7 @@ public class DefenceApplication : MonoBehaviour
 
         if (thisCard.tag.Contains("Special01"))
         {
-            applySpecialOne();
+            applySpecialThree();
             eS.applyPlayerAnim("playerSpecial");
         }
 
@@ -87,6 +87,7 @@ public class DefenceApplication : MonoBehaviour
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eES.setMultiplierToTrue();
+        eES.changeSpecialx2Text();
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class TurnManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class TurnManager : MonoBehaviour
     public turnStatus currentTurn;
     //public GameObject[] enemies;
     public GameObject enemy;
+    public TMP_Text MoveText;
     public GameObject player, eTButton;
     private Hand playerHand;
 
@@ -24,6 +26,7 @@ public class TurnManager : MonoBehaviour
         eTButton = GameObject.Find("End Turn Button");
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemy = GameObject.Find("Enemy");
+        MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
 
     }
 
@@ -45,6 +48,8 @@ public class TurnManager : MonoBehaviour
     {
         if (currentTurn == turnStatus.playerTurn)
         {
+            MoveText.text = "Enemy Turn";
+            Cursor.lockState = CursorLockMode.Locked;
             eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;
             currentTurn = turnStatus.enemyTurn;
@@ -53,9 +58,12 @@ public class TurnManager : MonoBehaviour
         }
         else if (currentTurn == turnStatus.enemyTurn)
         {
+            
+            Cursor.lockState = CursorLockMode.None;
             eTButton.SetActive(true);
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
+            MoveText.text = "Your Turn!";
             turnCounter++;
             //This is suuuuuuuper janky but works to update cards at the end of the turn
             if (!player.GetComponent<EntityStats>().skipDraw)

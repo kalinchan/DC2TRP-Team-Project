@@ -39,7 +39,8 @@ public class PlayerLogic : MonoBehaviour
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 10;
 
-        
+
+
 
 
         if (energybar != null)

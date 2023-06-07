@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // Version 1.0 / Date: 11/01/2023 / Author CH
 
@@ -14,6 +15,7 @@ public class SelectCard : MonoBehaviour
     private Hand playerHand;
     public GameObject PlayerArea;
     public GameObject cardBorder;
+    public TMP_Text MoveText;
 
     public void Start()
     {
@@ -21,6 +23,7 @@ public class SelectCard : MonoBehaviour
         player = GameObject.Find("Player");
         playerHand = player.GetComponent<Hand>();
         PlayerArea = GameObject.Find("PlayerHandArea");
+        MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
 
     }
     // when card is selected by player - CH
@@ -43,8 +46,10 @@ public class SelectCard : MonoBehaviour
 
         if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy)
         {
+            MoveText.text = "You don't have enough energy for that card!";
             return;
         }
+        MoveText.text = "Your Turn!";
         playerHand.currentlySelectedCard = thisCard;
         AudioManager.instance.PlaySound("Card Selected");
         cardBorder.SetActive(true);
@@ -67,6 +72,11 @@ public class SelectCard : MonoBehaviour
     public void applyCard()
     {
         player.GetComponent<DefenceApplication>().applyCard();
+    }
+
+    public void clearCard() 
+    {
+        playerHand.currentlySelectedCard = null;
     }
 
 
