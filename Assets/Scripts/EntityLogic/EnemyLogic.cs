@@ -52,8 +52,8 @@ public class EnemyLogic : MonoBehaviour
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
-        
-        
+
+
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         
@@ -161,7 +161,7 @@ public class EnemyLogic : MonoBehaviour
 
         //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
         int random = Random.Range(1, 4);
-        switch (2)
+        switch (random)
         {
             case 1:
                 player.skipDraw = true;

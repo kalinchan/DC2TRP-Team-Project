@@ -28,6 +28,7 @@ public class TurnManager : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
 
+
     }
 
     // Update is called once per frame

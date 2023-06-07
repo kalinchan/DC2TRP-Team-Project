@@ -149,6 +149,16 @@ public class EntityStats : MonoBehaviour
         AudioManager.instance.PlaySound("Player Damaged");
     }
 
+    IEnumerator PlayerAttack()
+    {
+      
+        applyPlayerAnim("playerAttack");
+        AudioManager.instance.PlaySound("Attack");
+        yield return new WaitForSeconds(0.5f);
+        applyEnemyAnim("enemyTakeDamage");
+        AudioManager.instance.PlaySound("Enemy Damaged");
+    }
+
 
 
 
@@ -168,10 +178,7 @@ public class EntityStats : MonoBehaviour
 
         if (gameObject.name.Equals("Enemy"))
         {
-            AudioManager.instance.PlaySound("Attack");
-            applyPlayerAnim("playerAttack");
-            applyEnemyAnim("enemyTakeDamage");
-            AudioManager.instance.PlaySound("Enemy Damaged");
+            StartCoroutine(PlayerAttack());
         }
 
         else
