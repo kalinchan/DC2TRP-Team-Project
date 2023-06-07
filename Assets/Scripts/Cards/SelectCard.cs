@@ -46,7 +46,7 @@ public class SelectCard : MonoBehaviour
             return;
         }
         playerHand.currentlySelectedCard = thisCard;
-
+        AudioManager.instance.PlaySound("Card Selected");
         cardBorder.SetActive(true);
 
 

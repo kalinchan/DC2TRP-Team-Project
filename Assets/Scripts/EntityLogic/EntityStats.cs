@@ -98,6 +98,7 @@ public class EntityStats : MonoBehaviour
         yield return new WaitForSeconds(1);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
+        AudioManager.instance.PlaySound("Defeat Screen");
         defeatScreen.SetActive(true);
     }
 
@@ -107,6 +108,7 @@ public class EntityStats : MonoBehaviour
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
         AddSpecialCard();
+        AudioManager.instance.PlaySound("End Level");
         victoryScreen.SetActive(true);
     }
 
@@ -114,6 +116,7 @@ public class EntityStats : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         resultDisable.ForEach(x => x.SetActive(false));
+        AudioManager.instance.PlaySound("Victory Screen");
         SceneManager.LoadScene("EndGame");
 
     }
@@ -134,8 +137,10 @@ public class EntityStats : MonoBehaviour
     IEnumerator EnemyAttack()
     {
         applyEnemyAnim("enemyAttack");
+        AudioManager.instance.PlaySound("Attack");
         yield return new WaitForSeconds(0.5f);
         applyPlayerAnim("playerTakeDamage");
+        AudioManager.instance.PlaySound("Player Damaged");
     }
 
 
@@ -157,13 +162,15 @@ public class EntityStats : MonoBehaviour
 
         if (gameObject.name.Equals("Enemy"))
         {
+            AudioManager.instance.PlaySound("Attack");
             applyPlayerAnim("playerAttack");
             applyEnemyAnim("enemyTakeDamage");
+            AudioManager.instance.PlaySound("Enemy Damaged");
         }
 
         else
         {   
-            StartCoroutine(EnemyAttack());           
+            StartCoroutine(EnemyAttack());
         }
 
 
@@ -218,9 +225,10 @@ public class EntityStats : MonoBehaviour
     public void gainDefence (int defence)
     {
         this.defence += defence;
-
+        AudioManager.instance.PlaySound("Defence");
         if (gameObject.name.Equals("Player"))
         {
+            
             applyPlayerAnim("playerAddDefence");
         }
 
@@ -253,6 +261,7 @@ public class EntityStats : MonoBehaviour
     // add special card to victory screen, showing what was rewarded
     private void AddSpecialCard()
     {
+        AudioManager.instance.PlaySound("Special Move");
         // get all special cards
         SpecialCards.AddRange(new List<GameObject>
             {
