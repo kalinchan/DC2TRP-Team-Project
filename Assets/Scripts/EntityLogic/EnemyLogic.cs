@@ -125,6 +125,7 @@ public class EnemyLogic : MonoBehaviour
 
         // special animation to play
         self.applyEnemyAnim("enemySpecial");
+        AudioManager.instance.PlaySound("Special Move");
 
         //probably needs to call a separate script? each enemy type has its own special
         //can that just be done here or is that too messy
