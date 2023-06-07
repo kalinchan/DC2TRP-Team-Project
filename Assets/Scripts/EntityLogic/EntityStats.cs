@@ -144,7 +144,7 @@ public class EntityStats : MonoBehaviour
     {
         applyEnemyAnim("enemyAttack");
         AudioManager.instance.PlaySound("Attack");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         applyPlayerAnim("playerTakeDamage");
         AudioManager.instance.PlaySound("Player Damaged");
     }
@@ -154,7 +154,7 @@ public class EntityStats : MonoBehaviour
       
         applyPlayerAnim("playerAttack");
         AudioManager.instance.PlaySound("Attack");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         applyEnemyAnim("enemyTakeDamage");
         AudioManager.instance.PlaySound("Enemy Damaged");
     }
