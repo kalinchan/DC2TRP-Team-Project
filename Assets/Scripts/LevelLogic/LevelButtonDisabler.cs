@@ -14,7 +14,7 @@ public class LevelButtonDisabler : MonoBehaviour
         foreach(Button button in buttons)
         { 
             int buttonNumber = int.Parse(button.name.Split(' ')[1]);
-            if (buttonNumber > maxLevel -1)
+            if (buttonNumber > maxLevel-1) //-1 because level 1 is scene index 3 and you want to be able to access the next level
             {
                 button.interactable = false;
             }

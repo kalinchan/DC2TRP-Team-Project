@@ -54,7 +54,6 @@ public class LevelEndController : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         nextSceneId = currentScene + 1;
         SceneManager.LoadScene(nextSceneId);
-        PlayerPrefs.SetInt("Player_Max_Level", currentScene);
         levelManager.increaseCurrentScene();
     }
 
