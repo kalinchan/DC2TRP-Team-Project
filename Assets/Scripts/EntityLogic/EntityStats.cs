@@ -81,7 +81,9 @@ public class EntityStats : MonoBehaviour
             else if (currentScene < levelManager.finalSceneId)
             {
                 applyEnemyAnim("enemyIsDead");
-                PlayerPrefs.SetInt("Player_Max_Level", currentScene);
+                if (PlayerPrefs.GetInt("Player_Max_Level", 1) < currentScene) {
+                    PlayerPrefs.SetInt("Player_Max_Level", currentScene);
+                }
                 StartCoroutine(VictoryScreenCoroutine());
             }
 
