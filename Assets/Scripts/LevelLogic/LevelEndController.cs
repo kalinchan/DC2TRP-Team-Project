@@ -38,7 +38,7 @@ public class LevelEndController : MonoBehaviour
     // play game from start, level 1 --
     public void playGame()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("VS_L1");
     }
 
     // load main menu --

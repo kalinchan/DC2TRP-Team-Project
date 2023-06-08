@@ -3891,6 +3891,7 @@ MonoBehaviour:
   MoveText: {fileID: 0}
   player: {fileID: 0}
   eTButton: {fileID: 0}
+  border: {fileID: 0}
 --- !u!4 &1550697197
 Transform:
   m_ObjectHideFlags: 0
@@ -5233,6 +5234,7 @@ MonoBehaviour:
   MoveText: {fileID: 0}
   player: {fileID: 587776602}
   eTButton: {fileID: 1606585377}
+  border: {fileID: 0}
 --- !u!114 &1652737096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5315,6 +5317,7 @@ MonoBehaviour:
   finalSceneId: 0
   finalScene: 0
   nextSceneId: 0
+  nextLevel: 0
 --- !u!1 &1753115534
 GameObject:
   m_ObjectHideFlags: 0
@@ -7049,6 +7052,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
       propertyPath: defeatScreen
       value: 
       objectReference: {fileID: 44449609}
@@ -8348,11 +8359,11 @@ PrefabInstance:
       objectReference: {fileID: 587776620}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: health
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: defeatScreen
