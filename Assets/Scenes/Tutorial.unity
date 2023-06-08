@@ -373,12 +373,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1564279941}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 632.03656, y: 194.09079}
-  m_SizeDelta: {x: 305.9645, y: 232.6197}
+  m_AnchoredPosition: {x: 481.2, y: 213.6}
+  m_SizeDelta: {x: 400.4674, y: 186.277}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218160674
 MonoBehaviour:
@@ -435,8 +435,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -655,8 +655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 629, y: 225}
-  m_SizeDelta: {x: 305.9645, y: 232.6197}
+  m_AnchoredPosition: {x: 384.2, y: 253.2}
+  m_SizeDelta: {x: 703.0583, y: 189.003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519733308
 MonoBehaviour:
@@ -678,12 +678,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Your Cards are placed in the bottom of the screen. \n\nCards with a Black
-    border can only be used on yourself and cards with a red border are cards that
-    can only be used against enemies.\n\nTo use a card, click the card and then click
-    on yourself / the enemy depending on the border colour of the card\n\nThe number
-    inside the green ciricle shows the amount of energy the card costs, you must
-    have at least that amount of energy."
+  m_text: 'Cards with a Blue border are defence cards to be used on yourself.
+
+    Cards
+    with a Red border are attack cards to be used on enemies.
+
+    Cards with a green
+    border are special cards to be used on yourself.
+
+
+    To use a card, click the
+    card and then click on yourself / the enemy depending on the card type.
+
+
+    The
+    top right number shows the amount of energy the card costs, you must have at
+    least that amount of energy.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
@@ -795,8 +805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 241, y: 200}
-  m_SizeDelta: {x: 447.2029, y: 205.9645}
+  m_AnchoredPosition: {x: 171.5, y: 207.1}
+  m_SizeDelta: {x: 171.003, y: 223.885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559382621
 MonoBehaviour:
@@ -818,7 +828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f57b858205df0cd47bac2f344c34c25c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d151d90cdb4dff4795e8f9305886949, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -957,7 +967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 385.83557, y: 30.239197}
+  m_AnchoredPosition: {x: 384, y: 14.8}
   m_SizeDelta: {x: 111.6712, y: 27.5216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659367420
@@ -1221,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &972970754
 Transform:
   m_ObjectHideFlags: 0
@@ -1446,8 +1456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: 202}
-  m_SizeDelta: {x: 447.2029, y: 205.9645}
+  m_AnchoredPosition: {x: 381.7, y: 114.4}
+  m_SizeDelta: {x: 368.1359, y: 114.1693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042205747
 MonoBehaviour:
@@ -1469,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f96cd399b8641f4b978c6c2308a75c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 688b2fc35bfad4944b554e7636e3dac9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1657,8 +1667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 624, y: 221}
-  m_SizeDelta: {x: 305.9645, y: 232.6197}
+  m_AnchoredPosition: {x: 627.2, y: 215.1}
+  m_SizeDelta: {x: 206.9182, y: 228.0763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358823581
 MonoBehaviour:
@@ -1692,7 +1702,7 @@ MonoBehaviour:
     reaches 0, they recieve a special card to use against you'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1716,8 +1726,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1752,10 +1762,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -179.91888, y: 0, z: -0.90879816, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1358823582
@@ -1781,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1564279941
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,6 +1806,7 @@ Transform:
   m_Children:
   - {fileID: 997579329}
   - {fileID: 559382620}
+  - {fileID: 1910923351}
   - {fileID: 218160673}
   - {fileID: 2106651491}
   m_Father: {fileID: 663636337}
@@ -1984,8 +1995,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: 202}
-  m_SizeDelta: {x: 447.2029, y: 205.9645}
+  m_AnchoredPosition: {x: 217.7, y: 207.4}
+  m_SizeDelta: {x: 198.2242, y: 240.4944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745292008
 MonoBehaviour:
@@ -2007,7 +2018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0556d8c8bce1a54584b83b5b3920a8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24642575ef0c34f4c8a2d0511faa9ac2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2190,6 +2201,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855157244}
+  m_CullTransparentMesh: 1
+--- !u!1 &1910923350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910923351}
+  - component: {fileID: 1910923353}
+  - component: {fileID: 1910923352}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1910923351
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910923350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1564279941}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 639.5, y: 84.8}
+  m_SizeDelta: {x: 160.0988, y: 92.1261}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1910923352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910923350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4cb9ba2e34577e04daa3e87f41959338, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1910923353
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910923350}
   m_CullTransparentMesh: 1
 --- !u!1 &1994854302
 GameObject:
@@ -2428,7 +2515,7 @@ RectTransform:
   m_Children:
   - {fileID: 118672334}
   m_Father: {fileID: 1564279941}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
