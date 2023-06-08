@@ -37,7 +37,7 @@ public class PlayerLogic : MonoBehaviour
         HealthText = GameObject.Find("PlayerHealthText").GetComponent<TextMeshProUGUI>();
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
-        energyMax = 10;
+        energyMax = 5;
 
 
 
