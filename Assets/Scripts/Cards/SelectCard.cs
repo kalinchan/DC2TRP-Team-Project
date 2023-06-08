@@ -39,20 +39,28 @@ public class SelectCard : MonoBehaviour
             }
         }
 
-        // TODO: Alter Stats (Health, Energy, Defence, Attack) - depending on card played
-        //GetEnemy();
-        //Card.SetActive(false); // remove card from hand
+// card action called
 
-
-        if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy)
+        if (player.GetComponent<PlayerLogic>().myTurn)
         {
-            MoveText.text = "You don't have enough energy for that card!";
-            return;
+            if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy)
+            {
+                MoveText.text = "Insufficient Energy!";
+                clearCard();
+                cardBorder.SetActive(false);
+                return;
+            }
+
+            playerHand.currentlySelectedCard = thisCard;
+            AudioManager.instance.PlaySound("Card Selected");
+            cardBorder.SetActive(true);
         }
-        MoveText.text = "Your Turn!";
-        playerHand.currentlySelectedCard = thisCard;
-        AudioManager.instance.PlaySound("Card Selected");
-        cardBorder.SetActive(true);
+        else
+        {
+            clearCard();
+            cardBorder.SetActive(false);
+        }
+
 
 
     }
