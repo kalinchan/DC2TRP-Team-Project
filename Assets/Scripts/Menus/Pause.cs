@@ -10,6 +10,7 @@ public class Pause : MonoBehaviour
     public GameObject optionsBackground;
     public GameObject victory;
     public GameObject defeat;
+    public TurnManager turnManager;
     public bool state;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,10 @@ public class Pause : MonoBehaviour
             {
                 return;
             }
-
+            if (turnManager.currentTurn == TurnManager.turnStatus.enemyTurn)
+            {
+                return;
+            }
             state = true;
             gameObjects.ForEach(obj =>
             {

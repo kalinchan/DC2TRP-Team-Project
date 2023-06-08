@@ -6373,6 +6373,7 @@ MonoBehaviour:
   optionsBackground: {fileID: 624319554}
   victory: {fileID: 709341085}
   defeat: {fileID: 44449609}
+  turnManager: {fileID: 1550697196}
   state: 0
 --- !u!114 &1900381001
 MonoBehaviour:
