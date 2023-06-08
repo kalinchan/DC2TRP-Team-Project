@@ -272,14 +272,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5943396, g: 0.378471, b: 0.378471, a: 1}
+  m_Color: {r: 0.5943396, g: 0.378471, b: 0.378471, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 846799b0efe6b7f408c6583537f33503, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 208d68598466ceb45ade25e53b72d1cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7c4d32c96a8e4e44fb73d3a4915efd2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 208d68598466ceb45ade25e53b72d1cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1176,6 +1176,7 @@ MonoBehaviour:
   player: {fileID: 0}
   PlayerArea: {fileID: 0}
   cardBorder: {fileID: 6185520750727627351}
+  MoveText: {fileID: 0}
 --- !u!114 &2997209244737786970
 MonoBehaviour:
   m_ObjectHideFlags: 0

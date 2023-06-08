@@ -78,17 +78,17 @@ public class ThisCard : MonoBehaviour
         // change color of card frame (and sprite frame) depending on Attack(Red), Defence(Blue), or Sepcial(Green/Yellow)
         if (thisCard[0].group == "Attack")
         {
-            imgFrame.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+            
             cardFrame.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
         }
         if (thisCard[0].group == "Defence")
         {
-            imgFrame.GetComponent<Image>().color = new Color32(18, 81, 243, 255);
+            
             cardFrame.GetComponent<Image>().color = new Color32(18, 81, 243, 255);
         }
         if (thisCard[0].group == "Special")
         {
-            imgFrame.GetComponent<Image>().color = new Color32(9, 251, 52, 217);
+            
             cardFrame.GetComponent<Image>().color = new Color32(9, 251, 52, 217);
         }
 

@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5943396, g: 0.378471, b: 0.378471, a: 1}
+  m_Color: {r: 0.5943396, g: 0.378471, b: 0.378471, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -486,7 +486,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
   cursorMode: 1
   player: {fileID: 0}
-  pl: {fileID: 0}
 --- !u!114 &1517338015229073816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +502,7 @@ MonoBehaviour:
   player: {fileID: 0}
   PlayerArea: {fileID: 0}
   cardBorder: {fileID: 3440205441126661332}
+  MoveText: {fileID: 0}
 --- !u!114 &6361453472111750481
 MonoBehaviour:
   m_ObjectHideFlags: 0
