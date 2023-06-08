@@ -5261,7 +5261,7 @@ MonoBehaviour:
   HealthText: {fileID: 1587173267}
   SpecialText: {fileID: 724649276}
   DefenceText: {fileID: 1484185253}
-  MoveText: {fileID: 0}
+  MoveText: {fileID: 1855599796}
   attacks: []
   defences: []
   specials: []

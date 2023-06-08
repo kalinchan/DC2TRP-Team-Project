@@ -72,9 +72,10 @@ public class TurnManager : MonoBehaviour
             eTButton.SetActive(true);
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
+            player.GetComponent<PlayerLogic>().myTurn = true;
             MoveText.text = "Your Turn!";
             turnCounter++;
-            //This is suuuuuuuper janky but works to update cards at the end of the turn
+            
             if (!player.GetComponent<EntityStats>().skipDraw)
             {
                 gameObject.GetComponent<DealCards>().OnClick();
