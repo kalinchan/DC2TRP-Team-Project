@@ -37,7 +37,10 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (currentTurn == turnStatus.enemyTurn)
+        {
+            playerHand.currentlySelectedCard = null;
+        }
     }
 
     public enum turnStatus
@@ -97,16 +100,17 @@ public class TurnManager : MonoBehaviour
         }
 
 
-        //foreach (GameObject enemy in enemies) 
-        //{
-        //    enemy.GetComponent<EnemyLogic>().startTurn();  
-        //}
+            //foreach (GameObject enemy in enemies) 
+            //{
+            //    enemy.GetComponent<EnemyLogic>().startTurn();  
+            //}
 
-    }
+        }
 
     public void enablePlayer()
     {
         player.GetComponent<PlayerLogic>().myTurn = true;
+        
         if (!player.GetComponent<EntityStats>().drained)
         {
             player.GetComponent<PlayerLogic>().resetEnergy();
