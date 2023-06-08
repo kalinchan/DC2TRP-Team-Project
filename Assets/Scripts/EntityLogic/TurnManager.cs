@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
     public TMP_Text MoveText;
     public GameObject player, eTButton;
     private Hand playerHand;
+    public GameObject border;
 
 
 
@@ -27,6 +28,8 @@ public class TurnManager : MonoBehaviour
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemy = GameObject.Find("Enemy");
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
+        playerHand = player.GetComponent<Hand>();
+
 
 
     }
@@ -34,6 +37,7 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public enum turnStatus
@@ -49,8 +53,9 @@ public class TurnManager : MonoBehaviour
     {
         if (currentTurn == turnStatus.playerTurn)
         {
+            playerHand.currentlySelectedCard = null;
             MoveText.text = "Enemy Turn";
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
             eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;
             currentTurn = turnStatus.enemyTurn;
@@ -59,8 +64,8 @@ public class TurnManager : MonoBehaviour
         }
         else if (currentTurn == turnStatus.enemyTurn)
         {
-            
-            Cursor.lockState = CursorLockMode.None;
+
+            //Cursor.lockState = CursorLockMode.None;
             eTButton.SetActive(true);
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
@@ -72,9 +77,9 @@ public class TurnManager : MonoBehaviour
                 gameObject.GetComponent<DealCards>().OnClick();
             }
             player.GetComponent<EntityStats>().skipDraw = false;
-         }
-
         }
+
+    }
 
     //find all enemies, set myTurn to true and call the turnTaker method
     //needs to be fixed to go through a list of all enemies with the enemy tag - JD 15/02
@@ -82,7 +87,15 @@ public class TurnManager : MonoBehaviour
     {
 
         enemy.GetComponent<EnemyLogic>().startTurn();
-       
+
+        foreach (GameObject gameObject in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if (gameObject.name.Equals("Border"))
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
 
         //foreach (GameObject enemy in enemies) 
         //{
@@ -104,6 +117,12 @@ public class TurnManager : MonoBehaviour
         }
 
 
+    }
+
+
+    public turnStatus getCurrentTurn()
+    {
+        return currentTurn;
     }
 
 

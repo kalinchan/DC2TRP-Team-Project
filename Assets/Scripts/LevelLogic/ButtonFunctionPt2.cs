@@ -17,7 +17,6 @@ public class ButtonFunctionPt2 : MonoBehaviour {
     }
 
     public void OpenScenes() {
-        Level = Level;
         SceneManager.LoadScene("VS_L" + Level);
     }
 }
