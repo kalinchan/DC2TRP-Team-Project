@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class DamageCalculation : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class DamageCalculation : MonoBehaviour
     public Hand playerHand;
     public GameObject player;
     private GameObject levelL;
+    public TMP_Text MoveText;
+    private SelectCard selectCard;
 
     //Get entity stats associated with this enemy
     //Find and get the Player's Hand - JD
@@ -19,6 +22,7 @@ public class DamageCalculation : MonoBehaviour
         player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
         levelL = GameObject.Find("Background");
+        MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
     }
 
     //using the players hand, find which card has been clicked (made active) and identify its tag.
@@ -26,18 +30,25 @@ public class DamageCalculation : MonoBehaviour
     public void GetCard()
     {   
         thisCard = playerHand.currentlySelectedCard;
-        if (thisCard.tag.Contains("Attack"))
-        {
-            player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-            eS.takeDamage(thisCard.damage);
-            thisCard.gameObject.SetActive(false);
-            playerHand.clearCard();
 
-       
-            if(eS.gameObject.tag.Contains("Enemy"))
+        if (thisCard.tag.Contains("Attack")) // if attack card 
+        {
+            if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy) // if not enough energy to play card
             {
-                eS.gameObject.GetComponent<EnemyLogic>().updateUI();
+                MoveText.text = "Insufficient Energy!";
+                playerHand.clearCard();
+                selectCard.clearCard();
+                return;
+            }
+
+            else // else, play card
+            {
+                player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+                eS.takeDamage(thisCard.damage);
+                thisCard.gameObject.SetActive(false);
+                playerHand.clearCard(); //remove from hand
                 levelL.GetComponent<LevelLoad>().reduceHandSize();
+                eS.gameObject.GetComponent<EnemyLogic>().updateUI();
             }
 
         }

@@ -9,6 +9,7 @@ public class DiscardCard : MonoBehaviour
     public Hand playerHand;
     public GameObject player;
     private GameObject levelL;
+    
 
     //Get entity stats associated with this enemy
     //Find and get the Player's Hand - JD
