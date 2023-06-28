@@ -15,7 +15,6 @@ public class SelectCard : MonoBehaviour
     private Hand playerHand;
     public GameObject PlayerArea;
     public GameObject cardBorder;
-    public TMP_Text MoveText;
 
     public void Start()
     {
@@ -23,7 +22,6 @@ public class SelectCard : MonoBehaviour
         player = GameObject.Find("Player");
         playerHand = player.GetComponent<Hand>();
         PlayerArea = GameObject.Find("PlayerHandArea");
-        MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
 
     }
     // when card is selected by player - CH
@@ -43,13 +41,6 @@ public class SelectCard : MonoBehaviour
 
         if (player.GetComponent<PlayerLogic>().myTurn)
         {
-            if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy)
-            {
-                MoveText.text = "Insufficient Energy!";
-                clearCard();
-                cardBorder.SetActive(false);
-                return;
-            }
 
             playerHand.currentlySelectedCard = thisCard;
             AudioManager.instance.PlaySound("Card Selected");
@@ -86,6 +77,14 @@ public class SelectCard : MonoBehaviour
     {
         playerHand.currentlySelectedCard = null;
     }
+
+    public void Update()
+    {
+        if (playerHand.currentlySelectedCard == null) {
+            cardBorder.SetActive(false);
+        }
+    }
+
 
 
 }
