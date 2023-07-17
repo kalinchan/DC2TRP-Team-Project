@@ -21,7 +21,7 @@ public class EntityStats : MonoBehaviour
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
     public GameObject SpecialCardArea;
-    public List<GameObject> SpecialCards = new List<GameObject>();
+    public static List<GameObject> SpecialCards = new List<GameObject>();
 
     // for special card attack multiplier
     public bool specialx2 = false;
@@ -291,16 +291,12 @@ public class EntityStats : MonoBehaviour
             }
         );
 
+        specialInt = Random.Range(0, SpecialCards.Count);
+
         // instantiate special card depending on which level is completed --
         GameObject specialCard = Instantiate(SpecialCards[specialInt], new Vector3(0, 0, 0), Quaternion.identity);
         specialCard.transform.SetParent(SpecialCardArea.transform, false);
-
-        // to get int for special card list --
-        if (specialInt == 4)
-        {
-            specialInt = 0;
-        }
-        else { specialInt++; }
+        SpecialCards.RemoveAt(specialInt);
 
     }
 
