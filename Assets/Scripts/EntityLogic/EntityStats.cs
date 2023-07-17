@@ -17,6 +17,7 @@ public class EntityStats : MonoBehaviour
     public LevelManager levelManager;
     public GameObject self, enemy;
     public TMP_Text specialx2Text;
+    public CardUserPref cardUserPref;
 
     //special card at end of level
     public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
@@ -284,7 +285,7 @@ public class EntityStats : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Special Move");
         // get all special cards
-        SpecialCards.AddRange(new List<GameObject>
+        /*SpecialCards.AddRange(new List<GameObject>
             {
                 SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04
 
@@ -296,7 +297,9 @@ public class EntityStats : MonoBehaviour
         // instantiate special card depending on which level is completed --
         GameObject specialCard = Instantiate(SpecialCards[specialInt], new Vector3(0, 0, 0), Quaternion.identity);
         specialCard.transform.SetParent(SpecialCardArea.transform, false);
-        SpecialCards.RemoveAt(specialInt);
+        SpecialCards.RemoveAt(specialInt);*/
+        
+        cardUserPref.SelectRandomCard();
 
     }
 

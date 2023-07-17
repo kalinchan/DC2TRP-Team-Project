@@ -18,6 +18,7 @@ public class LevelLoad : MonoBehaviour
     public int level;
     private LevelManager levelManager;
     public int backgroundInt;
+    public CardUserPref cardUserPref;
 
     public List<GameObject> cards = new List<GameObject>();
     public List<GameObject> specialcards = new List<GameObject>();
@@ -55,7 +56,7 @@ public class LevelLoad : MonoBehaviour
         cardsToDeal = maxHandSize;
 
         // cards without special for first round
-        cards.AddRange(new List<GameObject>
+        /*cards.AddRange(new List<GameObject>
             {
                 Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09
         });
@@ -65,10 +66,12 @@ public class LevelLoad : MonoBehaviour
         {
             Card10, Card11, Card12, Card13
         }
-        );
+        );*/
+        cardUserPref.setCards();
+        //cards = cardUserPref.cards;
 
         // if level 1 do not add the special card to player hand deck
-        if (sceneName == "BattleScene")
+        /*if (sceneName == "BattleScene")
         {
             initialiseHand();
         }
@@ -76,7 +79,8 @@ public class LevelLoad : MonoBehaviour
         {
             addSpecial();
             initialiseHand();
-        }
+        }*/
+        initialiseHand();
 
     }
    
@@ -90,13 +94,13 @@ public class LevelLoad : MonoBehaviour
         for (var i = 0; i < calculateNoCardsToDeal(); i++)
         {
 
-            GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject playerCard = Instantiate(cardUserPref.cards[Random.Range(0, cardUserPref.cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
             playerCard.transform.SetParent(PlayerArea.transform, false);
             
         }
         handSize = maxHandSize;
         Debug.Log("Level: " + level);
-        Debug.Log("Cards amount: " + cards.Count);
+        Debug.Log("Cards amount: " + cardUserPref.cards.Count);
 
     }
 
@@ -114,7 +118,7 @@ public class LevelLoad : MonoBehaviour
     }
 
 
-    public void addSpecial()
+    /*public void addSpecial()
     {
         if (specialInt == 5)
         {
@@ -127,7 +131,7 @@ public class LevelLoad : MonoBehaviour
             cards.Add(specialcards[i]);
         }
 
-    }
+    }*/
 
 }
 
