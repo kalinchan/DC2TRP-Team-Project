@@ -43,9 +43,11 @@ public class LevelLoad : MonoBehaviour
         // Deal cards
         initialiseHand();
         Debug.Log("Available cards: " + availableCards.Count);
+        Debug.Log("Deck cards: " + cardUserPref.deck.Count);
+
     }
 
-    // Deal cards
+
     public void initialiseHand()
     {
         CalculateNoCardsToDeal();
@@ -55,6 +57,7 @@ public class LevelLoad : MonoBehaviour
             int randomIndex = Random.Range(0, availableCards.Count);
             string cardName = availableCards[randomIndex];
 
+
             GameObject playerCard = cardUserPref.GetCardByName(cardName);
             GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
             instantiatedCard.transform.SetParent(PlayerArea.transform, false);
@@ -63,6 +66,7 @@ public class LevelLoad : MonoBehaviour
 
         Debug.Log("Available cards: " + availableCards.Count);
     }
+
 
     // Reduce hand size by 1 - called by other methods when a card is used / disposed of
     public void reduceHandSize()

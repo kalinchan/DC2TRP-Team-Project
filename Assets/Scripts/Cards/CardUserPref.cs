@@ -31,7 +31,11 @@ public class CardUserPref : MonoBehaviour
 
             // Load or reset the deck and special cards
             LoadDeck();
-            ResetDeckToOriginal();
+            if (deck.Count < 10)
+            {
+                ResetSpecialCards();
+
+            }
 
             // Populate the card dictionary
             PopulateCardDictionary();
@@ -58,6 +62,7 @@ public class CardUserPref : MonoBehaviour
     {
         deck.Add(cardName);
     }
+
 
     public void ResetSpecialCards()
     {
@@ -100,8 +105,8 @@ public class CardUserPref : MonoBehaviour
         {
             "Card01", "Card02", "Card03", "Card04", "Card05", "Card06", "Card07", "Card08", "Card09"
         });
-        SaveDeck();
         ResetSpecialCards();
+        SaveDeck();
     }
 
     private string SerializeDeck(List<string> deckToSerialize)
