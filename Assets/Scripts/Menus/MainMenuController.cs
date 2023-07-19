@@ -10,11 +10,18 @@ public class MainMenuController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     private LevelManager levelManager;
+    public CardUserPref cardUserPref;
 
+    public void continueGame()
+    {
+        AudioManager.instance.PlaySound("Button Click");
+    }
     public void playGame()
     {
         SceneManager.LoadScene("VS_L1");
         AudioManager.instance.PlaySound("Button Click");
+        cardUserPref.ResetDeckToOriginal();
+
     }
 
     public void tutorial()
@@ -40,6 +47,7 @@ public class MainMenuController : MonoBehaviour
     public void exitGame()
     {
         AudioManager.instance.PlaySound("Button Click");
+        cardUserPref.SaveDeck();
         Application.Quit();
     }
     // Start is called before the first frame update

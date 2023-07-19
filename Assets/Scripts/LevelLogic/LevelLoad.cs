@@ -1,133 +1,111 @@
+// LevelLoad.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LevelLoad : MonoBehaviour
 {
-    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12, Card13;
     public GameObject PlayerArea;
-    public int maxHandSize, cardsToDeal;
+    public GameObject SpecialCardArea;
+    public int maxHandSize;
     public int handSize;
-    public GameObject dCButton;
+    public CardUserPref cardUserPref;
+    public List<string> availableCards;
+    public int cardsToDeal;
+    public int cardsAtEnd = 1; // Number of cards displayed at the end of the level
     public Sprite Background01, Background02, Background03, Background04, Background05;
     public GameObject backgroundParent;
-    public int specialInt;
-    public int level;
-    private LevelManager levelManager;
-    public int backgroundInt;
 
-    public List<GameObject> cards = new List<GameObject>();
-    public List<GameObject> specialcards = new List<GameObject>();
-    List<Sprite> backgrounds = new List<Sprite>();
-
-    void Awake()
+    private void Awake()
     {
         handSize = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         backgroundParent = GameObject.Find("Background");
-        // get current scene (current level) --
+
+        // Set the background for the current level
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        // ensure only 5 cards added to hand
-        specialInt = currentScene.buildIndex - 3;
-        maxHandSize = 5;
-        backgroundInt = currentScene.buildIndex - 3;
-        // level 1 = build index 3, so for first item in list [0] we must -3 from the build index // level 2 = index 4 so background list item [1]
-
-        // set backgrounds list
-        backgrounds.AddRange(new List<Sprite>
-            {
-                Background01, Background02, Background03, Background04, Background05
-        }
-        );
-
+        int backgroundInt = currentScene.buildIndex - 3;
         backgroundParent.transform.GetChild(backgroundInt).gameObject.SetActive(true);
 
-        // start level needing 5 cards to deal
+        // Reset availableCards list to the deck in CardUserPref
+        cardUserPref.LoadDeck();
+        availableCards = new List<string>(cardUserPref.GetDeck());
+
+        // Only 5 cards in hand at a time - 5 each turn
+        maxHandSize = 5;
         cardsToDeal = maxHandSize;
+        handSize = 0;
 
-        // cards without special for first round
-        cards.AddRange(new List<GameObject>
-            {
-                Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09
-        });
-
-        // list of special cards to iterate through and add in next levels
-        specialcards.AddRange(new List<GameObject>
-        {
-            Card10, Card11, Card12, Card13
-        }
-        );
-
-        // if level 1 do not add the special card to player hand deck
-        if (sceneName == "BattleScene")
-        {
-            initialiseHand();
-        }
-        else // if after first level, continue with adding special cards that have been won...
-        {
-            addSpecial();
-            initialiseHand();
-        }
-
+        // Deal cards
+        initialiseHand();
+        Debug.Log("Available cards: " + availableCards.Count);
     }
-   
 
-    // load 5 cards into hand
+    // Deal cards
     public void initialiseHand()
     {
-        // load 5 cards
-        
+        CalculateNoCardsToDeal();
 
-        for (var i = 0; i < calculateNoCardsToDeal(); i++)
+        for (int i = 0; i < cardsToDeal; i++)
         {
+            int randomIndex = Random.Range(0, availableCards.Count);
+            string cardName = availableCards[randomIndex];
 
-            GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
-            playerCard.transform.SetParent(PlayerArea.transform, false);
-            
+            GameObject playerCard = cardUserPref.GetCardByName(cardName);
+            GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+            instantiatedCard.transform.SetParent(PlayerArea.transform, false);
+            handSize++;
         }
-        handSize = maxHandSize;
-        Debug.Log("Level: " + level);
-        Debug.Log("Cards amount: " + cards.Count);
 
+        Debug.Log("Available cards: " + availableCards.Count);
     }
 
-    // reduce no of cards in hand when played
+    // Reduce hand size by 1 - called by other methods when a card is used / disposed of
     public void reduceHandSize()
     {
         handSize--;
-        Debug.Log("HandSize = "+ handSize);
+        Debug.Log("HandSize = " + handSize);
     }
 
-    public int calculateNoCardsToDeal()
+    // Calculate the number of cards needed to deal
+    private void CalculateNoCardsToDeal()
     {
         cardsToDeal = maxHandSize - handSize;
-        return cardsToDeal;
     }
 
-
-    public void addSpecial()
+    public void DisplayCardAtEnd()
     {
-        if (specialInt == 5)
+        if (SpecialCardArea != null && cardUserPref.specialCards.Count > 0)
         {
-            specialInt = 0;
-        }
+            int specialInt = Random.Range(0, cardUserPref.specialCards.Count);
 
-        for (var i = 0; i < specialInt; i++)
+            string specialCardName = cardUserPref.specialCards[specialInt];
+            GameObject specialCard = cardUserPref.GetCardByName(specialCardName);
+
+            if (specialCard != null)
+            {
+                GameObject instantiatedCard = Instantiate(specialCard, Vector3.zero, Quaternion.identity);
+                instantiatedCard.transform.SetParent(SpecialCardArea.transform, false);
+
+                cardUserPref.specialCards.RemoveAt(specialInt);
+                cardUserPref.AddCardToDeck(specialCardName);
+                cardUserPref.SaveDeck();
+
+                Debug.Log("Deck cards: " + cardUserPref.deck.Count);
+            }
+            else
+            {
+                Debug.LogError("Special card not found: " + specialCardName);
+            }
+        }
+        else
         {
-
-            cards.Add(specialcards[i]);
+            Debug.LogError("SpecialCardArea is not assigned or specialCards list is empty!");
         }
-
     }
 
 }
-

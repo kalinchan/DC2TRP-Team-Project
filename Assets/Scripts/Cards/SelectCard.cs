@@ -80,7 +80,8 @@ public class SelectCard : MonoBehaviour
 
     public void Update()
     {
-        if (playerHand.currentlySelectedCard == null) {
+        if (player != null && playerHand != null && playerHand.currentlySelectedCard == null)
+        {
             cardBorder.SetActive(false);
         }
     }

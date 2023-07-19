@@ -5,14 +5,13 @@ using UnityEngine;
 public class DealCards : MonoBehaviour
 {
 
-    private GameObject levelL;
+    public GameObject levelL;
     public GameObject dCButton;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        dCButton = GameObject.Find("Deal Cards Button");
         levelL = GameObject.Find("Background");
     }
 

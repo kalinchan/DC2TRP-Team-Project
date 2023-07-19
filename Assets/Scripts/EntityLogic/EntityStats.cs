@@ -9,19 +9,17 @@ public class EntityStats : MonoBehaviour
 {
     public int health = 10, defence = 0, maxHealth = 10;
     public bool isDead, skipDraw, drained;
-    public GameObject victoryScreen, optionsBackground, defeatScreen;
+    public GameObject victoryScreen, optionsBackground, defeatScreen, playerArea;
     private List<GameObject> resultDisable;
     private bool gameOver;
-    private int specialInt;
     public int currentScene;
     public LevelManager levelManager;
     public GameObject self, enemy;
     public TMP_Text specialx2Text;
 
     //special card at end of level
-    public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
-    public GameObject SpecialCardArea;
-    public static List<GameObject> SpecialCards = new List<GameObject>();
+    public CardUserPref cardUserPref;
+    public LevelLoad levelLoad;
 
     // for special card attack multiplier
     public bool specialx2 = false;
@@ -41,14 +39,12 @@ public class EntityStats : MonoBehaviour
             GameObject.Find("End Turn Button"),
             GameObject.Find("Enemy"),
             GameObject.Find("Player"),
-            GameObject.Find("ActiveArea"),
             GameObject.Find("Turn Manager")
         };
 
-
+        playerArea = GameObject.Find("ActiveArea");
         health = maxHealth;
         currentScene = SceneManager.GetActiveScene().buildIndex;
-        specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
         skipDraw = false;
         drained = false;
         levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
@@ -108,7 +104,7 @@ public class EntityStats : MonoBehaviour
         optionsBackground.SetActive(true);
         AudioManager.instance.PlaySound("Defeat Screen");
         defeatScreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        cardUserPref.ResetDeckToOriginal();
     }
 
     IEnumerator VictoryScreenCoroutine()
@@ -116,10 +112,10 @@ public class EntityStats : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
-        AddSpecialCard();
+        AudioManager.instance.PlaySound("Special Move");
+        levelLoad.DisplayCardAtEnd();
         AudioManager.instance.PlaySound("End Level");
         victoryScreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator EndGameScreenCoroutine()
@@ -277,27 +273,6 @@ public class EntityStats : MonoBehaviour
     public int getCurrentDefence()
     {
         return defence;
-    }
-
-    // add special card to victory screen, showing what was rewarded
-    private void AddSpecialCard()
-    {
-        AudioManager.instance.PlaySound("Special Move");
-        // get all special cards
-        SpecialCards.AddRange(new List<GameObject>
-            {
-                SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04
-
-            }
-        );
-
-        specialInt = Random.Range(0, SpecialCards.Count);
-
-        // instantiate special card depending on which level is completed --
-        GameObject specialCard = Instantiate(SpecialCards[specialInt], new Vector3(0, 0, 0), Quaternion.identity);
-        specialCard.transform.SetParent(SpecialCardArea.transform, false);
-        SpecialCards.RemoveAt(specialInt);
-
     }
 
     public void setMultiplierToTrue()
