@@ -1,35 +1,40 @@
-// CardUserPref.cs
 using UnityEngine;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
+// @author: CH
+// @date last updtaed: 19.07.23
+// version: 1.0
+
 public class CardUserPref : MonoBehaviour
 {
-    private const string DeckKey = "Deck";
-    public List<string> deck = new List<string>();
-    public List<string> specialCards = new List<string>();
+    private const string DeckKey = "Deck"; // for saving data
+    public List<string> deck = new List<string>(); // user saved deck
+    public List<string> specialCards = new List<string>(); // all special cards
 
-    // All cards
-    public Dictionary<string, GameObject> cardDictionary = new Dictionary<string, GameObject>(); // New dictionary to map card names to GameObjects
+    // new dictionary to map card names to GameObjects
+    public Dictionary<string, GameObject> cardDictionary = new Dictionary<string, GameObject>();
 
+    // all cards
     public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12, Card13;
 
+    // where card is displayed at EOL
     public GameObject SpecialCardArea;
 
     private static CardUserPref instance;
 
     private void Awake()
     {
-        // Check if an instance already exists
+        // check if instance already exists
         if (instance == null)
         {
-            // If not, make this the instance
+            // if not, make this the instance
             instance = this;
 
-            // Make the object persistent across scenes
+            // to make the object persistent across scenes fr user saving and loading in next levels
             DontDestroyOnLoad(gameObject);
 
-            // Load or reset the deck and special cards
+            // load or reset the deck and special cards depending on user progress
             LoadDeck();
             if (deck.Count < 10)
             {
@@ -37,33 +42,35 @@ public class CardUserPref : MonoBehaviour
 
             }
 
-            // Populate the card dictionary
+            // populate the card dictionary for saving/retrieval
             PopulateCardDictionary();
         }
         else
         {
-            // If an instance already exists, destroy this object
+            // if an instance already exists, destroy it
             Destroy(gameObject);
         }
     }
 
-
+    // save deck on user exit
     private void OnDestroy()
     {
         SaveDeck();
     }
 
+    // retrieve user deck
     public List<string> GetDeck()
     {
         return deck;
     }
 
+    // add card to deck, for adding special cards won
     public void AddCardToDeck(string cardName)
     {
         deck.Add(cardName);
     }
 
-
+    // reset specials to contain all special cards - for new games/game over
     public void ResetSpecialCards()
     {
         specialCards.Clear();
@@ -73,31 +80,37 @@ public class CardUserPref : MonoBehaviour
         });
     }
 
+    // for removing cards from deck easily
     public void RemoveCardFromDeck(string cardName)
     {
         deck.Remove(cardName);
     }
 
+    // save the user deck as string
     public void SaveDeck()
     {
         string serializedDeck = SerializeDeck(deck);
         PlayerPrefs.SetString(DeckKey, serializedDeck);
     }
 
+    // retrieve user deck
     public void LoadDeck()
     {
         string savedDeck = PlayerPrefs.GetString(DeckKey);
+
+        // if there's a saved deck
         if (!string.IsNullOrEmpty(savedDeck))
         {
             deck = DeserializeDeck(savedDeck);
         }
-        else
+        else //if not, make a new one and save it (for first gameplay)
         {
-            ResetDeckToOriginal(); // Reset the deck to original cards
-            SaveDeck(); // Save the reset deck
+            ResetDeckToOriginal(); // reset the deck to original cards
+            SaveDeck(); // save the reset deck
         }
     }
 
+    // reset deck to original 9 cards and call method to reset specials - for new game/game over
     public void ResetDeckToOriginal()
     {
         deck.Clear();
@@ -109,6 +122,7 @@ public class CardUserPref : MonoBehaviour
         SaveDeck();
     }
 
+    // JSON used to save the deck
     private string SerializeDeck(List<string> deckToSerialize)
     {
         string serializedDeck = JsonConvert.SerializeObject(deckToSerialize, new JsonSerializerSettings
@@ -118,12 +132,14 @@ public class CardUserPref : MonoBehaviour
         return serializedDeck;
     }
 
+    // for deck retrieval
     private List<string> DeserializeDeck(string serializedDeck)
     {
         List<string> deckToDeserialize = JsonConvert.DeserializeObject<List<string>>(serializedDeck);
         return deckToDeserialize;
     }
 
+    // retrieve cards by name string
     public GameObject GetCardByName(string cardName)
     {
         GameObject card;
@@ -134,7 +150,7 @@ public class CardUserPref : MonoBehaviour
         return null;
     }
 
-    // Populate the card dictionary with card names and corresponding GameObjects
+    // populate the card dictionary with card names and corresponding card gameobjects
     private void PopulateCardDictionary()
     {
         cardDictionary.Clear();
