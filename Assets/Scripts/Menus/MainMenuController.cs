@@ -10,6 +10,9 @@ public class MainMenuController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     private LevelManager levelManager;
+    public GameObject continueButton;
+    private const string LevelKey = "CurrentLevel";
+
 
     public void playGame()
     {
@@ -36,6 +39,12 @@ public class MainMenuController : MonoBehaviour
         optionsMenu.SetActive(false);
         AudioManager.instance.PlaySound("Button Click");
     }
+    public void continueGame()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetString(LevelKey));
+        AudioManager.instance.PlaySound("Button Click");
+    }
+
 
     public void exitGame()
     {
@@ -45,12 +54,14 @@ public class MainMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (PlayerPrefs.HasKey(LevelKey))
+        {
+            continueButton.SetActive(true);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
