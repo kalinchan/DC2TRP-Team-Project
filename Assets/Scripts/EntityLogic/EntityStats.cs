@@ -30,6 +30,8 @@ public class EntityStats : MonoBehaviour
     public Animator animP;
     public Animator animE;
 
+    private GameObject progress;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,8 @@ public class EntityStats : MonoBehaviour
         animE = enemy.GetComponent<Animator>();
         specialx2Text = GameObject.Find("DoubleDamageActive").GetComponent<TextMeshProUGUI>();
         specialx2Text.enabled = false;
+
+        progress = GameObject.Find("Progress");
     }
 
     // Update is called once per frame
@@ -120,6 +124,8 @@ public class EntityStats : MonoBehaviour
         AudioManager.instance.PlaySound("End Level");
         victoryScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        progress.GetComponent<ProgressManager>().incrementLevel();
+        
     }
 
     IEnumerator EndGameScreenCoroutine()
