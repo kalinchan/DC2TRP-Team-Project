@@ -902,15 +902,10 @@ MonoBehaviour:
   defeatScreen: {fileID: 0}
   currentScene: 0
   levelManager: {fileID: 0}
+  levelLoad: {fileID: 0}
   self: {fileID: 0}
   enemy: {fileID: 0}
   specialx2Text: {fileID: 405657744}
-  SpecialCard01: {fileID: 0}
-  SpecialCard02: {fileID: 0}
-  SpecialCard03: {fileID: 0}
-  SpecialCard04: {fileID: 0}
-  SpecialCardArea: {fileID: 0}
-  SpecialCards: []
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
@@ -3084,11 +3079,11 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: health
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: maxHealth
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: defeatScreen
@@ -5642,35 +5637,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87134a19c53c9634882ae1dc31470e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card01: {fileID: 7241026101412582193, guid: c0be5b0377af75b4fb71738b9221eef7, type: 3}
-  Card02: {fileID: 7241026101412582193, guid: 8ade24247870b34409d974590125f958, type: 3}
-  Card03: {fileID: 1550772335203455360, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
-  Card04: {fileID: 7113903973978158019, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
-  Card05: {fileID: 3267529769625528447, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
-  Card06: {fileID: 8604379625322660539, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
-  Card07: {fileID: 2202660001311629488, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
-  Card08: {fileID: 4201483250616043627, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
-  Card09: {fileID: 4201483250616043627, guid: 3de134cc967f70541bfcc3c49515b925, type: 3}
-  Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
-  Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
-  Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
-  Card13: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
   PlayerArea: {fileID: 737675074}
+  SpecialCardArea: {fileID: 0}
   maxHandSize: 0
-  cardsToDeal: 0
   handSize: 5
-  dCButton: {fileID: 0}
+  cardUserPref: {fileID: 0}
+  availableCards: []
+  cardsToDeal: 0
+  cardsAtEnd: 1
   Background01: {fileID: 21300000, guid: cb230aa16fbe5d34696549c62b5709fe, type: 3}
   Background02: {fileID: 21300000, guid: 95793b29f8c5c1a4582e6b3b45ddd572, type: 3}
   Background03: {fileID: 21300000, guid: 9871881f5b7377b4aaf152a3742748b0, type: 3}
   Background04: {fileID: 21300000, guid: 829bb9e3882d97d479e8457f59d6eac3, type: 3}
   Background05: {fileID: 21300000, guid: c434b50fcb5ab774fa82ca524c57964a, type: 3}
   backgroundParent: {fileID: 1652737086}
-  specialInt: 0
-  level: 1
-  backgroundInt: 0
-  cards: []
-  specialcards: []
 --- !u!114 &1652737095
 MonoBehaviour:
   m_ObjectHideFlags: 0
