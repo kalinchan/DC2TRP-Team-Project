@@ -21,28 +21,41 @@ public class ProgressManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        if (levels.Contains(currentSceneName))
-        {
-            // Key doesn't exist so save current level
-            if (!PlayerPrefs.HasKey(LevelKey))
-            {
-                PlayerPrefs.SetString(LevelKey, currentSceneName);
-            }
-
-            // Key does exist so check if current level is higher than saved level
-            string savedLevel = PlayerPrefs.GetString(LevelKey);
-            int savedLevelIndex = levels.IndexOf(savedLevel);
-            int currentLevelIndex = levels.IndexOf(currentSceneName);
-            if (currentLevelIndex > savedLevelIndex)
-            {
-                PlayerPrefs.SetString(LevelKey, currentSceneName);
-            }
-        }
+        
     }
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject); // do not destroy me when a new scene loads
     }
+
+    public void incrementLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (levels.Contains(currentSceneName))
+        {
+            int currentLevelIndex = levels.IndexOf(currentSceneName);
+
+            // Key doesn't exist so save current level
+            if (!PlayerPrefs.HasKey(LevelKey))
+            {
+
+                PlayerPrefs.SetString(LevelKey, levels[currentLevelIndex+1]);
+            }
+
+            // Key does exist so check if current level is higher than saved level
+            string savedLevel = PlayerPrefs.GetString(LevelKey);
+            int savedLevelIndex = levels.IndexOf(savedLevel);
+            if (currentLevelIndex + 1 > savedLevelIndex)
+            {
+                if(currentLevelIndex+1 > levels.Count)
+                {
+                    return;
+                }
+                PlayerPrefs.SetString(LevelKey, levels[currentLevelIndex+1]);
+            }
+        }
+    }
+
+
 }
