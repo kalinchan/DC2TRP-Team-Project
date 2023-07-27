@@ -53,6 +53,8 @@ public class EnemyLogic : MonoBehaviour
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
 
+        
+
 
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";

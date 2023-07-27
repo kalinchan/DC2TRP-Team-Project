@@ -15,13 +15,9 @@ public class EntityStats : MonoBehaviour
     private int specialInt;
     public int currentScene;
     public LevelManager levelManager;
+    public LevelLoad levelLoad;
     public GameObject self, enemy;
     public TMP_Text specialx2Text;
-
-    //special card at end of level
-    public GameObject SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04;
-    public GameObject SpecialCardArea;
-    public static List<GameObject> SpecialCards = new List<GameObject>();
 
     // for special card attack multiplier
     public bool specialx2 = false;
@@ -54,6 +50,7 @@ public class EntityStats : MonoBehaviour
         skipDraw = false;
         drained = false;
         levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
+        levelLoad = GameObject.Find("Background").GetComponent<LevelLoad>();
         self = GameObject.Find("Player");
         enemy = GameObject.Find("Enemy");
         animP = self.GetComponent<Animator>();
@@ -62,6 +59,7 @@ public class EntityStats : MonoBehaviour
         specialx2Text.enabled = false;
 
         progress = GameObject.Find("Progress");
+
     }
 
     // Update is called once per frame
@@ -120,10 +118,10 @@ public class EntityStats : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
-        AddSpecialCard();
         AudioManager.instance.PlaySound("End Level");
         victoryScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        levelLoad.DisplayCardAtEnd();
         progress.GetComponent<ProgressManager>().incrementLevel();
         
     }
@@ -283,27 +281,6 @@ public class EntityStats : MonoBehaviour
     public int getCurrentDefence()
     {
         return defence;
-    }
-
-    // add special card to victory screen, showing what was rewarded
-    private void AddSpecialCard()
-    {
-        AudioManager.instance.PlaySound("Special Move");
-        // get all special cards
-        SpecialCards.AddRange(new List<GameObject>
-            {
-                SpecialCard01, SpecialCard02, SpecialCard03, SpecialCard04
-
-            }
-        );
-
-        specialInt = Random.Range(0, SpecialCards.Count);
-
-        // instantiate special card depending on which level is completed --
-        GameObject specialCard = Instantiate(SpecialCards[specialInt], new Vector3(0, 0, 0), Quaternion.identity);
-        specialCard.transform.SetParent(SpecialCardArea.transform, false);
-        SpecialCards.RemoveAt(specialInt);
-
     }
 
     public void setMultiplierToTrue()

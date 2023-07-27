@@ -1,133 +1,141 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+
+// @author: CH
+// @date last updated: 19.07.23
+// version: 2.0
 
 public class LevelLoad : MonoBehaviour
 {
-    public GameObject Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09, Card10, Card11, Card12, Card13;
     public GameObject PlayerArea;
-    public int maxHandSize, cardsToDeal;
+    public GameObject SpecialCardArea;
+    public int maxHandSize;
     public int handSize;
-    public GameObject dCButton;
+    public CardUserPref cardUserPref;
+    public List<string> availableCards;
+    public int cardsToDeal;
+    public int cardsAtEnd = 1; // Number of cards displayed at the end of the level
     public Sprite Background01, Background02, Background03, Background04, Background05;
     public GameObject backgroundParent;
-    public int specialInt;
-    public int level;
-    private LevelManager levelManager;
-    public int backgroundInt;
 
-    public List<GameObject> cards = new List<GameObject>();
-    public List<GameObject> specialcards = new List<GameObject>();
-    List<Sprite> backgrounds = new List<Sprite>();
-
-    void Awake()
+    private void Awake()
     {
-        handSize = 0;
+        handSize = 0; // no cards in hand before load
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         backgroundParent = GameObject.Find("Background");
-        // get current scene (current level) --
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+       
+
+        // set the background for the current level
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        // ensure only 5 cards added to hand
-        specialInt = currentScene.buildIndex - 3;
-        maxHandSize = 5;
-        backgroundInt = currentScene.buildIndex - 3;
-        // level 1 = build index 3, so for first item in list [0] we must -3 from the build index // level 2 = index 4 so background list item [1]
-
-        // set backgrounds list
-        backgrounds.AddRange(new List<Sprite>
-            {
-                Background01, Background02, Background03, Background04, Background05
-        }
-        );
-
+        int backgroundInt = currentScene.buildIndex - 3;
         backgroundParent.transform.GetChild(backgroundInt).gameObject.SetActive(true);
 
-        // start level needing 5 cards to deal
+        // set availableCards list to the saved deck in CardUserPref script
+        cardUserPref.LoadDeck();
+        availableCards = new List<string>(cardUserPref.GetDeck());
+
+        // only 5 cards in hand at a time - 5 each turn
+        maxHandSize = 5;
         cardsToDeal = maxHandSize;
+        handSize = 0;
 
-        // cards without special for first round
-        cards.AddRange(new List<GameObject>
-            {
-                Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08, Card09
-        });
-
-        // list of special cards to iterate through and add in next levels
-        specialcards.AddRange(new List<GameObject>
-        {
-            Card10, Card11, Card12, Card13
-        }
-        );
-
-        // if level 1 do not add the special card to player hand deck
-        if (sceneName == "BattleScene")
-        {
-            initialiseHand();
-        }
-        else // if after first level, continue with adding special cards that have been won...
-        {
-            addSpecial();
-            initialiseHand();
-        }
+        // deal cards
+        initialiseHand();
+        Debug.Log("Available cards: " + availableCards.Count); // checking available cards each level - debugging
+        Debug.Log("Deck cards: " + cardUserPref.deck.Count); // checking deck is saved on new load - debugging
+        Debug.Log("Special cards: " + cardUserPref.specialCards.Count);
 
     }
-   
 
-    // load 5 cards into hand
+    // deal cards
     public void initialiseHand()
     {
-        // load 5 cards
-        
+        CalculateNoCardsToDeal(); // depending on cards left in hand after a turn
+        Debug.Log("Available cards: " + availableCards.Count); // debugging
 
-        for (var i = 0; i < calculateNoCardsToDeal(); i++)
+        for (int i = 0; i < cardsToDeal; i++)
         {
+            // randomly select cards
+            int randomIndex = Random.Range(0, availableCards.Count);
+            string cardName = availableCards[randomIndex];
 
-            GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
-            playerCard.transform.SetParent(PlayerArea.transform, false);
-            
+            // display in hand on screen
+            GameObject playerCard = cardUserPref.GetCardByName(cardName);
+            GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+            instantiatedCard.transform.SetParent(PlayerArea.transform, false);
+
+            // increase handsize for cardstdeal calculation
+            handSize++;
         }
-        handSize = maxHandSize;
-        Debug.Log("Level: " + level);
-        Debug.Log("Cards amount: " + cards.Count);
 
+        
     }
 
-    // reduce no of cards in hand when played
+
+    // reduce hand size by 1 - called by other methods when a card is used / disposed of
     public void reduceHandSize()
     {
         handSize--;
-        Debug.Log("HandSize = "+ handSize);
+        Debug.Log("HandSize = " + handSize); // debugging
     }
 
-    public int calculateNoCardsToDeal()
+    // calculate the number of cards needed to deal
+    private void CalculateNoCardsToDeal()
     {
+        // max hand size - cards in current hand
         cardsToDeal = maxHandSize - handSize;
-        return cardsToDeal;
     }
 
-
-    public void addSpecial()
+    // display special card won at end of level
+    public void DisplayCardAtEnd()
     {
-        if (specialInt == 5)
+        SpecialCardArea = GameObject.Find("SpecialCardHand");
+        if (SpecialCardArea != null) // error handling
         {
-            specialInt = 0;
-        }
+            if (cardUserPref.specialCards.Count > 0) // error handling
+            {
+                // select special card at random
+                int specialInt = Random.Range(0, cardUserPref.specialCards.Count);
+                // get the special card
+                string specialCardName = cardUserPref.specialCards[specialInt];
+                GameObject specialCard = cardUserPref.GetCardByName(specialCardName);
 
-        for (var i = 0; i < specialInt; i++)
+                if (specialCard != null) // error handling
+                {
+                    // show the selected special card on screen to show the user what they won
+                    GameObject instantiatedCard = Instantiate(specialCard, Vector3.zero, Quaternion.identity);
+                    instantiatedCard.transform.SetParent(SpecialCardArea.transform, false);
+
+                    // remove from the available special cards list in CardUserPref script
+                    cardUserPref.specialCards.RemoveAt(specialInt);
+
+                    // add the special card to the user's deck
+                    cardUserPref.AddCardToDeck(specialCardName);
+
+                    // save the deck
+                    cardUserPref.SaveDeck();
+
+                    Debug.Log("Deck cards: " + cardUserPref.deck.Count); // debugging to check added successfully
+                }
+                else
+                {
+                    Debug.LogError("Special card not found: " + specialCardName); // debugging for out of range exceptions
+                }
+            }
+            else
+            {
+                Debug.LogError("specialCards list is empty!"); // debugging for out of range exceptions
+            }
+        }
+        else
         {
-
-            cards.Add(specialcards[i]);
+            Debug.LogError("SpecialCardArea is not assigned!"); // debugging for out of range exceptions
         }
-
     }
-
 }
-

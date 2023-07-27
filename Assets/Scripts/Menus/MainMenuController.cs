@@ -20,6 +20,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("VS_L1");
         PlayerPrefs.DeleteKey("CurrentLevel");
+        PlayerPrefs.DeleteKey("Deck");
+        PlayerPrefs.DeleteKey("SpecialCards");
         AudioManager.instance.PlaySound("Button Click");
     }
 
