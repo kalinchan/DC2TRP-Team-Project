@@ -8,6 +8,9 @@ public class ProgressManager : MonoBehaviour
 
     private List<string> levels = new List<string>();
     private const string LevelKey = "CurrentLevel";
+
+    public Dictionary<string, bool> firstPlayDict = new Dictionary<string, bool>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,8 @@ public class ProgressManager : MonoBehaviour
         levels.Add("BattleScene3");
         levels.Add("BattleScene4");
         levels.Add("BattleScene5");
+
+        ResetFirstPlayDictionary(); // sets all levels as the first playthrough for special cards
     }
 
     // Update is called once per frame
@@ -56,6 +61,29 @@ public class ProgressManager : MonoBehaviour
             }
         }
     }
+
+    // populate the card dictionary with card names and corresponding card gameobjects
+    public void ResetFirstPlayDictionary()
+    {
+        firstPlayDict.Clear();
+        firstPlayDict.Add("BattleScene", true);
+        firstPlayDict.Add("BattleScene2", true);
+        firstPlayDict.Add("BattleScene3", true);
+        firstPlayDict.Add("BattleScene4", true);
+        firstPlayDict.Add("BattleScene5", true);
+    }
+
+    public bool getFirstPlayBool(string level) {
+        bool fp;
+        firstPlayDict.TryGetValue(level, out fp);
+        return fp;
+    }
+
+    public void setPlaythoughAsReplay(string level) // if selected from level select screen, set to false
+    {
+        firstPlayDict[level] = false;
+    }
+
 
 
 }

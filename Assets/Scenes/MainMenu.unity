@@ -3540,6 +3540,7 @@ GameObject:
   - component: {fileID: 2041247440}
   - component: {fileID: 2041247439}
   - component: {fileID: 2041247441}
+  - component: {fileID: 2041247442}
   m_Layer: 0
   m_Name: Progress
   m_TagString: Untagged
@@ -3601,7 +3602,18 @@ MonoBehaviour:
   Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
   Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
   Card13: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
-  SpecialCardArea: {fileID: 0}
+--- !u!114 &2041247442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041247438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a26aed4b2b36949b60e4b8510dccbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2048678398
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,12 @@ public class EntityStats : MonoBehaviour
 {
     public int health = 10, defence = 0, maxHealth = 10;
     public bool isDead, skipDraw, drained;
-    public GameObject victoryScreen, optionsBackground, defeatScreen;
+    public GameObject victoryScreen, victoryScreenReplay, optionsBackground, defeatScreen;
     private List<GameObject> resultDisable;
     private bool gameOver;
     private int specialInt;
     public int currentScene;
+    public string currentSceneName;
     public LevelManager levelManager;
     public LevelLoad levelLoad;
     public GameObject self, enemy;
@@ -27,6 +28,7 @@ public class EntityStats : MonoBehaviour
     public Animator animE;
 
     private GameObject progress;
+    private ProgressManager progressManager;
 
 
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class EntityStats : MonoBehaviour
 
         health = maxHealth;
         currentScene = SceneManager.GetActiveScene().buildIndex;
+        currentSceneName = SceneManager.GetActiveScene().name;
         specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
         skipDraw = false;
         drained = false;
@@ -59,6 +62,13 @@ public class EntityStats : MonoBehaviour
         specialx2Text.enabled = false;
 
         progress = GameObject.Find("Progress");
+        progressManager = progress.GetComponent<ProgressManager>();
+        defeatScreen = GameObject.Find("Defeat");
+        defeatScreen.SetActive(false);
+        victoryScreen = GameObject.Find("Victory");
+        victoryScreen.SetActive(false);
+        victoryScreenReplay = GameObject.Find("VictoryReplay");
+        victoryScreenReplay.SetActive(false);
 
     }
 
@@ -76,7 +86,7 @@ public class EntityStats : MonoBehaviour
 
             if (gameObject.name.Equals("Player"))
             {
-                applyPlayerAnim("isDead");
+                applyPlayerAnim("playerIsDead");
                 StartCoroutine(DefeatScreenCoroutine());
 
             }
@@ -86,7 +96,16 @@ public class EntityStats : MonoBehaviour
                 if (PlayerPrefs.GetInt("Player_Max_Level", 1) < currentScene) {
                     PlayerPrefs.SetInt("Player_Max_Level", currentScene);
                 }
-                StartCoroutine(VictoryScreenCoroutine());
+                // if it's the first playthrough, show the victory screen where the user gets a special card
+                if (progressManager.getFirstPlayBool(currentSceneName)) 
+                {
+                    StartCoroutine(VictoryScreenCoroutine());
+                }
+                // otherwise it's a replay and the user does not get a special card
+                else
+                {
+                    StartCoroutine(VictoryReplayScreenCoroutine());
+                }
             }
 
             else 
@@ -110,23 +129,30 @@ public class EntityStats : MonoBehaviour
         optionsBackground.SetActive(true);
         AudioManager.instance.PlaySound("Defeat Screen");
         defeatScreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator VictoryScreenCoroutine()
     {
         yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
+        progressManager.setPlaythoughAsReplay(currentSceneName);
         optionsBackground.SetActive(true);
-        AudioManager.instance.PlaySound("End Level");
+        AudioManager.instance.PlaySound("End Level"); 
         victoryScreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
         levelLoad.DisplayCardAtEnd();
-        progress.GetComponent<ProgressManager>().incrementLevel();
-        
+        progressManager.incrementLevel();
     }
 
-    IEnumerator EndGameScreenCoroutine()
+    IEnumerator VictoryReplayScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1.2f);
+        resultDisable.ForEach(x => x.SetActive(false));
+        optionsBackground.SetActive(true);
+        AudioManager.instance.PlaySound("End Level");
+        victoryScreenReplay.SetActive(true);
+    }      
+        
+        IEnumerator EndGameScreenCoroutine()
     {
         yield return new WaitForSeconds(1);
         resultDisable.ForEach(x => x.SetActive(false));
