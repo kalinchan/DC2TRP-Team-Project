@@ -8,12 +8,13 @@ public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
     public turnStatus currentTurn;
-    //public GameObject[] enemies;
     public GameObject enemy;
     public TMP_Text MoveText;
     public GameObject player, eTButton;
     private Hand playerHand;
     public GameObject border;
+    public GradeManager gradeManager;
+
 
 
 
@@ -29,9 +30,7 @@ public class TurnManager : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
         playerHand = player.GetComponent<Hand>();
-
-
-
+        
     }
 
     // Update is called once per frame
@@ -58,7 +57,6 @@ public class TurnManager : MonoBehaviour
         {
             playerHand.currentlySelectedCard = null;
             MoveText.text = "Enemy Turn";
-            //Cursor.lockState = CursorLockMode.Locked;
             eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;
             currentTurn = turnStatus.enemyTurn;
@@ -111,7 +109,14 @@ public class TurnManager : MonoBehaviour
     public void enablePlayer()
     {
         player.GetComponent<PlayerLogic>().myTurn = true;
-        
+        gradeManager = GameObject.Find("Progress").GetComponent<GradeManager>();
+        if (gradeManager == null)
+        {
+            Debug.Log("Cant find the Game Manager");
+        }
+        gradeManager.IncrementMoves();
+        Debug.Log("Turns Taken:" + gradeManager.moves);
+
         if (!player.GetComponent<EntityStats>().drained)
         {
             player.GetComponent<PlayerLogic>().resetEnergy();
@@ -129,6 +134,7 @@ public class TurnManager : MonoBehaviour
     {
         return currentTurn;
     }
+
 
 
 }

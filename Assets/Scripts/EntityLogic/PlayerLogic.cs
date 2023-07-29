@@ -24,7 +24,6 @@ public class PlayerLogic : MonoBehaviour
     public CursorMode cursorMode;
     public GameObject player;
     private Hand playerHand;
-    // attack not needed for player
 
 
 
@@ -38,11 +37,7 @@ public class PlayerLogic : MonoBehaviour
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 5;
-
-
-
-
-
+       
         if (energybar != null)
         {
             energybar.SetMaxEnergy(energyMax);
@@ -137,20 +132,26 @@ public class PlayerLogic : MonoBehaviour
     // change cursor on player hover to show it is interactible
     public void OnMouseEnter()
     {
-        // if selected card is defence card, ability to interact with player only and not enemies --
-        if (playerHand.currentlySelectedCard.group == "Defence")
-        {
-            Cursor.SetCursor(cursorShield, Vector2.zero, cursorMode);
+        if (playerHand != null){
+            {
+
+            }
+            // if selected card is defence card, ability to interact with player only and not enemies --
+            if (playerHand.currentlySelectedCard.group == "Defence")
+            {
+                Cursor.SetCursor(cursorShield, Vector2.zero, cursorMode);
+            }
+            else if (playerHand.currentlySelectedCard.group == "Special")
+            {
+                Cursor.SetCursor(cursorSpecial, Vector2.zero, cursorMode);
+            }
+            else if (playerHand.currentlySelectedCard.group == "Attack")
+            {
+                Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
+            }
+            else { OnMouseExit(); }
         }
-        else if (playerHand.currentlySelectedCard.group == "Special")
-        {
-            Cursor.SetCursor(cursorSpecial, Vector2.zero, cursorMode);
-        }
-        else if (playerHand.currentlySelectedCard.group == "Attack")
-        {
-            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
-        }
-        else { OnMouseExit(); }
+        else { return; }
     }
 
     // cursor to arrow when exit interactable object

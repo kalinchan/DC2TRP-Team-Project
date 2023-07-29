@@ -29,6 +29,12 @@ public class EntityStats : MonoBehaviour
 
     private GameObject progress;
     private ProgressManager progressManager;
+    private GradeManager gradeManager;
+    public TurnManager turnManager;
+    public TMP_Text V1grade;
+    public TMP_Text VRgrade;
+    public GradeReportLogic gradeReportLogic;
+
 
 
     // Start is called before the first frame update
@@ -42,7 +48,8 @@ public class EntityStats : MonoBehaviour
             GameObject.Find("Enemy"),
             GameObject.Find("Player"),
             GameObject.Find("ActiveArea"),
-            GameObject.Find("Turn Manager")
+            GameObject.Find("Turn Manager"),
+            GameObject.Find("Bin")
         };
 
 
@@ -52,23 +59,41 @@ public class EntityStats : MonoBehaviour
         specialInt = currentScene - 3; // scene index 3 = level 1 - first card in the special card list [0] to be selected
         skipDraw = false;
         drained = false;
-        levelManager = GameObject.Find("Background").GetComponent<LevelManager>();
-        levelLoad = GameObject.Find("Background").GetComponent<LevelLoad>();
-        self = GameObject.Find("Player");
-        enemy = GameObject.Find("Enemy");
-        animP = self.GetComponent<Animator>();
-        animE = enemy.GetComponent<Animator>();
-        specialx2Text = GameObject.Find("DoubleDamageActive").GetComponent<TextMeshProUGUI>();
-        specialx2Text.enabled = false;
 
-        progress = GameObject.Find("Progress");
-        progressManager = progress.GetComponent<ProgressManager>();
-        defeatScreen = GameObject.Find("Defeat");
-        defeatScreen.SetActive(false);
-        victoryScreen = GameObject.Find("Victory");
-        victoryScreen.SetActive(false);
-        victoryScreenReplay = GameObject.Find("VictoryReplay");
-        victoryScreenReplay.SetActive(false);
+        GameObject backgroundObject = GameObject.Find("Background");
+        if (backgroundObject != null)
+        {
+            levelLoad = backgroundObject.GetComponent<LevelLoad>();
+            levelManager = backgroundObject.GetComponent<LevelManager>();
+
+
+            self = GameObject.Find("Player");
+            enemy = GameObject.Find("Enemy");
+            animP = self.GetComponent<Animator>();
+            animE = enemy.GetComponent<Animator>();
+            specialx2Text = GameObject.Find("DoubleDamageActive").GetComponent<TextMeshProUGUI>();
+            specialx2Text.enabled = false;
+
+            progress = GameObject.Find("Progress");
+            progressManager = progress.GetComponent<ProgressManager>();
+            gradeManager = progress.GetComponent<GradeManager>();
+            defeatScreen = GameObject.Find("Defeat");
+            defeatScreen.SetActive(false);
+            victoryScreen = GameObject.Find("Victory");
+            victoryScreen.SetActive(false);
+            victoryScreenReplay = GameObject.Find("VictoryReplay");
+            victoryScreenReplay.SetActive(false);
+
+            if (currentSceneName == "BattleScene5")
+            {
+                GameObject endGame = GameObject.Find("End Game");
+                gradeReportLogic = endGame.GetComponent<GradeReportLogic>();
+                endGame.SetActive(false);
+            }
+        }
+
+
+        
 
     }
 
@@ -90,20 +115,24 @@ public class EntityStats : MonoBehaviour
                 StartCoroutine(DefeatScreenCoroutine());
 
             }
+
             else if (currentScene < levelManager.finalSceneId)
             {
                 applyEnemyAnim("enemyIsDead");
+                gradeManager.setVictoryGrade(currentSceneName);
                 if (PlayerPrefs.GetInt("Player_Max_Level", 1) < currentScene) {
                     PlayerPrefs.SetInt("Player_Max_Level", currentScene);
                 }
                 // if it's the first playthrough, show the victory screen where the user gets a special card
                 if (progressManager.getFirstPlayBool(currentSceneName)) 
                 {
+                    
                     StartCoroutine(VictoryScreenCoroutine());
                 }
                 // otherwise it's a replay and the user does not get a special card
                 else
                 {
+                    
                     StartCoroutine(VictoryReplayScreenCoroutine());
                 }
             }
@@ -111,56 +140,91 @@ public class EntityStats : MonoBehaviour
             else 
             {
                 applyEnemyAnim("enemyIsDead");
+                gradeManager.setVictoryGrade(currentSceneName);
                 StartCoroutine(EndGameScreenCoroutine());
             }
 
             gameOver = true;
 
         }
-
-
-
     }
 
     IEnumerator DefeatScreenCoroutine()
     {
+        AudioManager.instance.PlaySound("End Level");
         yield return new WaitForSeconds(1);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
         AudioManager.instance.PlaySound("Defeat Screen");
         defeatScreen.SetActive(true);
+        gradeManager.ResetMoves();
     }
 
     IEnumerator VictoryScreenCoroutine()
     {
+        AudioManager.instance.PlaySound("End Level");
         yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
         progressManager.setPlaythoughAsReplay(currentSceneName);
         optionsBackground.SetActive(true);
-        AudioManager.instance.PlaySound("End Level"); 
         victoryScreen.SetActive(true);
+        V1grade = GameObject.Find("V1Grade").GetComponent<TextMeshProUGUI>();
+        V1grade.text = gradeManager.getGrade(currentSceneName);
         levelLoad.DisplayCardAtEnd();
         progressManager.incrementLevel();
     }
 
     IEnumerator VictoryReplayScreenCoroutine()
     {
+        AudioManager.instance.PlaySound("End Level");
         yield return new WaitForSeconds(1.2f);
         resultDisable.ForEach(x => x.SetActive(false));
         optionsBackground.SetActive(true);
-        AudioManager.instance.PlaySound("End Level");
         victoryScreenReplay.SetActive(true);
-    }      
-        
-        IEnumerator EndGameScreenCoroutine()
-    {
-        yield return new WaitForSeconds(1);
-        resultDisable.ForEach(x => x.SetActive(false));
-        AudioManager.instance.PlaySound("Victory Screen");
-        SceneManager.LoadScene("EndGame");
-        Cursor.lockState = CursorLockMode.None;
+        VRgrade = GameObject.Find("VRGrade").GetComponent<TextMeshProUGUI>();
+        VRgrade.text = gradeManager.getGrade(currentSceneName);
+        Debug.Log("Victory Replay Grade: " + VRgrade.text);
+        Debug.Log("GradeManager: " + gradeManager.getGrade(currentSceneName)); 
+        gradeManager.PrintDictionaryContents();
 
     }
+
+
+
+    IEnumerator EndGameScreenCoroutine()
+    {
+        Debug.Log("EndGameCoroutine method invoked");
+        AudioManager.instance.PlaySound("End Level");
+        
+        yield return new WaitForSeconds(1.2f);
+
+        resultDisable.ForEach(x => x.SetActive(false));
+        AudioManager.instance.PlaySound("Victory Screen");
+        Debug.Log("before getting scene");
+
+        Debug.Log("Current Scene: " + SceneManager.GetActiveScene().name);
+
+        GetGradeReport();
+
+        gradeManager.ResetMoves();
+    }
+
+    void GetGradeReport()
+    {
+        Debug.Log("GetGradeReport method invoked");
+        if (gradeReportLogic != null)
+        {
+            gradeReportLogic.DisplayReportCard();
+        }
+        else
+        {
+            Debug.Log("Grade Report Logic is null");
+        }
+    }
+
+
+
+
 
     IEnumerator PlayerMoveCoroutine(string animation)
     {
