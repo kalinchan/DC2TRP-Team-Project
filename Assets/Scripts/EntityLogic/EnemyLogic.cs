@@ -95,14 +95,7 @@ public class EnemyLogic : MonoBehaviour
         specials.AddRange(new List<string>{
             "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence WAY up! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
         });
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
-        //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
-        //DefenceText.text = "Enemy Defence: " + self.defence + "";
         attacks.AddRange(new List<string>{
             "Pop Quiz! \n" + damage + " damage taken", "Assign Exam!\n" + damage + " damage taken", "Harsh Feedback!\n" + damage + " damage taken"
         });
@@ -114,6 +107,15 @@ public class EnemyLogic : MonoBehaviour
         specials.AddRange(new List<string>{
             "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence WAY up! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
         });
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
+        //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
+        //DefenceText.text = "Enemy Defence: " + self.defence + "";
+
     }
 
     public void updateUI()

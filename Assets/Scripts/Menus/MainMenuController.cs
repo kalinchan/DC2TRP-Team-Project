@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
     private LevelManager levelManager;
     public GameObject continueButton;
     private const string LevelKey = "CurrentLevel";
+    private ProgressManager progressManager;
 
     private Dictionary<string, string> versus = new Dictionary<string, string>();
 
@@ -23,6 +24,7 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.DeleteKey("Deck");
         PlayerPrefs.DeleteKey("SpecialCards");
         AudioManager.instance.PlaySound("Button Click");
+        progressManager.ResetFirstPlayDictionary();
     }
 
     public void tutorial()
@@ -73,6 +75,8 @@ public class MainMenuController : MonoBehaviour
         versus.Add("BattleScene3", "VS_L3");
         versus.Add("BattleScene4", "VS_L4");
         versus.Add("BattleScene5", "VS_L5");
+
+        progressManager = GameObject.Find("Progress").GetComponent<ProgressManager>();
     }
 
     // Update is called once per frame
