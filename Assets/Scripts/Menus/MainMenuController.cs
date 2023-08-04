@@ -10,7 +10,9 @@ public class MainMenuController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     private LevelManager levelManager;
+    public GameObject playButton;
     public GameObject continueButton;
+    public GameObject newGameButton;
     private const string LevelKey = "CurrentLevel";
     private ProgressManager progressManager;
 
@@ -56,7 +58,6 @@ public class MainMenuController : MonoBehaviour
         AudioManager.instance.PlaySound("Button Click");
     }
 
-
     public void exitGame()
     {
         AudioManager.instance.PlaySound("Button Click");
@@ -67,7 +68,9 @@ public class MainMenuController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(LevelKey))
         {
+            playButton.SetActive(false);
             continueButton.SetActive(true);
+            newGameButton.SetActive(true);
         }
 
         versus.Add("BattleScene", "VS_L1");
