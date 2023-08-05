@@ -15,7 +15,6 @@ public class LevelEndController : MonoBehaviour
     public int nextSceneId;
 
 
-
     //public GameObject mainMenu;
 
     // Start is called before the first frame update
@@ -25,8 +24,7 @@ public class LevelEndController : MonoBehaviour
         levelSelectButton = GameObject.Find("LevelSelectButton");
         mainMenuButton = GameObject.Find("MainMenuButton");
         levelManager = GetComponent<LevelManager>();
-
-
+ 
     }
 
     // Update is called once per frame
