@@ -76,12 +76,14 @@ public class ProgressManager : MonoBehaviour
     public bool getFirstPlayBool(string level) {
         bool fp;
         firstPlayDict.TryGetValue(level, out fp);
+        Debug.Log($"Level: {level}, FirstPlay: {fp}");
         return fp;
     }
 
     public void setPlaythoughAsReplay(string level) // if selected from level select screen, set to false
     {
         firstPlayDict[level] = false;
+        Debug.Log($"Level: {level}, Set as Replay: {firstPlayDict[level]}");
     }
 
 

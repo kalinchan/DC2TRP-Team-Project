@@ -23,7 +23,7 @@ public class LevelLoad : MonoBehaviour
     private void Awake()
     {
         handSize = 0; // no cards in hand before load
-    }
+}
 
     private void Start()
     {
@@ -138,4 +138,5 @@ public class LevelLoad : MonoBehaviour
             Debug.LogError("SpecialCardArea is not assigned!"); // debugging for out of range exceptions
         }
     }
+
 }

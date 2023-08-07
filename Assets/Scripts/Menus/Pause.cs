@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject optionsBackground;
     public GameObject victory;
+    public GameObject victoryReplay;
     public GameObject defeat;
     public TurnManager turnManager;
     public bool state;
@@ -28,6 +29,10 @@ public class Pause : MonoBehaviour
                 return;
             }
             if (victory.activeInHierarchy)
+            {
+                return;
+            }
+            if (victoryReplay.activeInHierarchy)
             {
                 return;
             }

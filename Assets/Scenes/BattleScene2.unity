@@ -863,8 +863,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You have completed this level again!
 
-    If your grade is higher this
-    time around, your report will be updated!'
+    Your grade has been updated'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
@@ -3912,11 +3911,11 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: health
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: defeatScreen
@@ -4549,6 +4548,14 @@ MonoBehaviour:
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
+  turnManager: {fileID: 0}
+  V1grade: {fileID: 0}
+  VRgrade: {fileID: 0}
+  gradeL1: {fileID: 0}
+  gradeL2: {fileID: 0}
+  gradeL3: {fileID: 0}
+  gradeL4: {fileID: 0}
+  gradeL5: {fileID: 0}
 --- !u!1 &1259753586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5776,6 +5783,7 @@ MonoBehaviour:
   player: {fileID: 0}
   eTButton: {fileID: 0}
   border: {fileID: 0}
+  gradeManager: {fileID: 0}
 --- !u!4 &1550697197
 Transform:
   m_ObjectHideFlags: 0
@@ -6654,6 +6662,7 @@ MonoBehaviour:
   player: {fileID: 587776602}
   eTButton: {fileID: 1606585377}
   border: {fileID: 0}
+  gradeManager: {fileID: 0}
 --- !u!114 &1652737096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7419,7 +7428,7 @@ GameObject:
   - component: {fileID: 1802573308}
   - component: {fileID: 1802573307}
   m_Layer: 5
-  m_Name: Grade
+  m_Name: VRGrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8252,8 +8261,9 @@ MonoBehaviour:
   - {fileID: 587776602}
   optionsMenu: {fileID: 1024976604}
   optionsBackground: {fileID: 624319554}
-  victory: {fileID: 0}
-  defeat: {fileID: 0}
+  victory: {fileID: 125841011}
+  victoryReplay: {fileID: 1711764766}
+  defeat: {fileID: 2032627373}
   turnManager: {fileID: 1550697196}
   state: 0
 --- !u!114 &1900381001
@@ -8671,7 +8681,7 @@ GameObject:
   - component: {fileID: 1967374916}
   - component: {fileID: 1967374915}
   m_Layer: 5
-  m_Name: Grade
+  m_Name: V1Grade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8717,7 +8727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A+
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
@@ -10630,7 +10640,7 @@ PrefabInstance:
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: defeatScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2032627373}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: specialx2Text
       value: 
@@ -10638,7 +10648,7 @@ PrefabInstance:
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: victoryScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 125841011}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: SpecialCardArea
       value: 
@@ -10647,6 +10657,10 @@ PrefabInstance:
       propertyPath: optionsBackground
       value: 
       objectReference: {fileID: 624319554}
+    - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
+      propertyPath: victoryScreenReplay
+      value: 
+      objectReference: {fileID: 1711764766}
     - target: {fileID: 4708670762781225366, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: energybar
       value: 
