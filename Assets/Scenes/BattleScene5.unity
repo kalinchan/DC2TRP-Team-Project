@@ -11136,6 +11136,7 @@ GameObject:
   - component: {fileID: 2136579737}
   - component: {fileID: 2136579736}
   - component: {fileID: 2136579735}
+  - component: {fileID: 2136579738}
   - component: {fileID: 2136579734}
   - component: {fileID: 2136579733}
   m_Layer: 5
@@ -11241,9 +11242,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2136579734}
-        m_TargetAssemblyTypeName: LevelEndController, Assembly-CSharp
-        m_MethodName: mainMenu
+      - m_Target: {fileID: 2136579738}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: LoadCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11291,6 +11292,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136579731}
   m_CullTransparentMesh: 1
+--- !u!114 &2136579738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136579731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918d6b448f78b0948a047fc41ace0aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  optionsMenu: {fileID: 0}
+  continueButton: {fileID: 0}
+  progress: {fileID: 0}
 --- !u!222 &13727697832260036
 CanvasRenderer:
   m_ObjectHideFlags: 0

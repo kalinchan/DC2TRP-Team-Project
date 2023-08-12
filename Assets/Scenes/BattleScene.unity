@@ -2217,11 +2217,7 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   V1grade: {fileID: 0}
   VRgrade: {fileID: 0}
-  gradeL1: {fileID: 0}
-  gradeL2: {fileID: 0}
-  gradeL3: {fileID: 0}
-  gradeL4: {fileID: 0}
-  gradeL5: {fileID: 0}
+  gradeReportLogic: {fileID: 0}
 --- !u!1 &414113948
 GameObject:
   m_ObjectHideFlags: 0
