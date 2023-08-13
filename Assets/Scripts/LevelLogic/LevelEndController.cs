@@ -10,9 +10,11 @@ public class LevelEndController : MonoBehaviour
     public GameObject nextLevelButton;
     public GameObject levelSelectButton;
     public GameObject mainMenuButton;
+    public GameObject playAgainButton;
 
     public int currentScene;
     public int nextSceneId;
+    private int VSScreenId;
 
 
     //public GameObject mainMenu;
@@ -23,6 +25,7 @@ public class LevelEndController : MonoBehaviour
         nextLevelButton = GameObject.Find("NextLevelButton");
         levelSelectButton = GameObject.Find("LevelSelectButton");
         mainMenuButton = GameObject.Find("MainMenuButton");
+        playAgainButton = GameObject.Find("PlayAgainButton");
         levelManager = GetComponent<LevelManager>();
  
     }
@@ -53,6 +56,14 @@ public class LevelEndController : MonoBehaviour
         nextSceneId = currentScene + 7;
         SceneManager.LoadScene(nextSceneId);
         levelManager.increaseCurrentScene();
+    }
+
+    //play level again
+    public void playAgain()
+    {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        VSScreenId = currentScene + 6;
+        SceneManager.LoadScene(VSScreenId);
     }
 
     // load level selection screen --
