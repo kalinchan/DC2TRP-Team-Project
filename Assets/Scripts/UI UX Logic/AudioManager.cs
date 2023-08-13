@@ -92,6 +92,7 @@ public class AudioManager : MonoBehaviour
         if (shouldPlayMusic == true)
         {
             shouldPlayMusic = false;
+            playlist[currentPlayingIndex].source.Stop();
             currentPlayingIndex = 999; // reset playlist counter
         }
     }
@@ -99,7 +100,7 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         // if we are playing a track from the playlist && it has stopped playing
-        if (currentPlayingIndex != 999 && !playlist[currentPlayingIndex].source.isPlaying)
+        if (currentPlayingIndex != 999 && !playlist[currentPlayingIndex].source.isPlaying && shouldPlayMusic)
         {
             currentPlayingIndex++; // set next index
             if (currentPlayingIndex >= playlist.Length)

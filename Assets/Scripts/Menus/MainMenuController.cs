@@ -67,6 +67,15 @@ public class MainMenuController : MonoBehaviour
         AudioManager.instance.PlaySound("Button Click");
         Application.Quit();
     }
+
+    public void LoadCredits()
+    {
+        AudioManager.instance.PlaySound("Button Click");
+        AudioManager.instance.StopMusic();
+        SceneManager.LoadScene("Credits");
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +83,8 @@ public class MainMenuController : MonoBehaviour
         {
             continueButton.SetActive(true);
         }
+
+        AudioManager.instance.PlayMusic();
 
         versus.Add("BattleScene", "VS_L1");
         versus.Add("BattleScene2", "VS_L2");
