@@ -30,7 +30,7 @@ public class CardUserPref : MonoBehaviour
             //instance = this;
 
             // to make the object persistent across scenes fr user saving and loading in next levels
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
 
             // load or reset the deck and special cards depending on user progress
             LoadDeck();

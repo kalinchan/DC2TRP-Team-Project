@@ -7,24 +7,32 @@ public class LevelButtonDisabler : MonoBehaviour
 {
 
     public List<Button> buttons;
+    private List<string> levels = new List<string>();
     // Start is called before the first frame update
+
     void Start()
     {
-        int maxLevel = PlayerPrefs.GetInt("Player_Max_Level", 1);
-        foreach(Button button in buttons)
+        levels.Add("BattleScene");
+        levels.Add("BattleScene2");
+        levels.Add("BattleScene3");
+        levels.Add("BattleScene4");
+        levels.Add("BattleScene5");
+        foreach (Button button in buttons)
         { 
             int buttonNumber = int.Parse(button.name.Split(' ')[1]);
-            if (buttonNumber > maxLevel-1) //-1 because level 1 is scene index 3 and you want to be able to access the next level
+            int current = levels.IndexOf(PlayerPrefs.GetString("CurrentLevel"));
+
+            if (buttonNumber <= current+1)
             {
-                button.interactable = false;
+                button.gameObject.SetActive(true);
             }
-            
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+    
 }
