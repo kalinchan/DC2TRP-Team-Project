@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         finalSceneId = 7; // index for final level
         nextLevel = 0;  
-        
+        StartCoroutine(DelayedSceneLoad());
+
     }
 
     // Update is called once per frame
@@ -50,6 +51,22 @@ public class LevelManager : MonoBehaviour
         }
 
         // to use for showing EOL - if finalScene is true, show an end of game screen
+    }
+
+    //if Screen is VS screen it will move the the next scene after 3 seconds (CB)
+    private IEnumerator DelayedSceneLoad()
+    {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene > finalSceneId)
+        {
+            // Wait for 3 seconds before loading the scene
+            yield return new WaitForSeconds(3.0f);
+
+            // for vs screen, janky but works for now (CH)
+            nextLevel = currentScene - 6;
+            SceneManager.LoadScene(nextLevel);
+        }
+        
     }
 
     public void loadLevel() { // for vs screen, janky but works for now
