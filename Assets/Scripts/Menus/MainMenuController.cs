@@ -16,9 +16,26 @@ public class MainMenuController : MonoBehaviour
     private GradeManager gradeManager;
     public GameObject progress;
     private Dictionary<string, string> versus = new Dictionary<string, string>();
+    public GameObject panel;
+    public List<GameObject> buttonToHide;
 
 
     public void playGame()
+    {
+        if (PlayerPrefs.HasKey("CurrentLevel"))
+        {
+            panel.SetActive(true);
+            foreach(GameObject gameObject in buttonToHide)
+            {
+                gameObject.SetActive(false);
+            }
+            return;
+        }
+        SceneManager.LoadScene("VS_L1");
+        AudioManager.instance.PlaySound("Button Click");
+    }
+
+    public void warningContinue()
     {
         SceneManager.LoadScene("VS_L1");
         PlayerPrefs.DeleteKey("CurrentLevel");
@@ -29,6 +46,15 @@ public class MainMenuController : MonoBehaviour
         progressManager.ResetFirstPlayDictionary();
         gradeManager.ResetGrades();
         gradeManager.ResetMoves();
+    }
+
+    public void warningBack()
+    {
+        panel.SetActive(false);
+        foreach (GameObject gameObject in buttonToHide)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public void tutorial()
@@ -82,6 +108,7 @@ public class MainMenuController : MonoBehaviour
         if (PlayerPrefs.HasKey(LevelKey))
         {
             continueButton.SetActive(true);
+            
         }
 
         AudioManager.instance.PlayMusic();
