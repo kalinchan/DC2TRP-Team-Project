@@ -59,14 +59,14 @@ public class EnemyLogic : MonoBehaviour
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         
-        SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
+        SpecialText.text =  (maxCharge - charge) + "";
         
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
         DefenceText.text =  self.defence + "";
 
 
         specialbar.SetMaxSpecial(maxCharge);
-        specialbar.SetSpecial(charge);
+        specialbar.SetSpecial(maxCharge - charge);
 
         //Health Bar set to max Health for the enemy
         if (healthbar != null)
@@ -123,12 +123,12 @@ public class EnemyLogic : MonoBehaviour
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
         HealthText.text = self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
 
-        SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
+        SpecialText.text =  (maxCharge - charge) + "";
         
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
         DefenceText.text =  self.defence + "";
 
-        specialbar.SetSpecial(charge);
+        specialbar.SetSpecial(maxCharge - charge);
 
         //Enemy health Bar us updated by getting the current health
         if(healthbar != null)
