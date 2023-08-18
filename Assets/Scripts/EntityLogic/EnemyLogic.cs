@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class EnemyLogic : MonoBehaviour
@@ -31,6 +32,8 @@ public class EnemyLogic : MonoBehaviour
     private Hand playerHand;
     //defence & special not needed for enemy
 
+    public string currentScene; // for determining which enemy and which speical move they have
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,8 +55,7 @@ public class EnemyLogic : MonoBehaviour
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
-
-        
+        currentScene = SceneManager.GetActiveScene().name;
 
 
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
@@ -164,16 +166,50 @@ public class EnemyLogic : MonoBehaviour
         //can that just be done here or is that too messy
 
         //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
-        int random = Random.Range(1, 4);
-        switch (random)
+        int num = 0;
+
+        if (currentScene == "BattleScene")
+        { 
+            num = 1; 
+        }
+        else if (currentScene == "BattleScene2")
         {
-            case 1:
+            num = 2;
+        }
+        else if (currentScene == "BattleScene3")
+        {
+            num = 3;
+        }
+        else if (currentScene == "BattleScene4")
+        { 
+            num = 4; 
+        }
+        else if (currentScene == "BattleScene5")
+        { 
+            num = Random.Range(1, 4); 
+        }
+
+        switch (num)
+        {
+            case 1: // level 1 and random for 5
+                player.drained = true;
+                charge = 0;
+                MoveText.text = specials[3];
+                break;
+
+            case 2: // level 2 and random for 5
                 player.skipDraw = true;
                 charge = 0;
                 MoveText.text = specials[0];
                 break;
 
-            case 2:
+            case 3: // level 3 and random for 5
+                self.gainDefence(defence * 3);
+                charge = 0;
+                MoveText.text = specials[2];
+                break;
+
+            case 4: // level 4 and random for 5
                 damage++;
                 damage++;
                 charge = 0;
@@ -183,22 +219,7 @@ public class EnemyLogic : MonoBehaviour
                 });
                 MoveText.text = specials[1];
                 break;
-
-            case 3:
-                self.gainDefence(defence * 3);
-                charge = 0;
-                MoveText.text = specials[2];
-                break;
-
-            case 4:
-                player.drained = true;
-                charge = 0;
-                MoveText.text = specials[3];
-                break;
-
-
         }
-
 
 
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
