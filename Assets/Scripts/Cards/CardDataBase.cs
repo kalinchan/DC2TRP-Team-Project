@@ -10,12 +10,12 @@ public class CardDataBase : MonoBehaviour {
     void Awake()
     {
         // Attack Cards
-        cardList.Add(new Card(0, "Submit Assignment", 2, "Attack", 0, 0, 3, " +3", false, Resources.Load<Sprite>("Sprites/Cards/Write"))); // Attack +2
+        cardList.Add(new Card(0, "Submit Assignment", 2, "Attack", 0, 0, 3, " +3", false, Resources.Load<Sprite>("Sprites/Cards/Tick"))); // Attack +2
         cardList.Add(new Card(1, "Give Presentation", 3, "Attack", 0, 0, 4, " +4", false, Resources.Load<Sprite>("Sprites/Cards/Speak"))); // Attack +3
         cardList.Add(new Card(2, "Sit Exam", 4, "Attack", 0, 0, 5, " +5", false, Resources.Load<Sprite>("Sprites/Cards/ExamQuiz"))); // Attack +4
         cardList.Add(new Card(3, "Submit Report", 2, "Attack", 0, 0, 3, " +3", false, Resources.Load<Sprite>("Sprites/Cards/Write")));// Attack +2
-        cardList.Add(new Card(4, "Mentor Students", 1, "Attack", 0, 0, 2, " +2", false, Resources.Load<Sprite>("Sprites/Cards/Speak"))); // Attack +1
-        cardList.Add(new Card(5, "Take Quiz", 3, "Attack", 0, 0, 4, " +4", false, Resources.Load<Sprite>("Sprites/Cards/ExamQuiz"))); // Attack +3
+        cardList.Add(new Card(4, "Mentor Students", 1, "Attack", 0, 0, 2, " +2", false, Resources.Load<Sprite>("Sprites/Cards/Mentor"))); // Attack +1
+        cardList.Add(new Card(5, "Take Quiz", 3, "Attack", 0, 0, 4, " +4", false, Resources.Load<Sprite>("Sprites/Cards/ExamQuiz2"))); // Attack +3
 
         // Defence Cards
         cardList.Add(new Card(6, "Read Books", 2, "Defence", 0, 2, 0, " +2", true, Resources.Load<Sprite>("Sprites/Cards/Books"))); // Defence +2
