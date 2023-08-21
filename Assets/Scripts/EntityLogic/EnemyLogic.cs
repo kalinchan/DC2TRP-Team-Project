@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class EnemyLogic : MonoBehaviour
 {
-    public int damage, charge, maxCharge, defence, movesRemaining, maxMoves, attackCost, defenceCost, specialCost;
+    public int damage, charge, maxCharge, defence, movesRemaining, maxMoves, attackCost, defenceCost, specialCost, specialMove;
     public float wait;
     public bool myTurn;
     private EntityStats self, player;
-    public TMP_Text HealthText, SpecialText, DefenceText, MoveText;
+    public TMP_Text HealthText, SpecialText, DefenceText, MoveText, EnemySpecialsInfo;
     public List<string> attacks = new List<string>();
     public List<string> defences = new List<string>();
     public List<string> specials = new List<string>();
@@ -54,8 +54,11 @@ public class EnemyLogic : MonoBehaviour
         HealthText = GameObject.Find("EnemyHealthText").GetComponent<TextMeshProUGUI>();
         SpecialText = GameObject.Find("EnemySpecialText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("EnemyDefenceText").GetComponent<TextMeshProUGUI>();
+        EnemySpecialsInfo = GameObject.Find("EnemyInfoText").GetComponent<TextMeshProUGUI>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
         currentScene = SceneManager.GetActiveScene().name;
+        specialMove = 0;
+        getSpecialMoveText();
 
 
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";
@@ -107,7 +110,7 @@ public class EnemyLogic : MonoBehaviour
         });
 
         specials.AddRange(new List<string>{
-            "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence WAY up! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
+            "Surprise Presentation! \nYou cant draw new cards this turn.", "A Complete Tangent! \nEnemy gained +2 Damage", "My Classroom, My Rules! \nEnemy Defence +6! ", "BRAIN DRAIN!!\nYou're Overworked, and have less energy this turn."
         });
     }
 
@@ -118,6 +121,34 @@ public class EnemyLogic : MonoBehaviour
         //SpecialText.text = "Moves until Enemy Special: " + (maxCharge - charge) + "";
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
 
+    }
+
+    public void getSpecialMoveText()
+    {
+        if (currentScene == "BattleScene")
+        {
+            specialMove = 1;
+            EnemySpecialsInfo.text = "Special: Less energy for 1 turn";
+        }
+        else if (currentScene == "BattleScene2")
+        {
+           specialMove = 2;
+           EnemySpecialsInfo.text = "Special: Cant draw cards for 1 turn";
+        }
+        else if (currentScene == "BattleScene3")
+        {
+            specialMove = 3;
+            EnemySpecialsInfo.text = "Special: Enemy gains 6 defence";
+        }
+        else if (currentScene == "BattleScene4")
+        {
+            specialMove = 4;
+            EnemySpecialsInfo.text = "Special: Enemy Attack cause +2 damage!";
+        }
+        else if (currentScene == "BattleScene5")
+        {
+            EnemySpecialsInfo.text = "Special: Random Selection of all Specials!";
+        }
     }
 
     public void updateUI()
@@ -161,65 +192,41 @@ public class EnemyLogic : MonoBehaviour
         // special animation to play
         self.applyEnemyAnim("enemySpecial");
         AudioManager.instance.PlaySound("Special Move");
-
-        //probably needs to call a separate script? each enemy type has its own special
-        //can that just be done here or is that too messy
-
-        //the logic for charging this can be done with the turnCounter Value and calculating when there is no remainder when divided by a charge threshold? maybe.
-        int num = 0;
-
-        if (currentScene == "BattleScene")
-        { 
-            num = 1; 
-        }
-        else if (currentScene == "BattleScene2")
+        if (currentScene == "BattleScene5")
         {
-            num = 2;
+            specialMove = Random.Range(1, 4);
         }
-        else if (currentScene == "BattleScene3")
-        {
-            num = 3;
-        }
-        else if (currentScene == "BattleScene4")
-        { 
-            num = 4; 
-        }
-        else if (currentScene == "BattleScene5")
-        { 
-            num = Random.Range(1, 4); 
-        }
+        switch (specialMove)
+            {
+                case 1: // level 1 and random for 5
+                    player.drained = true;
+                    charge = 0;
+                    MoveText.text = specials[3];
+                    break;
 
-        switch (num)
-        {
-            case 1: // level 1 and random for 5
-                player.drained = true;
-                charge = 0;
-                MoveText.text = specials[3];
-                break;
+                case 2: // level 2 and random for 5
+                    player.skipDraw = true;
+                    charge = 0;
+                    MoveText.text = specials[0];
+                    break;
 
-            case 2: // level 2 and random for 5
-                player.skipDraw = true;
-                charge = 0;
-                MoveText.text = specials[0];
-                break;
+                case 3: // level 3 and random for 5
+                    self.gainDefence(defence * 3);
+                    charge = 0;
+                    MoveText.text = specials[2];
+                    break;
 
-            case 3: // level 3 and random for 5
-                self.gainDefence(defence * 3);
-                charge = 0;
-                MoveText.text = specials[2];
-                break;
-
-            case 4: // level 4 and random for 5
-                damage++;
-                damage++;
-                charge = 0;
-                attacks.Clear();
-                attacks.AddRange(new List<string>{
+                case 4: // level 4 and random for 5
+                    damage++;
+                    damage++;
+                    charge = 0;
+                    attacks.Clear();
+                    attacks.AddRange(new List<string>{
                 "Pop Quiz! \n" + damage + " damage taken", "Assign Exam!\n" + damage + " damage taken", "Harsh Feedback!\n" + damage + " damage taken"
                 });
-                MoveText.text = specials[1];
-                break;
-        }
+                    MoveText.text = specials[1];
+                    break;
+            }
 
 
         //HealthText.text = "Enemy Health: " + self.getCurrentHealth() + " / " + self.getMaxHealth() + "";

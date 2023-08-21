@@ -11,12 +11,14 @@ public class LevelManager : MonoBehaviour
     public bool finalScene;
     public int nextSceneId;
     public int nextLevel;
+    public string currentSceneName;
 
 
     // Start is called before the first frame update
     void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
+        currentSceneName = SceneManager.GetActiveScene().name;
         finalSceneId = 7; // index for final level
         nextLevel = 0;  
         StartCoroutine(DelayedSceneLoad());
@@ -26,7 +28,19 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)) // on LMB click
+        {
+            Debug.Log("Pressed left-click.");
+            if (currentSceneName == "Credits") // skip credits scene
+            {
+                CreditsOnClick();
+            }
+            if (currentScene > finalSceneId && currentSceneName != "Credits") // skip VS scene
+            {
+                VSonClick();
+            }
+        }
+
     }
 
     public void getNextScene()
@@ -67,6 +81,18 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(nextLevel);
         }
         
+    }
+
+    // can skip vs on click
+    public void VSonClick()
+    {
+        loadLevel();
+    }
+
+    // can skip credits on click
+    public void CreditsOnClick()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void loadLevel() { // for vs screen, janky but works for now
