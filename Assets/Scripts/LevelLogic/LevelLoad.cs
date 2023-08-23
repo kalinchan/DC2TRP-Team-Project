@@ -111,6 +111,11 @@ public class LevelLoad : MonoBehaviour
                 cardDim = entry.Value.transform.Find("Dim").gameObject; // find dim gameobject of that card
                 cardDim.SetActive(true); // dim the card
             }
+            else if (energy <= playerEnergy) // if card energy is less than or equal to player' current energy
+            {
+                cardDim = entry.Value.transform.Find("Dim").gameObject; // find dim gameobject of that card
+                cardDim.SetActive(false); // card undimmed (good for energy reviving special card)
+            }
         }
     }
 
