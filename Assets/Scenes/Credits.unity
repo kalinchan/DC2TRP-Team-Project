@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 5814082}
   - component: {fileID: 5814084}
   - component: {fileID: 5814081}
+  - component: {fileID: 5814085}
   - component: {fileID: 5814080}
   m_Layer: 5
   m_Name: Canvas
@@ -241,8 +242,27 @@ MonoBehaviour:
   nextLevelButton: {fileID: 0}
   levelSelectButton: {fileID: 0}
   mainMenuButton: {fileID: 0}
+  playAgainButton: {fileID: 0}
   currentScene: 0
   nextSceneId: 0
+--- !u!114 &5814085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0271b53c81d3d479d7e96814dd3040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 0
+  finalSceneId: 0
+  finalScene: 0
+  nextSceneId: 0
+  nextLevel: 0
+  currentSceneName: 
 --- !u!1 &694764921
 GameObject:
   m_ObjectHideFlags: 0
