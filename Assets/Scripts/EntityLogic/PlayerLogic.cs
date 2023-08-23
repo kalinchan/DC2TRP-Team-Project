@@ -93,6 +93,7 @@ public class PlayerLogic : MonoBehaviour
             energybar.SetEnergy(currentEnergy);
 
         }
+        
 
 
 
@@ -101,7 +102,6 @@ public class PlayerLogic : MonoBehaviour
     public void useEnergy(int energy)
     {
         currentEnergy -= energy;
-        levelL.dimCard(currentEnergy);
         updateEnergy();
     }
 
@@ -122,8 +122,8 @@ public class PlayerLogic : MonoBehaviour
     {
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         EnergyText.text = currentEnergy + " / " + energyMax + "";
-        
-        
+        levelL.dimCard(currentEnergy);
+
     }
 
     public void addEnergy(int energy)

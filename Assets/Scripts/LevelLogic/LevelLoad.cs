@@ -98,7 +98,6 @@ public class LevelLoad : MonoBehaviour
     public void dimCard(int playerEnergy)
     {
 
-        Debug.Log("Dim cards Called with energy of " + playerEnergy);
         foreach (KeyValuePair<int, GameObject> entry in currentCardEnergies)
         {
             GameObject card = entry.Value;
@@ -107,10 +106,8 @@ public class LevelLoad : MonoBehaviour
             string cardEnergyString = cardEnergy.text; // save as string
             int.TryParse(cardEnergyString, out int energy); // parse as int
 
-            Debug.Log(entry.Key + ", " + entry.Value);
             if (energy > playerEnergy) // if card energy is more than player' current energy
             {
-                Debug.Log("Dimming card: " + entry.Value.name);
                 cardDim = entry.Value.transform.Find("Dim").gameObject; // find dim gameobject of that card
                 cardDim.SetActive(true); // dim the card
             }
