@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
         nextLevel = 0;  
         StartCoroutine(DelayedSceneLoad());
 
+
+
     }
 
     // Update is called once per frame
@@ -79,6 +81,7 @@ public class LevelManager : MonoBehaviour
             // for vs screen, janky but works for now (CH)
             nextLevel = currentScene - 6;
             SceneManager.LoadScene(nextLevel);
+
         }
         
     }
@@ -98,8 +101,9 @@ public class LevelManager : MonoBehaviour
     public void loadLevel() { // for vs screen, janky but works for now
         currentScene = SceneManager.GetActiveScene().buildIndex;
         nextLevel = currentScene - 6;
-        SceneManager.LoadScene(nextLevel);
+        
     }
+
 
 
 }
