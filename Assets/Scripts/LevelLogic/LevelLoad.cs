@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 // @author: CH
-// @date last updated: 19.07.23
-// version: 2.0
+// version: 2.1
 
 public class LevelLoad : MonoBehaviour
 {
@@ -14,22 +14,28 @@ public class LevelLoad : MonoBehaviour
     public int maxHandSize;
     public int handSize;
     public CardUserPref cardUserPref;
+    public SelectCard selectCard;
     public List<string> availableCards;
     public int cardsToDeal;
     public int cardsAtEnd = 1; // Number of cards displayed at the end of the level
     public Sprite Background01, Background02, Background03, Background04, Background05;
     public GameObject backgroundParent;
+    public List<KeyValuePair<int,GameObject>> currentCardEnergies = new List<KeyValuePair<int, GameObject>>(); // entry key , Card - list for duplicate allowance
+    public GameObject cardDim;
 
     private void Awake()
     {
         handSize = 0; // no cards in hand before load
-}
+
+
+    }
 
     private void Start()
     {
         backgroundParent = GameObject.Find("Background");
         cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
-       
+        currentCardEnergies.Clear();
+
 
         // set the background for the current level
         Scene currentScene = SceneManager.GetActiveScene();
@@ -51,6 +57,8 @@ public class LevelLoad : MonoBehaviour
         Debug.Log("Deck cards: " + cardUserPref.deck.Count); // checking deck is saved on new load - debugging
         Debug.Log("Special cards: " + cardUserPref.specialCards.Count);
 
+
+
     }
 
     // deal cards
@@ -58,6 +66,7 @@ public class LevelLoad : MonoBehaviour
     {
         CalculateNoCardsToDeal(); // depending on cards left in hand after a turn
         Debug.Log("Available cards: " + availableCards.Count); // debugging
+        int entry = 1;
 
         for (int i = 0; i < cardsToDeal; i++)
         {
@@ -72,10 +81,58 @@ public class LevelLoad : MonoBehaviour
 
             // increase handsize for cardstdeal calculation
             handSize++;
+
+            // add card energies to list
+
+            
+            currentCardEnergies.Add(new KeyValuePair<int, GameObject>(entry,instantiatedCard));
+            entry++;
+
+            undimCards(); // undim all to start
         }
 
-        
+
     }
+
+
+    public void dimCard(int playerEnergy)
+    {
+
+        Debug.Log("Dim cards Called with energy of " + playerEnergy);
+        foreach (KeyValuePair<int, GameObject> entry in currentCardEnergies)
+        {
+            GameObject card = entry.Value;
+            GameObject cardEnergyParent = card.transform.Find("EnergyCircle").gameObject;
+            TMP_Text cardEnergy = cardEnergyParent.transform.Find("EnergyCostText").gameObject.GetComponent<TextMeshProUGUI>();
+            string cardEnergyString = cardEnergy.text; // save as string
+            int.TryParse(cardEnergyString, out int energy); // parse as int
+
+            Debug.Log(entry.Key + ", " + entry.Value);
+            if (energy > playerEnergy) // if card energy is more than player' current energy
+            {
+                Debug.Log("Dimming card: " + entry.Value.name);
+                cardDim = entry.Value.transform.Find("Dim").gameObject; // find dim gameobject of that card
+                cardDim.SetActive(true); // dim the card
+            }
+        }
+    }
+
+    public void undimCards()
+    {
+        Debug.Log("UnDim cards Called"); // undim all cards
+        foreach (GameObject gameObject in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if (gameObject.name.Equals("Dim"))
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    /*    public void removeCardEnergyFromList(GameObject card, int energy)
+        {
+            currentCardEnergies.Remove(new KeyValuePair<GameObject,int>(card, energy));
+        }*/
 
 
     // reduce hand size by 1 - called by other methods when a card is used / disposed of

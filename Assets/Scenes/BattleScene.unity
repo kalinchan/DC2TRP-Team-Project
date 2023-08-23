@@ -1139,6 +1139,7 @@ GameObject:
   - component: {fileID: 228668263}
   - component: {fileID: 228668266}
   - component: {fileID: 228668267}
+  - component: {fileID: 228668268}
   m_Layer: 5
   m_Name: Bin
   m_TagString: Untagged
@@ -1320,6 +1321,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &228668268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228668261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65569d730dc3c534faf2026b69431bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorArrow: {fileID: 0}
+  cursorHand: {fileID: 0}
+  cursorMode: 0
 --- !u!1 &245348755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +3862,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  levelL: {fileID: 0}
 --- !u!222 &577916804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6146,6 +6163,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  levelL: {fileID: 0}
 --- !u!222 &1285503819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6535,6 +6553,7 @@ MonoBehaviour:
   eTButton: {fileID: 0}
   border: {fileID: 0}
   gradeManager: {fileID: 0}
+  levelLoad: {fileID: 0}
 --- !u!4 &1550697197
 Transform:
   m_ObjectHideFlags: 0
@@ -7763,6 +7782,7 @@ MonoBehaviour:
   maxHandSize: 0
   handSize: 5
   cardUserPref: {fileID: 0}
+  selectCard: {fileID: 0}
   availableCards: []
   cardsToDeal: 0
   cardsAtEnd: 1
@@ -7772,6 +7792,7 @@ MonoBehaviour:
   Background04: {fileID: 21300000, guid: 829bb9e3882d97d479e8457f59d6eac3, type: 3}
   Background05: {fileID: 21300000, guid: c434b50fcb5ab774fa82ca524c57964a, type: 3}
   backgroundParent: {fileID: 1652737086}
+  cardDim: {fileID: 0}
 --- !u!114 &1652737095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7792,6 +7813,7 @@ MonoBehaviour:
   eTButton: {fileID: 1606585377}
   border: {fileID: 0}
   gradeManager: {fileID: 0}
+  levelLoad: {fileID: 1652737094}
 --- !u!114 &1652737096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7861,6 +7883,7 @@ MonoBehaviour:
   cursorX: {fileID: 2800000, guid: 2dd1f4013b505ac4a8e1747d9e55fb65, type: 3}
   cursorMode: 1
   player: {fileID: 587776602}
+  levelL: {fileID: 0}
 --- !u!114 &1652737098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7878,6 +7901,7 @@ MonoBehaviour:
   finalScene: 0
   nextSceneId: 0
   nextLevel: 0
+  currentSceneName: 
 --- !u!1 &1706942006
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,6 +8755,7 @@ MonoBehaviour:
   cursorX: {fileID: 0}
   cursorMode: 0
   player: {fileID: 0}
+  levelL: {fileID: 0}
 --- !u!222 &1831248717
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10507,7 +10532,7 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
       propertyPath: health
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
       propertyPath: V1grade
@@ -10523,7 +10548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
       propertyPath: maxHealth
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: dcc47c94d63059b42aedbc6539cbae3c, type: 3}
       propertyPath: defeatScreen
