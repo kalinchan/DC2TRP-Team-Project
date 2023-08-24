@@ -35,7 +35,7 @@ public class MainMenuController : MonoBehaviour
         }
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutNewGame());
-        fadeScreen.SetActive(false);
+        
 
     }
 
@@ -50,7 +50,7 @@ public class MainMenuController : MonoBehaviour
         progressManager.ResetFirstPlayDictionary();
         gradeManager.ResetGrades();
         gradeManager.ResetMoves();
-        fadeScreen.SetActive(false);
+        
     }
 
     IEnumerator fadeOutNewGame()
@@ -83,7 +83,7 @@ public class MainMenuController : MonoBehaviour
         fadeAnimator.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Tutorial");
-        fadeScreen.SetActive(false);
+        
     }
 
     public void options()
@@ -103,7 +103,7 @@ public class MainMenuController : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutContinue());
-        fadeScreen.SetActive(false);
+        
     }
 
     IEnumerator fadeOutContinue()
@@ -131,7 +131,7 @@ public class MainMenuController : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutCredits());
-        fadeScreen.SetActive(false);
+        
 
     }
 
