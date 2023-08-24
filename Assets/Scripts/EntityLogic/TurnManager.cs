@@ -10,7 +10,7 @@ public class TurnManager : MonoBehaviour
     public turnStatus currentTurn;
     public GameObject enemy;
     public TMP_Text MoveText;
-    public GameObject player, eTButton;
+    public GameObject player, eTButton, bin;
     private Hand playerHand;
     public GameObject border;
     public GradeManager gradeManager;
@@ -25,6 +25,8 @@ public class TurnManager : MonoBehaviour
         player = GameObject.Find("Player");
         enablePlayer();
         eTButton = GameObject.Find("End Turn Button");
+        bin = GameObject.Find("Bin");
+        bin.SetActive(true);
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemy = GameObject.Find("Enemy");
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
@@ -67,6 +69,7 @@ public class TurnManager : MonoBehaviour
             currentTurn = turnStatus.enemyTurn;
             enableEnemies();
             turnCounter++;
+            bin.SetActive(false);
         }
         else if (currentTurn == turnStatus.enemyTurn)
         {
@@ -77,6 +80,7 @@ public class TurnManager : MonoBehaviour
             player.GetComponent<PlayerLogic>().myTurn = true;
             MoveText.text = "Your Turn!";
             turnCounter++;
+            bin.SetActive(true);
 
             if (!player.GetComponent<EntityStats>().skipDraw)
             {

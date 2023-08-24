@@ -7918,6 +7918,7 @@ MonoBehaviour:
   MoveText: {fileID: 0}
   player: {fileID: 0}
   eTButton: {fileID: 0}
+  bin: {fileID: 0}
   border: {fileID: 0}
   gradeManager: {fileID: 0}
   levelL: {fileID: 0}
@@ -9575,8 +9576,6 @@ MonoBehaviour:
   Background05: {fileID: 21300000, guid: c434b50fcb5ab774fa82ca524c57964a, type: 3}
   backgroundParent: {fileID: 1652737086}
   cardDim: {fileID: 0}
-  fadeScreen: {fileID: 0}
-  fadeAnimator: {fileID: 0}
 --- !u!114 &1652737095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9595,6 +9594,7 @@ MonoBehaviour:
   MoveText: {fileID: 0}
   player: {fileID: 587776602}
   eTButton: {fileID: 1606585377}
+  bin: {fileID: 419703399}
   border: {fileID: 0}
   gradeManager: {fileID: 0}
   levelL: {fileID: 0}
