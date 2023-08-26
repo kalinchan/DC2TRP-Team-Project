@@ -80,7 +80,11 @@ public class DefenceApplication : MonoBehaviour
             AudioManager.instance.PlaySound("Special Move");
         }
 
+
+
+
     }
+
 
     public void applySpecialOne()
     {

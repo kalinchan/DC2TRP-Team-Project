@@ -14,8 +14,7 @@ public class TurnManager : MonoBehaviour
     private Hand playerHand;
     public GameObject border;
     public GradeManager gradeManager;
-
-
+    public LevelLoad levelL;
 
 
     // Start is called before the first frame update
@@ -30,7 +29,9 @@ public class TurnManager : MonoBehaviour
         enemy = GameObject.Find("Enemy");
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
         playerHand = player.GetComponent<Hand>();
+
         
+
     }
 
     // Update is called once per frame
@@ -50,12 +51,16 @@ public class TurnManager : MonoBehaviour
     }
 
     //end the current turn and switch to the opposition
-    //do we separate this into 2 methods? - JD 15/02
+    //do we separate this into 2 methods? - JD 15/02 - nah its good as one CH
     public void switchTurn()
     {
         if (currentTurn == turnStatus.playerTurn)
         {
-            playerHand.currentlySelectedCard = null;
+            if (playerHand != null && playerHand.currentlySelectedCard != null)
+            {
+                playerHand.currentlySelectedCard = null;
+            }
+
             MoveText.text = "Enemy Turn";
             eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;
@@ -65,15 +70,14 @@ public class TurnManager : MonoBehaviour
         }
         else if (currentTurn == turnStatus.enemyTurn)
         {
-
-            //Cursor.lockState = CursorLockMode.None;
+            
             eTButton.SetActive(true);
             currentTurn = turnStatus.playerTurn;
             enablePlayer();
             player.GetComponent<PlayerLogic>().myTurn = true;
             MoveText.text = "Your Turn!";
             turnCounter++;
-            
+
             if (!player.GetComponent<EntityStats>().skipDraw)
             {
                 gameObject.GetComponent<DealCards>().OnClick();
@@ -86,7 +90,10 @@ public class TurnManager : MonoBehaviour
     //find all enemies, set myTurn to true and call the turnTaker method
     //needs to be fixed to go through a list of all enemies with the enemy tag - JD 15/02
     public void enableEnemies()
+
     {
+        levelL = GameObject.Find("Background").GetComponent<LevelLoad>();
+        levelL.dimCard(-1); // -1 energy number which will dim all cards as some cost 0 energy
 
         enemy.GetComponent<EnemyLogic>().startTurn();
 
@@ -99,15 +106,12 @@ public class TurnManager : MonoBehaviour
         }
 
 
-            //foreach (GameObject enemy in enemies) 
-            //{
-            //    enemy.GetComponent<EnemyLogic>().startTurn();  
-            //}
-
-        }
+    }
 
     public void enablePlayer()
     {
+        levelL = GameObject.Find("Background").GetComponent<LevelLoad>();
+        levelL.undimCards();
         player.GetComponent<PlayerLogic>().myTurn = true;
         gradeManager = GameObject.Find("Progress").GetComponent<GradeManager>();
         if (gradeManager == null)
@@ -125,6 +129,7 @@ public class TurnManager : MonoBehaviour
         {
             player.GetComponent<PlayerLogic>().drainedEnergyReset();
         }
+        
 
 
     }

@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerLogic : MonoBehaviour
 {
     public int currentEnergy, energyMax;
-    public bool myTurn;
+    public bool myTurn = true;
     private EntityStats self;
     public TMP_Text HealthText, EnergyText, DefenceText;
 
@@ -24,6 +24,7 @@ public class PlayerLogic : MonoBehaviour
     public CursorMode cursorMode;
     public GameObject player;
     private Hand playerHand;
+    public LevelLoad levelL;
 
 
 
@@ -31,13 +32,14 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         self = GameObject.Find("Player").GetComponent<EntityStats>();
         HealthText = GameObject.Find("PlayerHealthText").GetComponent<TextMeshProUGUI>();
         EnergyText = GameObject.Find("PlayerEnergyText").GetComponent<TextMeshProUGUI>();
         DefenceText = GameObject.Find("PlayerDefenceText").GetComponent<TextMeshProUGUI>();
         energyMax = 5;
-       
+        levelL = GameObject.Find("Background").GetComponent<LevelLoad>();
+
         if (energybar != null)
         {
             energybar.SetMaxEnergy(energyMax);
@@ -74,23 +76,27 @@ public class PlayerLogic : MonoBehaviour
 
         //DefenceText.text = "Defence: " + self.getCurrentDefence() + "";
         DefenceText.text = self.getCurrentDefence() + "";
-        
+
         if (healthbar != null)
         {
             healthbar.SetHealth(self.getCurrentHealth());
         }
-        
-        if(defencebar!= null)
+
+        if (defencebar != null)
         {
             defencebar.SetDefence(self.getCurrentDefence());
 
         }
 
-        if(energybar != null)
+        if (energybar != null)
         {
             energybar.SetEnergy(currentEnergy);
 
         }
+        
+
+
+
     }
 
     public void useEnergy(int energy)
@@ -116,14 +122,18 @@ public class PlayerLogic : MonoBehaviour
     {
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
         EnergyText.text = currentEnergy + " / " + energyMax + "";
+        levelL.dimCard(currentEnergy);
+
     }
 
     public void addEnergy(int energy)
     {
-        if (currentEnergy + energy > energyMax){
+        if (currentEnergy + energy > energyMax)
+        {
             resetEnergy();
         }
-        else {
+        else
+        {
             currentEnergy += energy;
             updateEnergy();
         }
@@ -132,10 +142,8 @@ public class PlayerLogic : MonoBehaviour
     // change cursor on player hover to show it is interactible
     public void OnMouseEnter()
     {
-        if (playerHand != null){
-            {
-
-            }
+        if (playerHand != null && playerHand.currentlySelectedCard != null)
+        {
             // if selected card is defence card, ability to interact with player only and not enemies --
             if (playerHand.currentlySelectedCard.group == "Defence")
             {
@@ -149,9 +157,15 @@ public class PlayerLogic : MonoBehaviour
             {
                 Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
             }
-            else { OnMouseExit(); }
+            else
+            {
+                OnMouseExit();
+            }
         }
-        else { return; }
+        else
+        {
+            return;
+        }
     }
 
     // cursor to arrow when exit interactable object

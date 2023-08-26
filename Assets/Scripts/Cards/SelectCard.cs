@@ -15,6 +15,8 @@ public class SelectCard : MonoBehaviour
     private Hand playerHand;
     public GameObject PlayerArea;
     public GameObject cardBorder;
+    public LevelLoad levelLoad;
+
 
     public void Start()
     {
@@ -22,6 +24,8 @@ public class SelectCard : MonoBehaviour
         player = GameObject.Find("Player");
         playerHand = player.GetComponent<Hand>();
         PlayerArea = GameObject.Find("PlayerHandArea");
+        levelLoad = GameObject.Find("Background").GetComponent<LevelLoad>();
+        
 
     }
     // when card is selected by player - CH
@@ -50,6 +54,7 @@ public class SelectCard : MonoBehaviour
         {
             clearCard();
             cardBorder.SetActive(false);
+           
         }
 
 
@@ -75,6 +80,7 @@ public class SelectCard : MonoBehaviour
 
     public void clearCard() 
     {
+       
         playerHand.currentlySelectedCard = null;
     }
 
@@ -94,8 +100,9 @@ public class SelectCard : MonoBehaviour
         { 
             return;
         }
-    }
 
+      
+    }
 
 
 }
