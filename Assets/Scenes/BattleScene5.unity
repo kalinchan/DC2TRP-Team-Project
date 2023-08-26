@@ -10461,6 +10461,7 @@ MonoBehaviour:
   nextSceneId: 0
   nextLevel: 0
   currentSceneName: 
+  target: 60
 --- !u!1 &1657900365
 GameObject:
   m_ObjectHideFlags: 0
@@ -14368,7 +14369,7 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   nextLevelButton: {fileID: 0}
   levelSelectButton: {fileID: 1637195036}
-  mainMenuButton: {fileID: 2136579731}
+  mainMenuButton: {fileID: 780843153}
   playAgainButton: {fileID: 0}
   currentScene: 0
   nextSceneId: 0

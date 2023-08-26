@@ -127,7 +127,7 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadCredits()
+    public void LoadCreditsMainMenu()
     {
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutCredits());
@@ -141,6 +141,12 @@ public class MainMenuController : MonoBehaviour
         fadeAnimator.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
         AudioManager.instance.StopMusic();
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void LoadCredits()
+    {
+        AudioManager.instance.PlaySound("Button Click");
         SceneManager.LoadScene("Credits");
     }
 

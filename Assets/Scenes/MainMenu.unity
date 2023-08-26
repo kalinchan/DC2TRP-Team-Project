@@ -2765,7 +2765,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 413993542}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: LoadCredits
+        m_MethodName: LoadCreditsMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
