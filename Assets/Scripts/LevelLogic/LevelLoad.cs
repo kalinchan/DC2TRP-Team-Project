@@ -20,8 +20,9 @@ public class LevelLoad : MonoBehaviour
     public int cardsAtEnd = 1; // Number of cards displayed at the end of the level
     public Sprite Background01, Background02, Background03, Background04, Background05;
     public GameObject backgroundParent;
-    public List<KeyValuePair<int,GameObject>> currentCardEnergies = new List<KeyValuePair<int, GameObject>>(); // entry key , Card - list for duplicate allowance
+    public List<KeyValuePair<int, GameObject>> currentCardEnergies = new List<KeyValuePair<int, GameObject>>(); // entry key , Card - list for duplicate allowance
     public GameObject cardDim;
+
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class LevelLoad : MonoBehaviour
         backgroundParent = GameObject.Find("Background");
         cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
         currentCardEnergies.Clear();
+        
 
 
         // set the background for the current level
@@ -84,8 +86,8 @@ public class LevelLoad : MonoBehaviour
 
             // add card energies to list
 
-            
-            currentCardEnergies.Add(new KeyValuePair<int, GameObject>(entry,instantiatedCard));
+
+            currentCardEnergies.Add(new KeyValuePair<int, GameObject>(entry, instantiatedCard));
             entry++;
 
             undimCards(); // undim all to start

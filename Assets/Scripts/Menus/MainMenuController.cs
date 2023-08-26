@@ -18,6 +18,8 @@ public class MainMenuController : MonoBehaviour
     private Dictionary<string, string> versus = new Dictionary<string, string>();
     public GameObject panel;
     public List<GameObject> buttonToHide;
+    public Animator fadeAnimator;
+    public GameObject fadeScreen;
 
 
     public void playGame()
@@ -25,27 +27,38 @@ public class MainMenuController : MonoBehaviour
         if (PlayerPrefs.HasKey("CurrentLevel"))
         {
             panel.SetActive(true);
-            foreach(GameObject gameObject in buttonToHide)
+            foreach (GameObject gameObject in buttonToHide)
             {
                 gameObject.SetActive(false);
             }
             return;
         }
-        SceneManager.LoadScene("VS_L1");
         AudioManager.instance.PlaySound("Button Click");
+        StartCoroutine(fadeOutNewGame());
+        
+
     }
 
     public void warningContinue()
     {
-        SceneManager.LoadScene("VS_L1");
+        AudioManager.instance.PlaySound("Button Click");
+        StartCoroutine(fadeOutNewGame());
         PlayerPrefs.DeleteKey("CurrentLevel");
         PlayerPrefs.DeleteKey("Deck");
         PlayerPrefs.DeleteKey("SpecialCards");
         PlayerPrefs.DeleteKey("GradeDict");
-        AudioManager.instance.PlaySound("Button Click");
         progressManager.ResetFirstPlayDictionary();
         gradeManager.ResetGrades();
         gradeManager.ResetMoves();
+        
+    }
+
+    IEnumerator fadeOutNewGame()
+    {
+        fadeScreen.SetActive(true);
+        fadeAnimator.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("VS_L1");
     }
 
     public void warningBack()
@@ -59,8 +72,18 @@ public class MainMenuController : MonoBehaviour
 
     public void tutorial()
     {
-        SceneManager.LoadScene("Tutorial");
         AudioManager.instance.PlaySound("Button Click");
+        StartCoroutine(fadeOutTutorial());
+        
+    }
+
+    IEnumerator fadeOutTutorial()
+    {
+        fadeScreen.SetActive(true);
+        fadeAnimator.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Tutorial");
+        
     }
 
     public void options()
@@ -78,13 +101,23 @@ public class MainMenuController : MonoBehaviour
     }
     public void continueGame()
     {
+        AudioManager.instance.PlaySound("Button Click");
+        StartCoroutine(fadeOutContinue());
+        
+    }
+
+    IEnumerator fadeOutContinue()
+    {
+        fadeScreen.SetActive(true);
+        fadeAnimator.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(1);
         string savedLevel = PlayerPrefs.GetString(LevelKey);
         Debug.Log(versus[savedLevel]);
         string scene;
         versus.TryGetValue(savedLevel, out scene);
         SceneManager.LoadScene(scene);
-        AudioManager.instance.PlaySound("Button Click");
         gradeManager.LoadGradesFromPlayerPrefs();
+
     }
 
 
@@ -97,13 +130,23 @@ public class MainMenuController : MonoBehaviour
     public void LoadCredits()
     {
         AudioManager.instance.PlaySound("Button Click");
-        AudioManager.instance.StopMusic();
-        SceneManager.LoadScene("Credits");
+        StartCoroutine(fadeOutCredits());
         
+
     }
 
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator fadeOutCredits()
+    {
+        fadeScreen.SetActive(true);
+        fadeAnimator.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(1);
+        AudioManager.instance.StopMusic();
+        SceneManager.LoadScene("Credits");
+    }
+
+
+        // Start is called before the first frame update
+        void Start()
     {
         if (PlayerPrefs.HasKey(LevelKey))
         {
@@ -123,6 +166,8 @@ public class MainMenuController : MonoBehaviour
         progressManager = progress.GetComponent<ProgressManager>();
         gradeManager = progress.GetComponent<GradeManager>();
     }
+
+
 
     // Update is called once per frame
     void Update()
