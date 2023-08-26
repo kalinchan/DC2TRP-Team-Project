@@ -12,6 +12,13 @@ public class LevelManager : MonoBehaviour
     public int nextSceneId;
     public int nextLevel;
     public string currentSceneName;
+    public int target = 60;
+
+    void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = target;
+    }
 
 
     // Start is called before the first frame update
@@ -20,7 +27,7 @@ public class LevelManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         currentSceneName = SceneManager.GetActiveScene().name;
         finalSceneId = 7; // index for final level
-        nextLevel = 0;  
+        nextLevel = 0;
         StartCoroutine(DelayedSceneLoad());
 
 
@@ -30,13 +37,11 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
+
         if (Input.GetMouseButtonDown(0)) // on LMB click
         {
-            Debug.Log("Pressed left-click.");
-            if (currentSceneName == "Credits") // skip credits scene
-            {
-                CreditsOnClick();
-            }
             if (currentScene > finalSceneId && currentSceneName != "Credits") // skip VS scene
             {
                 VSonClick();
@@ -50,7 +55,7 @@ public class LevelManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().buildIndex;
         nextSceneId = currentScene + 1;
 
-    
+
 
     }
 
@@ -83,7 +88,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(nextLevel);
 
         }
-        
+
     }
 
     // can skip vs on click
@@ -92,16 +97,12 @@ public class LevelManager : MonoBehaviour
         loadLevel();
     }
 
-    // can skip credits on click
-    public void CreditsOnClick()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
 
-    public void loadLevel() { // for vs screen, janky but works for now
+    public void loadLevel()
+    { // for vs screen, janky but works for now
         currentScene = SceneManager.GetActiveScene().buildIndex;
         nextLevel = currentScene - 6;
-        
+
     }
 
 

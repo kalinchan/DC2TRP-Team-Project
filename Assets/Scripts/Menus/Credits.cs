@@ -12,10 +12,19 @@ public class Credits : MonoBehaviour
         StartCoroutine(LoadLevelAfterDelay(delay));
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) // on LMB click
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
     IEnumerator LoadLevelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("MainMenu");
     }
+
 
 }
