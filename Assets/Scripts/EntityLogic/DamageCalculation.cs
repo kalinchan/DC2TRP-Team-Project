@@ -17,7 +17,7 @@ public class DamageCalculation : MonoBehaviour
     //Get entity stats associated with this enemy
     //Find and get the Player's Hand - JD
     private void Start()
-    {  
+    {
         eS = GetComponent<EntityStats>();
         player = GameObject.Find("Player");
         playerHand = GameObject.Find("Player").GetComponent<Hand>();
@@ -28,35 +28,45 @@ public class DamageCalculation : MonoBehaviour
     //using the players hand, find which card has been clicked (made active) and identify its tag.
     //if the active card has a damage tag, deal appropriate damage to this enemy. Then set it as inactive (discard from Hand and remove as currentlySelectedCard - JD 16/02) - JD
     public void GetCard()
-    {   
+    {
         thisCard = playerHand.currentlySelectedCard;
 
         if (thisCard.tag.Contains("Attack")) // if attack card 
         {
             if (thisCard.energyCost > player.GetComponent<PlayerLogic>().currentEnergy) // if not enough energy to play card
             {
-                MoveText.text = "Insufficient Energy!";
-                playerHand.clearCard();
-                selectCard.clearCard();
-                return;
+                if (MoveText != null)
+                {
+                    MoveText.text = "Insufficient Energy!";
+                    playerHand.clearCard();
+                    selectCard.clearCard();
+                    return;
+                }
             }
 
             else // else, play card
             {
                 Debug.Log("Energy Cost = " + thisCard.energyCost);
                 player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-                if (eS != null)
-                {
-                    eS.takeDamage(thisCard.damage);
-                    thisCard.gameObject.SetActive(false);
-                    playerHand.clearCard(); //remove from hand
-                    levelL.GetComponent<LevelLoad>().reduceHandSize();
-                    eS.gameObject.GetComponent<EnemyLogic>().updateUI();
-                }
+                eS = GetComponent<EntityStats>();
+                eS.takeDamage(thisCard.damage);
+                thisCard.gameObject.SetActive(false);
+                playerHand.clearCard(); //remove from hand
+                levelL.GetComponent<LevelLoad>().reduceHandSize();
+                eS.gameObject.GetComponent<EnemyLogic>().updateUI();
             }
 
         }
 
-      
+
+    }
+
+    public void testAttack() // FOR TESTING ATTACK WORKS skipping unneccessary above
+    {
+        thisCard = playerHand.currentlySelectedCard;
+
+        eS = GetComponent<EntityStats>();
+        player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+        eS.testTakeDamage(thisCard.damage);
     }
 }

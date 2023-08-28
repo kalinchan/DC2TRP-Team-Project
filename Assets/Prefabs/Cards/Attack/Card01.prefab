@@ -888,7 +888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3369726933258318447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -987,12 +987,12 @@ MonoBehaviour:
     usableWithoutTarget: 0
     cardSprite: {fileID: 0}
   thisId: 0
-  id: 0
+  id: 1
   cardName: 
-  energyCost: 0
+  energyCost: 2
   group: 
   rarity: 0
-  damage: 5
+  damage: 3
   defence: 0
   cardDescription: 
   thisCardSprite: {fileID: 0}
@@ -1023,6 +1023,7 @@ MonoBehaviour:
   player: {fileID: 0}
   PlayerArea: {fileID: 0}
   cardBorder: {fileID: 8236324266315889078}
+  levelLoad: {fileID: 0}
 --- !u!114 &5294497459944944846
 MonoBehaviour:
   m_ObjectHideFlags: 0
