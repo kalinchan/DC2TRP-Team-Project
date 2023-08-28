@@ -111,8 +111,19 @@ public class ThisCard : MonoBehaviour
         Cursor.SetCursor(cursorArrow, Vector2.zero, cursorMode);
     }
 
-
-
+    public void SetSelectedCard()
+    {
+        Hand hand = FindObjectOfType<Hand>();
+        if (hand != null)
+        {
+            hand.OnCardClick(this);
+            Debug.Log("card selected");
+        }
+        else
+        {
+            Debug.Log("hand is null");
+        }
+    }
 
 
 }

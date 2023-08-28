@@ -155,7 +155,7 @@ public class CardUserPref : MonoBehaviour
     }
 
     // retrieve cards by name string
-    public GameObject GetCardByName(string cardName)
+    public virtual GameObject GetCardByName(string cardName)
     {
         GameObject card;
         if (cardDictionary.TryGetValue(cardName, out card))
@@ -166,7 +166,7 @@ public class CardUserPref : MonoBehaviour
     }
 
     // populate the card dictionary with card names and corresponding card gameobjects
-    private void PopulateCardDictionary()
+    public void PopulateCardDictionary()
     {
         cardDictionary.Clear();
         cardDictionary.Add("Card01", Card01);

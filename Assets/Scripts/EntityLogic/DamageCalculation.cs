@@ -43,12 +43,16 @@ public class DamageCalculation : MonoBehaviour
 
             else // else, play card
             {
+                Debug.Log("Energy Cost = " + thisCard.energyCost);
                 player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-                eS.takeDamage(thisCard.damage);
-                thisCard.gameObject.SetActive(false);
-                playerHand.clearCard(); //remove from hand
-                levelL.GetComponent<LevelLoad>().reduceHandSize();
-                eS.gameObject.GetComponent<EnemyLogic>().updateUI();
+                if (eS != null)
+                {
+                    eS.takeDamage(thisCard.damage);
+                    thisCard.gameObject.SetActive(false);
+                    playerHand.clearCard(); //remove from hand
+                    levelL.GetComponent<LevelLoad>().reduceHandSize();
+                    eS.gameObject.GetComponent<EnemyLogic>().updateUI();
+                }
             }
 
         }

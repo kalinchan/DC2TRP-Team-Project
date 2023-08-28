@@ -13,7 +13,7 @@ public class Card
     public string cardName; // // different for player and enemy cards
     public int energyCost; // example: 3 - reduces energy per turn by 3
     public string group; // exmaple: Attack / Defence / Special
-    public int rarity; // how rare it is for the card to be drawn (1-4) - 1= will never show (ie special cards for enemy), 2= rare, 3= notcommon, 4=common
+    public int rarity; // not used, other implementation added
     public int damage; // how much damage this card causes
     public int defence; // how much defence this card has
     public string cardDescription; // what does this card do?
@@ -39,5 +39,10 @@ public class Card
     void setName(string name) 
     {
         cardName = name;
+    }
+
+    public string getName()
+    {
+        return cardName;
     }
 }
