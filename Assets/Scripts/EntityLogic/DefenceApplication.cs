@@ -144,7 +144,7 @@ public class DefenceApplication : MonoBehaviour
 
     public void applySpecialTwoTest() // for testing purposes only, skipping unneccessaries
     {
-        specialEnergy = 3;
+        specialEnergy = 3; // same as initalised in start()
         thisCard = playerHand.currentlySelectedCard;
         player.GetComponent<PlayerLogic>().addEnergyTest(specialEnergy);
         Debug.Log("Adding " + specialEnergy + " energy");
@@ -177,5 +177,15 @@ public class DefenceApplication : MonoBehaviour
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
+    }
+
+    public void applySpecialFourTest() // for testing purposes only, skipping unneccessaries
+    {
+        thisCard = playerHand.currentlySelectedCard;
+        player = GameObject.Find("Player");
+        eS = GetComponent<EntityStats>();
+        specialDefence = 5; // same as initalised in start()
+        player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+        eS.gainDefenceTest(specialDefence);
     }
 }
