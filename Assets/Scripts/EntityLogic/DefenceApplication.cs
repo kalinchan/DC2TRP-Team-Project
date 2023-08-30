@@ -160,6 +160,16 @@ public class DefenceApplication : MonoBehaviour
         levelL.GetComponent<LevelLoad>().reduceHandSize();
     }
 
+    public void applySpecialThreeTest() // for testing purposes only, skipping unneccessaries
+    {
+        thisCard = playerHand.currentlySelectedCard;
+        eES = GameObject.Find("Enemy").GetComponent<EntityStats>();
+        int i = thisCard.energyCost;
+        player = GameObject.Find("Player");
+        player.GetComponent<PlayerLogic>().useEnergy(i);
+        eES.setMultiplierToTrue(); 
+    }
+
     public void applySpecialFour() // extension, defence + specialDefence
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);

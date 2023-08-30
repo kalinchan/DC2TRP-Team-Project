@@ -430,7 +430,7 @@ public class CardTests : MonoBehaviour
     public IEnumerator CardSpecial02Test()
     {
 
-        Debug.Log("Card Workout Test:"); // print test for console
+        Debug.Log("Card Eenrgy Drink Test:"); // print test for console
 
         // set up as above
         SetUp();
@@ -508,7 +508,7 @@ public class CardTests : MonoBehaviour
                 // apply the card
                 playerHand.currentlySelectedCard = thisCard;
                 Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
-                defenceApp.applySpecialTwoTest();
+                defenceApp.applySpecialTwoTest(); // method designed for testing that skips uneccearies like animations and sounds
             }
             else { Debug.Log("selectCard is null"); } // error handling
         }
@@ -523,6 +523,170 @@ public class CardTests : MonoBehaviour
 
         // clean up the test data
         playerLogic.currentEnergy = 0; // reset player defence
+
+        // wait for any actions to complete
+        yield return null;
+    }
+
+
+    // -------------------------------------------------------------------------------------------------------------------------------
+    [UnityTest] // CHECK CARD APPLIES CORRECT MOVE FOR SPECIAL O3 (DOUBLE DAMAGE ON NEXT ATTACK) -- CH
+    public IEnumerator CardSpecial03Test()
+    {
+
+        Debug.Log("Card Workout Test:"); // print test for console
+        // set up as above
+        SetUp();
+
+        // set things needed for testing (player, card, other scripts referenced)
+        // level load script for initialising cards
+        GameObject background = GameObject.Find("Background");
+        if (background == null)
+        {
+            Debug.LogError("Background object not found");
+            yield break;
+        }
+        LevelLoad levelLoader = background.GetComponent<LevelLoad>();
+
+        // player and energy
+        GameObject player = GameObject.Find("Player");
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
+        playerLogic.currentEnergy = 10; // enough energy to play special card (4) and attack card (3)
+
+        // enemy
+        GameObject enemy = GameObject.Find("Enemy");
+        EntityStats entityStats = enemy.GetComponent<EntityStats>();
+
+        entityStats.maxHealth = 20; // high enough to take damage from a card with double damage
+        entityStats.health = entityStats.maxHealth;
+        Assert.AreEqual(20, entityStats.getCurrentHealth());
+
+        Debug.Log("Enemy active with " + entityStats.getCurrentHealth() + " health");
+
+        // clear cards to be dealt
+        levelLoader.availableCards.Clear();
+
+        // get player hand
+        Hand playerHand = player.GetComponent<Hand>();
+
+        // load card01 and card12 into scene
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+        cardUserPref.PopulateCardDictionary();
+        GameObject playerCardSpecial = cardUserPref.GetCardByName("Card12");
+        GameObject playerCardAttack = cardUserPref.GetCardByName("Card01");
+        Debug.Log("Special Card: " + playerCardSpecial);
+        Debug.Log("Attack Card: " + playerCardAttack);
+
+        // load special card into hand // card12
+        Transform playerAreaTransform = levelLoader.PlayerArea.transform;
+        GameObject instantiatedCard01 = Instantiate(playerCardSpecial, Vector3.zero, Quaternion.identity);
+        instantiatedCard01.transform.SetParent(playerAreaTransform, false);
+
+        // load attack card into hand // card01
+        GameObject instantiatedCard02 = Instantiate(playerCardAttack, Vector3.zero, Quaternion.identity);
+        instantiatedCard02.transform.SetParent(playerAreaTransform, false);
+
+        // check there are cards in the player's hand
+        if (playerAreaTransform.childCount == 0)
+        {
+            Debug.LogError("No cards in the player's hand.");
+            yield break;
+        }
+
+        // get components for using special card
+        GameObject specialCardGameObject = levelLoader.PlayerArea.transform.GetChild(0).gameObject;
+        SelectCard specialSelectCard = specialCardGameObject.GetComponent<SelectCard>();
+        ThisCard thisSpecialCard = playerCardSpecial.GetComponent<ThisCard>();
+
+        // get components for using attack card
+        GameObject attackCardGameObject = levelLoader.PlayerArea.transform.GetChild(1).gameObject;
+        SelectCard attackSelectCard = attackCardGameObject.GetComponent<SelectCard>();
+        ThisCard thisAttackCard = playerCardAttack.GetComponent<ThisCard>();
+
+        // get energy special
+        GameObject cardEnergyParentSpecial = playerCardSpecial.transform.Find("EnergyCircle").gameObject;
+        TMP_Text cardSpecialEnergy = cardEnergyParentSpecial.transform.Find("EnergyCostText").gameObject.GetComponent<TextMeshProUGUI>();
+        string specialEnergyString = cardSpecialEnergy.text; // save as string
+        int.TryParse(specialEnergyString, out int specialEnergy); // parse as int
+        thisSpecialCard.energyCost = specialEnergy;
+
+        // get energy attack
+        GameObject cardEnergyParentAttack = playerCardAttack.transform.Find("EnergyCircle").gameObject;
+        TMP_Text cardAttackEnergy = cardEnergyParentAttack.transform.Find("EnergyCostText").gameObject.GetComponent<TextMeshProUGUI>();
+        string attackEnergyString = cardAttackEnergy.text; // save as string
+        int.TryParse(attackEnergyString, out int attackEnergy); // parse as int
+        thisAttackCard.energyCost = attackEnergy;
+
+        damagecalc = enemy.GetComponent<DamageCalculation>();
+
+        // check set correctly
+        thisAttackCard.damage = 3; // set to set amount for testing
+
+        Debug.Log("Attack Card Damage = " + thisAttackCard.damage);
+        damagecalc = enemy.GetComponent<DamageCalculation>();
+        damagecalc.playerHand = playerHand;
+
+        Debug.Log("ThisSpecialCard: " + thisSpecialCard);
+        Debug.Log("ThisAttackCard: " + thisAttackCard);
+
+        // check special card not null before continuing
+        if (specialCardGameObject != null) 
+        {
+            if (specialSelectCard != null)
+            {
+                // "click" the card to select
+                playerLogic.myTurn = true;
+                specialSelectCard.player = player;
+
+                // apply the card
+                playerHand.currentlySelectedCard = thisSpecialCard;
+                Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
+                defenceApp.applySpecialThreeTest(); // method designed for testing that skips uneccearies like animations and sounds
+                
+            }
+            else { Debug.Log("selectSpecialCard is null"); } // error handling
+        }
+        else
+        {
+            Debug.Log("specialCardgameobject is null"); // error handling
+        }
+
+        
+        // ensure that double damage is active
+        Assert.AreEqual(true, entityStats.specialx2); // specialx2 is set to true after playing special card
+        Debug.Log("Double Damage Active = " + entityStats.specialx2);
+
+        // check attack card not null before continuing
+        if (attackCardGameObject != null)
+        {
+            if (attackSelectCard != null)
+            {
+                // "click" the card to select
+                playerLogic.myTurn = true;
+                attackSelectCard.player = player;
+
+                // apply the card
+                playerHand.currentlySelectedCard = thisAttackCard;
+                Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
+                damagecalc.testAttack(); // attack method designed for testing that skips uneccearies like animations and sounds
+            }
+            else { Debug.Log("selectAttackCard is null"); } // error handling
+        }
+        else
+        {
+            Debug.Log("attackCardgameobject is null"); // error handling
+        }
+
+        // ensure that enemy health has been correctly decreased after using the card
+        Assert.AreEqual(14, entityStats.getCurrentHealth()); // initial health 20 - (card damage 3x2 = 6) = 14
+        Debug.Log("Remaining enemy health is " + entityStats.getCurrentHealth());
+
+        // ensure that double damage is now inactive
+        Assert.AreEqual(false, entityStats.specialx2); // specialx2 is set to true after playing special card
+        Debug.Log("Double Damage Active = " + entityStats.specialx2);
+
+        // clean up the test data
+        thisAttackCard.damage = 0; // reset card data
 
         // wait for any actions to complete
         yield return null;
