@@ -230,7 +230,7 @@ public class CardTests : MonoBehaviour
 
 
     // -------------------------------------------------------------------------------------------------------------------------------
-    [UnityTest] // CHECK CARD APPLIES CORRECT DAMAGE -- CH
+    [UnityTest] // CHECK CARD APPLIES CORRECT DEFENCE -- CH
     public IEnumerator CardDefenceTest()
     {
 
@@ -326,6 +326,103 @@ public class CardTests : MonoBehaviour
         // wait for any actions to complete
         yield return null;
     }
+
+
+
+    // -------------------------------------------------------------------------------------------------------------------------------
+    [UnityTest] // CHECK CARD APPLIES CORRECT MOVE FOR SPECIAL O1 (+5 HEALTH) -- CH
+    public IEnumerator CardSpecial01Test()
+    {
+
+        Debug.Log("Card Get Enough Sleep Special Test:"); // print test for console
+        // set up as above
+        SetUp();
+
+        // set things needed for testing (player, card, other scripts referenced)
+        // level load script for initialising cards
+        GameObject background = GameObject.Find("Background");
+        if (background == null)
+        {
+            Debug.LogError("Background object not found");
+            yield break;
+        }
+        LevelLoad levelLoader = background.GetComponent<LevelLoad>();
+
+        // player and energy
+        GameObject player = GameObject.Find("Player");
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
+        EntityStats entityStats = player.GetComponent<EntityStats>(); // get player stats
+        playerLogic.currentEnergy = 5; // enough energy to play any card once
+        entityStats.maxHealth = 10; // high enough to take damage from a card
+        entityStats.health = 5; // less than MAX health as card adds health
+        Assert.AreEqual(5, entityStats.getCurrentHealth());
+
+        Debug.Log("Player active with " + entityStats.getCurrentHealth() + " health");
+
+        // clear cards to be dealt
+        levelLoader.availableCards.Clear();
+
+        // get player hand
+        Hand playerHand = player.GetComponent<Hand>();
+
+        // load card01 into scene
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+        cardUserPref.PopulateCardDictionary();
+        GameObject playerCard = cardUserPref.GetCardByName("Card10"); // card10 = special01
+        Debug.Log("playerCard: " + playerCard);
+
+        Transform playerAreaTransform = levelLoader.PlayerArea.transform;
+        GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+        instantiatedCard.transform.SetParent(playerAreaTransform, false);
+
+        // check there are cards in the player's hand
+        if (playerAreaTransform.childCount == 0)
+        {
+            Debug.LogError("No cards in the player's hand.");
+            yield break;
+        }
+
+        // get components for using card
+        GameObject cardGameObject = levelLoader.PlayerArea.transform.GetChild(0).gameObject;
+        SelectCard selectCard = cardGameObject.GetComponent<SelectCard>();
+        ThisCard thisCard = playerCard.GetComponent<ThisCard>();
+
+        defenceApp = player.GetComponent<DefenceApplication>();
+        defenceApp.playerHand = playerHand;
+        Debug.Log("ThisCard: " + thisCard);
+
+        if (cardGameObject != null) // check not null before continuing
+        {
+            if (selectCard != null)
+            {
+                // "click" the card to select
+                playerLogic.myTurn = true;
+                selectCard.player = player;
+
+                // apply the card
+                playerHand.currentlySelectedCard = thisCard;
+                Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
+                defenceApp.applySpecialOneTest(); // method designed for testing that skips uneccearies like animations and sounds
+            }
+            else { Debug.Log("selectCard is null"); } // error handling
+        }
+        else
+        {
+            Debug.Log("cardgameobject is null"); // error handling
+        }
+
+        // ensure that player energy has been correctly updated after using the card
+        Assert.AreEqual(10, entityStats.getCurrentHealth()); // initial health 5 + card special heal 5 = 10
+        Debug.Log("Updated Player Health is " + entityStats.getCurrentHealth());
+
+        // clean up the test data
+        entityStats.maxHealth = 10; // reset player maxhealth
+        entityStats.health = entityStats.maxHealth; // reset player health
+
+        // wait for any actions to complete
+        yield return null;
+    }
+
 
 
 }

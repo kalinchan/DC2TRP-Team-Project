@@ -125,6 +125,15 @@ public class DefenceApplication : MonoBehaviour
         levelL.GetComponent<LevelLoad>().reduceHandSize();
     }
 
+    public void applySpecialOneTest() // for testing purposes only, skipping unneccessaries
+    {
+        specialHealth = 5;
+        thisCard = playerHand.currentlySelectedCard;
+        eS = GetComponent<EntityStats>();
+        player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+        eS.heal(specialHealth);
+    }
+
     public void applySpecialTwo()
     {
         player.GetComponent<PlayerLogic>().addEnergy(specialEnergy);
