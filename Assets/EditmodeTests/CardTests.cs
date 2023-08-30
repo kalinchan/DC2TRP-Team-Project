@@ -425,4 +425,108 @@ public class CardTests : MonoBehaviour
 
 
 
+    // -------------------------------------------------------------------------------------------------------------------------------
+    [UnityTest] // CHECK CARD APPLIES CORRECT MOVE FOR SPECIAL O2 (+3 ENERGY) -- CH
+    public IEnumerator CardSpecial02Test()
+    {
+
+        Debug.Log("Card Workout Test:"); // print test for console
+
+        // set up as above
+        SetUp();
+
+        // set things needed for testing (player, card, other scripts referenced)
+        // level load script for initialising cards
+        GameObject background = GameObject.Find("Background");
+        if (background == null)
+        {
+            Debug.LogError("Background object not found");
+            yield break;
+        }
+        LevelLoad levelLoader = background.GetComponent<LevelLoad>();
+
+        // player and energy
+        GameObject player = GameObject.Find("Player");
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
+        playerLogic.currentEnergy = 2; // set as low amount for adding energy from specal card
+        Debug.Log("Player active with " + playerLogic.currentEnergy + " energy");
+
+        // enemy
+        GameObject enemy = GameObject.Find("Enemy");
+        // clear cards to be dealt
+        levelLoader.availableCards.Clear();
+
+        // get player hand
+        Hand playerHand = player.GetComponent<Hand>();
+
+        // load card01 into scene
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+        cardUserPref.PopulateCardDictionary();
+        GameObject playerCard = cardUserPref.GetCardByName("Card11");
+        Debug.Log("playerCard: " + playerCard);
+        Transform playerAreaTransform = levelLoader.PlayerArea.transform;
+        GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+        instantiatedCard.transform.SetParent(playerAreaTransform, false);
+        
+
+        // check there are cards in the player's hand
+        if (playerAreaTransform.childCount == 0)
+        {
+            Debug.LogError("No cards in the player's hand.");
+            yield break;
+        }
+
+        // get components for using card
+        GameObject cardGameObject = levelLoader.PlayerArea.transform.GetChild(0).gameObject;
+        SelectCard selectCard = cardGameObject.GetComponent<SelectCard>();
+        ThisCard thisCard = playerCard.GetComponent<ThisCard>();
+
+        // get energy
+        GameObject cardEnergyParent = playerCard.transform.Find("EnergyCircle").gameObject;
+        TMP_Text cardEnergy = cardEnergyParent.transform.Find("EnergyCostText").gameObject.GetComponent<TextMeshProUGUI>();
+        string cardEnergyString = cardEnergy.text; // save as string
+        int.TryParse(cardEnergyString, out int energy); // parse as int
+        thisCard.energyCost = energy;
+        
+        damagecalc = enemy.GetComponent<DamageCalculation>();
+        defenceApp = player.GetComponent<DefenceApplication>();
+        defenceApp.playerHand = playerHand;
+
+        // check set correctly
+        Debug.Log("Energy Cost = " + thisCard.energyCost);
+        damagecalc.playerHand = playerHand;
+        Debug.Log("ThisCard: " + thisCard);
+
+        if (cardGameObject != null) // check not null before continuing
+        {
+            if (selectCard != null)
+            {
+                // "click" the card to select
+                playerLogic.myTurn = true;
+                selectCard.player = player;
+
+                // apply the card
+                playerHand.currentlySelectedCard = thisCard;
+                Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
+                defenceApp.applySpecialTwoTest();
+            }
+            else { Debug.Log("selectCard is null"); } // error handling
+        }
+        else
+        {
+            Debug.Log("cardgameobject is null"); // error handling
+        }
+
+        // ensure that player energy has been correctly updated after using the card
+        Assert.AreEqual(5, playerLogic.currentEnergy); // initial energy 3 + card enrgy addition 3 = 5
+        Debug.Log("Remaining energy is " + playerLogic.currentEnergy);
+
+        // clean up the test data
+        playerLogic.currentEnergy = 0; // reset player defence
+
+        // wait for any actions to complete
+        yield return null;
+    }
+
+
 }

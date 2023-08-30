@@ -25,7 +25,7 @@ public class DefenceApplication : MonoBehaviour
         levelL = GameObject.Find("Background");
         eES = GameObject.Find("Enemy").GetComponent<EntityStats>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
-        specialEnergy = 2;
+        specialEnergy = 3;
         specialHealth = 5;
         specialDefence = 5;
     }
@@ -73,28 +73,28 @@ public class DefenceApplication : MonoBehaviour
             //player.GetComponent<PlayerLogic>().EnergyText.text = "Energy: " + player.GetComponent<PlayerLogic>().currentEnergy + " / " + player.GetComponent<PlayerLogic>().energyMax + "";
         }
 
-        if (thisCard.tag.Contains("Special01"))
+        if (thisCard.tag.Contains("Special01")) // Get enough sleep
         {
             applySpecialOne();
             eS.applyPlayerAnim("playerSpecial");
             AudioManager.instance.PlaySound("Special Move");
         }
 
-        if (thisCard.tag.Contains("Special02"))
+        if (thisCard.tag.Contains("Special02")) // Drink energy drink
         {
             applySpecialTwo();
             eS.applyPlayerAnim("playerSpecial");
             AudioManager.instance.PlaySound("Special Move");
         }
 
-        if (thisCard.tag.Contains("Special03"))
+        if (thisCard.tag.Contains("Special03")) // Workout
         {
             applySpecialThree();
             eS.applyPlayerAnim("playerSpecial");
             AudioManager.instance.PlaySound("Special Move");
         }
 
-        if (thisCard.tag.Contains("Special04"))
+        if (thisCard.tag.Contains("Special04")) // Extension
         {
             applySpecialFour();
             eS.applyPlayerAnim("playerSpecial");
@@ -116,7 +116,7 @@ public class DefenceApplication : MonoBehaviour
     }
 
 
-    public void applySpecialOne()
+    public void applySpecialOne() // get enough sleep, health + specialHealth
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eS.heal(specialHealth);
@@ -134,7 +134,7 @@ public class DefenceApplication : MonoBehaviour
         eS.heal(specialHealth);
     }
 
-    public void applySpecialTwo()
+    public void applySpecialTwo() // drink energy drink, energy + specialEnergy
     {
         player.GetComponent<PlayerLogic>().addEnergy(specialEnergy);
         thisCard.gameObject.SetActive(false);
@@ -142,7 +142,15 @@ public class DefenceApplication : MonoBehaviour
         levelL.GetComponent<LevelLoad>().reduceHandSize();
     }
 
-    public void applySpecialThree()
+    public void applySpecialTwoTest() // for testing purposes only, skipping unneccessaries
+    {
+        specialEnergy = 3;
+        thisCard = playerHand.currentlySelectedCard;
+        player.GetComponent<PlayerLogic>().addEnergyTest(specialEnergy);
+        Debug.Log("Adding " + specialEnergy + " energy");
+    }
+
+    public void applySpecialThree() // workout, attack x 2 for one card play
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eES.setMultiplierToTrue();
@@ -152,7 +160,7 @@ public class DefenceApplication : MonoBehaviour
         levelL.GetComponent<LevelLoad>().reduceHandSize();
     }
 
-    public void applySpecialFour()
+    public void applySpecialFour() // extension, defence + specialDefence
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
         eS.gainDefence(specialDefence);
