@@ -914,10 +914,10 @@ MonoBehaviour:
   thisId: 3
   id: 0
   cardName: 
-  energyCost: 0
+  energyCost: 2
   group: 
   rarity: 0
-  damage: 5
+  damage: 0
   defence: 0
   cardDescription: 
   thisCardSprite: {fileID: 0}
@@ -948,6 +948,7 @@ MonoBehaviour:
   player: {fileID: 0}
   PlayerArea: {fileID: 0}
   cardBorder: {fileID: 7440040221993529278}
+  levelLoad: {fileID: 0}
 --- !u!114 &844669766558735698
 MonoBehaviour:
   m_ObjectHideFlags: 0
