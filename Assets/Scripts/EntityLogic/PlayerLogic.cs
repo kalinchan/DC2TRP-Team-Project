@@ -10,7 +10,6 @@ public class PlayerLogic : MonoBehaviour
     public bool myTurn = true;
     private EntityStats self;
     public TMP_Text HealthText, EnergyText, DefenceText;
-
     public HealthBarScript healthbar;
     public DefenceBarScript defencebar;
     public EnergyBarScript energybar;
@@ -121,8 +120,12 @@ public class PlayerLogic : MonoBehaviour
     public void updateEnergy()
     {
         //EnergyText.text = "Energy: " + currentEnergy + " / " + energyMax + "";
-        EnergyText.text = currentEnergy + " / " + energyMax + "";
-        levelL.dimCard(currentEnergy);
+        if (EnergyText != null)
+        {
+            EnergyText.text = currentEnergy + " / " + energyMax;
+            levelL.dimCard(currentEnergy);
+        }
+        
 
     }
 

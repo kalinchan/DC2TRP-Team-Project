@@ -272,7 +272,14 @@ public class EntityStats : MonoBehaviour
 
     //NEEDS TESTING - JD 09/02
     //Tested...funnily enough doing - on a - number adds so...changed that. lol - JD 09/02
-    public void takeDamage (int damage)
+
+    public void testTakeDamage(int damage) // FOR TESTING ONLY - SKIPS UNECCESSARIES LIKE ANIMATIONS ETC
+    {
+        damageEnemy(damage);
+
+
+    }
+    public void takeDamage(int damage)
     {
 
         if (gameObject.name.Equals("Enemy"))
@@ -285,6 +292,12 @@ public class EntityStats : MonoBehaviour
             StartCoroutine(EnemyAttack());
         }
 
+        damageEnemy(damage);
+
+    }
+
+    public void damageEnemy(int damage) // separated for tesing and less duplication
+    {
 
         if (specialx2 == true)
         {
@@ -292,10 +305,10 @@ public class EntityStats : MonoBehaviour
         }
 
         int damageRemainder = 0;
-        if(defence > 0)
+        if (defence > 0)
         {
             defence -= damage;
-            if(defence < 0)
+            if (defence < 0)
             {
                 damageRemainder = -defence;
                 health -= damageRemainder;
@@ -315,7 +328,7 @@ public class EntityStats : MonoBehaviour
             {
                 health = 0;
                 isDead = true;
-                
+
             }
         }
         if (gameObject.name.Equals("Enemy") && specialx2)
