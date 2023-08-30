@@ -368,6 +368,11 @@ public class EntityStats : MonoBehaviour
 
     }
 
+    public void gainDefenceTest(int defence) // for testing defence card, skipping animations and sounds
+    {
+        this.defence += defence;
+    }
+
     // get cuttent health velue
     public int getCurrentHealth()
     {

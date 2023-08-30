@@ -13,8 +13,7 @@ public class CardTests : MonoBehaviour
     public Hand playerHand;
     public CardUserPref cardUserPref;
     public DamageCalculation damagecalc;
-
-
+    public DefenceApplication defenceApp;
 
     // -------------------------------------------------------------------------------------------------------------------------------
     [UnitySetUp] // basic test level setup with scripts, player, enemy, hand, and empty cards
@@ -27,10 +26,9 @@ public class CardTests : MonoBehaviour
     }
 
 
-
     // -------------------------------------------------------------------------------------------------------------------------------
     [UnityTest] // ENERGY USAGE CHECK ON CARD PLAY -- CH
-    public IEnumerator CardUsesCorrectEnergy()
+    public IEnumerator CardUsesCorrectEnergyTest()
     {
 
         Debug.Log("Card Energy Test:"); // print test for console
@@ -119,6 +117,9 @@ public class CardTests : MonoBehaviour
         Assert.AreEqual(3, playerLogic.currentEnergy); // initia energy 5 - card enrgy 2 = 3
         Debug.Log("Remaining energy is " + playerLogic.currentEnergy);
 
+        // clean up the test data
+        playerLogic.currentEnergy = 0; // reset player defence
+
         // wait for any actions to complete
         yield return null;
     }
@@ -127,7 +128,7 @@ public class CardTests : MonoBehaviour
 
     // -------------------------------------------------------------------------------------------------------------------------------
     [UnityTest] // CHECK CARD APPLIES CORRECT DAMAGE -- CH
-    public IEnumerator CardAttackDamage()
+    public IEnumerator CardAttackDamageTest()
     {
 
         Debug.Log("Card Attack Test:"); // print test for console
@@ -147,12 +148,12 @@ public class CardTests : MonoBehaviour
         // player and energy
         GameObject player = GameObject.Find("Player");
         PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
-        playerLogic.currentEnergy = 5;
+        playerLogic.currentEnergy = 5; // enough energy to play any card once
 
         // enemy
         GameObject enemy = GameObject.Find("Enemy");
         EntityStats entityStats = enemy.GetComponent<EntityStats>();
-        entityStats.maxHealth = 10;
+        entityStats.maxHealth = 10; // high enough to take damage from a card
         entityStats.health = entityStats.maxHealth;
         Assert.AreEqual(10, entityStats.getCurrentHealth());
 
@@ -185,7 +186,7 @@ public class CardTests : MonoBehaviour
         GameObject cardGameObject = levelLoader.PlayerArea.transform.GetChild(0).gameObject;
         SelectCard selectCard = cardGameObject.GetComponent<SelectCard>();
         ThisCard thisCard = playerCard.GetComponent<ThisCard>();
-        thisCard.energyCost = 1; // low enough to be used each test
+        thisCard.energyCost = 1; // low enough to be used
 
         // check set correctly
         thisCard.damage = 3; // set to set amount for testing
@@ -221,7 +222,7 @@ public class CardTests : MonoBehaviour
         Debug.Log("Remaining enemy health is " + entityStats.getCurrentHealth());
 
         // clean up the test data
-        thisCard.damage = 0; // reset
+        thisCard.damage = 0; // reset card data
 
         // wait for any actions to complete
         yield return null;
@@ -229,4 +230,102 @@ public class CardTests : MonoBehaviour
 
 
     // -------------------------------------------------------------------------------------------------------------------------------
+    [UnityTest] // CHECK CARD APPLIES CORRECT DAMAGE -- CH
+    public IEnumerator CardDefenceTest()
+    {
+
+        Debug.Log("Card Defence Test:"); // print test for console
+        // set up as above
+        SetUp();
+
+        // set things needed for testing (player, card, other scripts referenced)
+        // level load script for initialising cards
+        GameObject background = GameObject.Find("Background");
+        if (background == null)
+        {
+            Debug.LogError("Background object not found");
+            yield break;
+        }
+        LevelLoad levelLoader = background.GetComponent<LevelLoad>();
+
+        // player and energy
+        GameObject player = GameObject.Find("Player");
+        PlayerLogic playerLogic = player.GetComponent<PlayerLogic>();
+        EntityStats entityStats = player.GetComponent<EntityStats>(); // get player stats
+        playerLogic.currentEnergy = 5; // enough energy to play any card once
+        entityStats.defence = 0; // no defence on start
+        
+
+        Debug.Log("Player active with " + entityStats.getCurrentDefence() + " defence");
+
+        // clear cards to be dealt
+        levelLoader.availableCards.Clear();
+
+        // get player hand
+        Hand playerHand = player.GetComponent<Hand>();
+
+        // load card01 into scene
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+        cardUserPref.PopulateCardDictionary();
+        GameObject playerCard = cardUserPref.GetCardByName("Card01");
+        Debug.Log("playerCard: " + playerCard);
+
+        Transform playerAreaTransform = levelLoader.PlayerArea.transform;
+        GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+        instantiatedCard.transform.SetParent(playerAreaTransform, false);
+
+        // check there are cards in the player's hand
+        if (playerAreaTransform.childCount == 0)
+        {
+            Debug.LogError("No cards in the player's hand.");
+            yield break;
+        }
+
+        // get components for using card
+        GameObject cardGameObject = levelLoader.PlayerArea.transform.GetChild(0).gameObject;
+        SelectCard selectCard = cardGameObject.GetComponent<SelectCard>();
+        ThisCard thisCard = playerCard.GetComponent<ThisCard>();
+        thisCard.energyCost = 1; // low enough to be used each test
+
+        // check set correctly
+        thisCard.defence = 2; // set to set amount for testing
+
+        Debug.Log("Defence = " + thisCard.defence);
+        defenceApp = player.GetComponent<DefenceApplication>();
+        defenceApp.playerHand = playerHand;
+        Debug.Log("ThisCard: " + thisCard);
+
+        if (cardGameObject != null) // check not null before continuing
+        {
+            if (selectCard != null)
+            {
+                // "click" the card to select
+                playerLogic.myTurn = true;
+                selectCard.player = player;
+
+                // apply the card
+                playerHand.currentlySelectedCard = thisCard;
+                Debug.Log("CurrentlySelectedCard: " + playerHand.currentlySelectedCard);
+                defenceApp.testDefence(); // defence method designed for testing that skips uneccearies like animations and sounds
+            }
+            else { Debug.Log("selectCard is null"); } // error handling
+        }
+        else
+        {
+            Debug.Log("cardgameobject is null"); // error handling
+        }
+
+        // ensure that player energy has been correctly updated after using the card
+        Assert.AreEqual(2, entityStats.getCurrentDefence()); // initial defence 0 + card defence 2 = 2
+        Debug.Log("Updated Player Defence is " + entityStats.getCurrentDefence());
+
+        // clean up the test data
+        thisCard.defence = 0; // reset card data
+        entityStats.defence = 0; // reset player defence
+
+        // wait for any actions to complete
+        yield return null;
+    }
+
+
 }

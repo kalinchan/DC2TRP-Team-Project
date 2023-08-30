@@ -12,6 +12,9 @@ public class DefenceApplication : MonoBehaviour
     private GameObject levelL;
     public TMP_Text MoveText;
     private SelectCard selectCard;
+    private int specialEnergy;
+    private int specialHealth;
+    private int specialDefence;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,9 @@ public class DefenceApplication : MonoBehaviour
         levelL = GameObject.Find("Background");
         eES = GameObject.Find("Enemy").GetComponent<EntityStats>();
         MoveText = GameObject.Find("MoveInfoText").GetComponent<TextMeshProUGUI>();
+        specialEnergy = 2;
+        specialHealth = 5;
+        specialDefence = 5;
     }
 
     // Update is called once per frame
@@ -29,7 +35,22 @@ public class DefenceApplication : MonoBehaviour
     {
         
     }
-    
+
+    public void setSpecialEnergy(int energy)
+    {
+        specialEnergy = energy;
+    }
+
+    public void setSpecialHealth(int health)
+    {
+        specialHealth = health;
+    }
+
+    public void setSpecialDefence(int def)
+    {
+        specialDefence = def;
+    }
+
     public void applyCard()
     {
         thisCard = playerHand.currentlySelectedCard;
@@ -86,10 +107,19 @@ public class DefenceApplication : MonoBehaviour
     }
 
 
+    public void testDefence() // for testing purposes only, skipping unneccessaries
+    {
+        thisCard = playerHand.currentlySelectedCard;
+        eS = GetComponent<EntityStats>();
+        player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
+        eS.gainDefenceTest(thisCard.defence); // skipping animations and sounds
+    }
+
+
     public void applySpecialOne()
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-        eS.heal(5);//hardcoded, should be changed for final submission
+        eS.heal(specialHealth);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
@@ -97,7 +127,7 @@ public class DefenceApplication : MonoBehaviour
 
     public void applySpecialTwo()
     {
-        player.GetComponent<PlayerLogic>().addEnergy(3);//hardcoded, should be changed for final submission
+        player.GetComponent<PlayerLogic>().addEnergy(specialEnergy);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
@@ -116,7 +146,7 @@ public class DefenceApplication : MonoBehaviour
     public void applySpecialFour()
     {
         player.GetComponent<PlayerLogic>().useEnergy(thisCard.energyCost);
-        eS.gainDefence(5);//hardcoded, should be changed for final submission
+        eS.gainDefence(specialDefence);
         thisCard.gameObject.SetActive(false);
         playerHand.clearCard();
         levelL.GetComponent<LevelLoad>().reduceHandSize();
