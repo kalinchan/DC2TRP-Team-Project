@@ -97,12 +97,16 @@ public class ThisCard : MonoBehaviour
     // change cursor on card hover to show it is interactible
     public void OnMouseEnter()
     {
-        // if player turn
-        if (player.GetComponent<PlayerLogic>().myTurn == true)
+        if (player != null)
         {
-            Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+
+            // if player turn
+            if (player.GetComponent<PlayerLogic>().myTurn == true)
+            {
+                Cursor.SetCursor(cursorHand, Vector2.zero, cursorMode);
+            }
+            else { OnMouseExit(); }
         }
-        else { OnMouseExit(); }
     }
 
     // cursor to arrow when exit / not over interactable object
