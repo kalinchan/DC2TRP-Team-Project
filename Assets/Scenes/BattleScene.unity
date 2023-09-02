@@ -11881,7 +11881,7 @@ PrefabInstance:
       objectReference: {fileID: 3582135178969530702}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: health
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: V1grade
@@ -11897,7 +11897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: defeatScreen
