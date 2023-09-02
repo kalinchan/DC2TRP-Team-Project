@@ -58,6 +58,7 @@ public class LevelLoad : MonoBehaviour
         Debug.Log("Available cards: " + availableCards.Count); // checking available cards each level - debugging
         Debug.Log("Deck cards: " + cardUserPref.deck.Count); // checking deck is saved on new load - debugging
         Debug.Log("Special cards: " + cardUserPref.specialCards.Count);
+        undimCards(); // undim all to start
 
 
 
@@ -68,6 +69,7 @@ public class LevelLoad : MonoBehaviour
     {
         CalculateNoCardsToDeal(); // depending on cards left in hand after a turn
         Debug.Log("Available cards: " + availableCards.Count); // debugging
+        
         int entry = 1;
 
         for (int i = 0; i < cardsToDeal; i++)
@@ -90,8 +92,10 @@ public class LevelLoad : MonoBehaviour
             currentCardEnergies.Add(new KeyValuePair<int, GameObject>(entry, instantiatedCard));
             entry++;
 
-            undimCards(); // undim all to start
+            
         }
+
+        
 
 
     }
