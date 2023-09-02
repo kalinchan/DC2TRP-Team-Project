@@ -68,10 +68,11 @@ public class EnemyLogic : MonoBehaviour
         
         //DefenceText.text = "Enemy Defence: " + self.defence + "";
         DefenceText.text =  self.defence + "";
-
-
-        specialbar.SetMaxSpecial(maxCharge);
-        specialbar.SetSpecial(maxCharge - charge);
+        if (specialbar != null)
+        {
+            specialbar.SetMaxSpecial(maxCharge);
+            specialbar.SetSpecial(maxCharge - charge);
+        }
 
         //Health Bar set to max Health for the enemy
         if (healthbar != null)

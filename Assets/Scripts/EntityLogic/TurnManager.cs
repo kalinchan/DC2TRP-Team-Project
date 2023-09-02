@@ -62,7 +62,7 @@ public class TurnManager : MonoBehaviour
             {
                 playerHand.currentlySelectedCard = null;
             }
-
+            Debug.Log("switch turn called");
             MoveText.text = "Enemy Turn";
             eTButton.SetActive(false);
             player.GetComponent<PlayerLogic>().myTurn = false;

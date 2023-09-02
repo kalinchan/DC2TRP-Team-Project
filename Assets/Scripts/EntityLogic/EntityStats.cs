@@ -80,13 +80,7 @@ public class EntityStats : MonoBehaviour
             defeatScreen.SetActive(false);
             victoryScreen.SetActive(false);
             victoryScreenReplay.SetActive(false);
-
-            if (currentSceneName == "BattleScene5")
-            {
-                GameObject endGame = GameObject.Find("End Game");
-                gradeReportLogic = endGame.GetComponent<GradeReportLogic>();
-                endGame.SetActive(false);
-            }
+            
         }
 
 
