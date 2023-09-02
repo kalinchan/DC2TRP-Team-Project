@@ -77,11 +77,8 @@ public class EntityStats : MonoBehaviour
             progress = GameObject.Find("Progress");
             progressManager = progress.GetComponent<ProgressManager>();
             gradeManager = progress.GetComponent<GradeManager>();
-            defeatScreen = GameObject.Find("Defeat");
             defeatScreen.SetActive(false);
-            victoryScreen = GameObject.Find("Victory");
             victoryScreen.SetActive(false);
-            victoryScreenReplay = GameObject.Find("VictoryReplay");
             victoryScreenReplay.SetActive(false);
 
             if (currentSceneName == "BattleScene5")

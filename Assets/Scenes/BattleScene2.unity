@@ -1515,10 +1515,10 @@ MonoBehaviour:
   isDead: 0
   skipDraw: 0
   drained: 0
-  victoryScreen: {fileID: 0}
-  victoryScreenReplay: {fileID: 0}
-  optionsBackground: {fileID: 0}
-  defeatScreen: {fileID: 0}
+  victoryScreen: {fileID: 125841011}
+  victoryScreenReplay: {fileID: 1711764766}
+  optionsBackground: {fileID: 624319554}
+  defeatScreen: {fileID: 2032627373}
   currentScene: 0
   currentSceneName: 
   levelManager: {fileID: 0}
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
-  turnManager: {fileID: 0}
+  turnManager: {fileID: 1550697196}
   V1grade: {fileID: 0}
   VRgrade: {fileID: 0}
   gradeReportLogic: {fileID: 0}
@@ -6123,10 +6123,10 @@ MonoBehaviour:
   isDead: 0
   skipDraw: 0
   drained: 0
-  victoryScreen: {fileID: 0}
-  victoryScreenReplay: {fileID: 0}
-  optionsBackground: {fileID: 0}
-  defeatScreen: {fileID: 0}
+  victoryScreen: {fileID: 125841011}
+  victoryScreenReplay: {fileID: 1711764766}
+  optionsBackground: {fileID: 624319554}
+  defeatScreen: {fileID: 2032627373}
   currentScene: 0
   currentSceneName: 
   levelManager: {fileID: 0}
@@ -6137,7 +6137,7 @@ MonoBehaviour:
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
-  turnManager: {fileID: 0}
+  turnManager: {fileID: 1550697196}
   V1grade: {fileID: 0}
   VRgrade: {fileID: 0}
   gradeReportLogic: {fileID: 0}
@@ -9523,6 +9523,7 @@ MonoBehaviour:
   nextSceneId: 0
   nextLevel: 0
   currentSceneName: 
+  target: 60
 --- !u!95 &1652737099
 Animator:
   serializedVersion: 4
@@ -12715,6 +12716,10 @@ PrefabInstance:
       propertyPath: animP
       value: 
       objectReference: {fileID: 587776620}
+    - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 921524190}
     - target: {fileID: 4708670762781225363, guid: e725dddc8e267bf4f8c828086a1bfe66, type: 3}
       propertyPath: health
       value: 30

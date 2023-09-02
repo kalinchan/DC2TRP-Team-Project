@@ -3161,10 +3161,10 @@ MonoBehaviour:
   isDead: 0
   skipDraw: 0
   drained: 0
-  victoryScreen: {fileID: 0}
-  victoryScreenReplay: {fileID: 0}
-  optionsBackground: {fileID: 0}
-  defeatScreen: {fileID: 0}
+  victoryScreen: {fileID: 1020577152}
+  victoryScreenReplay: {fileID: 1812472093}
+  optionsBackground: {fileID: 624319554}
+  defeatScreen: {fileID: 308821933}
   currentScene: 0
   currentSceneName: 
   levelManager: {fileID: 0}
@@ -3175,7 +3175,7 @@ MonoBehaviour:
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
-  turnManager: {fileID: 0}
+  turnManager: {fileID: 1550697196}
   V1grade: {fileID: 0}
   VRgrade: {fileID: 0}
   gradeReportLogic: {fileID: 0}
@@ -3639,10 +3639,10 @@ MonoBehaviour:
   isDead: 0
   skipDraw: 0
   drained: 0
-  victoryScreen: {fileID: 0}
-  victoryScreenReplay: {fileID: 0}
-  optionsBackground: {fileID: 0}
-  defeatScreen: {fileID: 0}
+  victoryScreen: {fileID: 1020577152}
+  victoryScreenReplay: {fileID: 1812472093}
+  optionsBackground: {fileID: 624319554}
+  defeatScreen: {fileID: 308821933}
   currentScene: 0
   currentSceneName: 
   levelManager: {fileID: 0}
@@ -3653,7 +3653,7 @@ MonoBehaviour:
   specialx2: 0
   animP: {fileID: 0}
   animE: {fileID: 0}
-  turnManager: {fileID: 0}
+  turnManager: {fileID: 1550697196}
   V1grade: {fileID: 0}
   VRgrade: {fileID: 0}
   gradeReportLogic: {fileID: 0}
