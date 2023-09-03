@@ -142,6 +142,11 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
+    public void addEnergyTest(int energy){  // for testing special 
+        currentEnergy += energy;
+        updateEnergy();
+    }
+
     // change cursor on player hover to show it is interactible
     public void OnMouseEnter()
     {
