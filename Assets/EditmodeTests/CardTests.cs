@@ -29,20 +29,6 @@ public class CardTests : MonoBehaviour
 
 
     // -------------------------------------------------------------------------------------------------------------------------------
-    [TearDown]
-    public void TearDown()
-    {
-        // Clean up the test data here
-        GameObject[] testObjects = GameObject.FindObjectsOfType<GameObject>();
-        foreach (GameObject testObject in testObjects)
-        {
-            DestroyImmediate(testObject);
-        }
-    }
-
-
-
-    // -------------------------------------------------------------------------------------------------------------------------------
     [UnityTest] // ENERGY USAGE CHECK ON CARD PLAY -- CH
     public IEnumerator CardUsesCorrectEnergy()
     {
@@ -132,9 +118,6 @@ public class CardTests : MonoBehaviour
         // ensure that player energy has been correctly updated after using the card
         Assert.AreEqual(3, playerLogic.currentEnergy); // initia energy 5 - card enrgy 2 = 3
         Debug.Log("Remaining energy is " + playerLogic.currentEnergy);
-
-        // clean up the test data
-        TearDown();
 
         // wait for any actions to complete
         yield return null;
@@ -238,7 +221,7 @@ public class CardTests : MonoBehaviour
         Debug.Log("Remaining enemy health is " + entityStats.getCurrentHealth());
 
         // clean up the test data
-        TearDown();
+        thisCard.damage = 0; // reset
 
         // wait for any actions to complete
         yield return null;
