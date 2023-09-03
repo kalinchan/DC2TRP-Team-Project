@@ -111,12 +111,13 @@ public class MainMenuController : MonoBehaviour
         fadeScreen.SetActive(true);
         fadeAnimator.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
-        string savedLevel = PlayerPrefs.GetString(LevelKey);
+        /*string savedLevel = PlayerPrefs.GetString(LevelKey);
         Debug.Log(versus[savedLevel]);
         string scene;
         versus.TryGetValue(savedLevel, out scene);
         SceneManager.LoadScene(scene);
-        gradeManager.LoadGradesFromPlayerPrefs();
+        gradeManager.LoadGradesFromPlayerPrefs();*/
+        SceneManager.LoadScene("Level Selections");
 
     }
 
