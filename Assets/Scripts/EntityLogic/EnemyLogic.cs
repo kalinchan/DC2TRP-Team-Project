@@ -282,6 +282,11 @@ public class EnemyLogic : MonoBehaviour
             {
                 random = 3;
             }
+            if (self.defence > 5) // if defence is high don't add unneccesary defence
+            {
+                random = 3;
+            }
+            
             switch (random)
             {
                 case 1:
