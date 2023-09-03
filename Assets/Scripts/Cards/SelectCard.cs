@@ -9,7 +9,7 @@ using TMPro;
 // script for selecting card to play from hand - CH
 public class SelectCard : MonoBehaviour
 {
-    public GameObject Card, player;
+    public GameObject Card, player, background;
     private EntityStats currentEnemy;
     private ThisCard thisCard;
     private Hand playerHand;
@@ -22,10 +22,16 @@ public class SelectCard : MonoBehaviour
     {
         thisCard = GetComponent<ThisCard>();
         player = GameObject.Find("Player");
-        playerHand = player.GetComponent<Hand>();
+        if (player != null)
+        {
+            playerHand = player.GetComponent<Hand>();
+        }
         PlayerArea = GameObject.Find("PlayerHandArea");
-        levelLoad = GameObject.Find("Background").GetComponent<LevelLoad>();
-        
+        background = GameObject.Find("Background");
+        if (background != null)
+        {
+            levelLoad = background.GetComponent<LevelLoad>();
+        }
 
     }
     // when card is selected by player - CH
