@@ -118,21 +118,19 @@ public class TurnManager : MonoBehaviour
         levelL.undimCards();
         player.GetComponent<PlayerLogic>().myTurn = true;
         gradeManager = GameObject.Find("Progress").GetComponent<GradeManager>();
-        if (gradeManager == null)
-        {
-            Debug.Log("Cant find the Game Manager");
-        }
         gradeManager.IncrementMoves();
         Debug.Log("Turns Taken:" + gradeManager.moves);
 
         if (!player.GetComponent<EntityStats>().drained)
         {
             player.GetComponent<PlayerLogic>().resetEnergy();
+            levelL.dimCard(player.GetComponent<PlayerLogic>().currentEnergy);
         }
         else
         {
             player.GetComponent<PlayerLogic>().drainedEnergyReset();
         }
+        
         
 
 
