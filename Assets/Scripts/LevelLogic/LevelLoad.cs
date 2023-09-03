@@ -42,7 +42,10 @@ public class LevelLoad : MonoBehaviour
         // set the background for the current level
         Scene currentScene = SceneManager.GetActiveScene();
         int backgroundInt = currentScene.buildIndex - 3;
-        backgroundParent.transform.GetChild(backgroundInt).gameObject.SetActive(true);
+        if (backgroundParent != null)
+        {
+            backgroundParent.transform.GetChild(backgroundInt).gameObject.SetActive(true);
+        }
 
         // set availableCards list to the saved deck in CardUserPref script
         cardUserPref.LoadDeck();
