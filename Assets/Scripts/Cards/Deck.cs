@@ -1,37 +1,48 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//// Version 1.0 / Date: 10/01/2023 / Author CH
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
-//// Script for initialising the deck of cards - CH
-//public class Deck : MonoBehaviour {
+// @author: CH
+// version: 1.0
 
-//    int deckHandSize; // starting number of cards in hand
-//    int deckSize; // totalDeckSize minus special cards
+public class Deck : MonoBehaviour
+{
+    public GameObject DeckArea;
+    public CardUserPref cardUserPref;
+    public List<string> userCards;
+    public GameObject deckPanel;
+
+    void Start()
+    {
+        cardUserPref = GameObject.Find("Progress").GetComponent<CardUserPref>();
+        cardUserPref.LoadDeck();
+        userCards = new List<string>(cardUserPref.GetDeck());
+        deckPanel.SetActive(false);
+    }
+
+    public void loadDeck()
+    {
+        deckPanel.SetActive(true);
+
+        for (int i = 0; i < userCards.Count; i++)
+        {
+            // display on screen
+            string cardName = userCards[i];
+            GameObject playerCard = cardUserPref.GetCardByName(cardName);
+            GameObject instantiatedCard = Instantiate(playerCard, Vector3.zero, Quaternion.identity);
+            instantiatedCard.transform.SetParent(DeckArea.transform, false);
+        }
+    }
+
+    public void back()
+    {
+        deckPanel.SetActive(false);
+        userCards.Clear();
+
+    }
 
 
-//    List<Card> deckNoSpecial = new List<Card>(); // deck minus special cards (used by player and enemy - unless player wins special)
 
-//    // Start is called before the first frame update - initialise - CH
-//    void Start()
-//    {
-//        //deckHandSize = 5;
-//        //InitialiseDeckNoSpecial();
-//    }
-
-//    // full deck of cards (depending on rarity) - rarity can be found in CardDataBase.cs - CH
-
-//        // rarity = 1 NOT to be in hand unless obtained through win (Special1,2,3)
-//        // rarity = 2 rare (Defence2, Defence3)
-//        // rarity = 3 uncommon (Attack3, Defence 1)
-//        // rarity = 4 common (Attack1, Attack2)
-//        // total cards
-
-
-//    // initialise deck of 18 cards (no special cards) for level 1 hand - CH
-//    //void InitialiseDeckNoSpecial()
-//    {
-//        // TODO: initialise deck of 18 cards (no special cards) here
-//    }
-
-//}
+}
