@@ -86,7 +86,6 @@ public class LevelManager : MonoBehaviour
             // for vs screen, janky but works for now (CH)
             nextLevel = currentScene - 6;
             SceneManager.LoadScene(nextLevel);
-
         }
 
     }

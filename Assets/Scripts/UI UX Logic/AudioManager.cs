@@ -1,6 +1,10 @@
 using UnityEngine;
 using System;
 using UnityEngine.Audio;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
+
 
 public class AudioManager : MonoBehaviour
 {
@@ -16,11 +20,19 @@ public class AudioManager : MonoBehaviour
 
     private float mvol; // Global music volume
     private float evol; // Global effects volume
+    private Dictionary<string, int> levels;
 
     private void Start()
     {
+        levels = new Dictionary<string, int>();
+        levels.Add("BattleScene", 1);
+        levels.Add("BattleScene2", 2);
+        levels.Add("BattleScene3", 3);
+        levels.Add("BattleScene4", 4);
+        levels.Add("BattleScene5", 5);
+
         //start the music
-        PlayMusic();
+        //PlayMusic();
     }
 
 
@@ -79,11 +91,26 @@ public class AudioManager : MonoBehaviour
         {
             shouldPlayMusic = true;
             // pick a random song from our playlist
-            currentPlayingIndex = UnityEngine.Random.Range(0, playlist.Length - 1);
+            currentPlayingIndex = 0;
             playlist[currentPlayingIndex].source.volume = playlist[0].volume * mvol; // set the volume
             playlist[currentPlayingIndex].source.Play(); // play it
         }
 
+    }
+
+    private void PlayMusicIndex(int index)
+    {
+
+        if (index == currentPlayingIndex)
+        {
+            return;
+        }
+        playlist[currentPlayingIndex].source.Stop();
+        shouldPlayMusic = true;
+        // pick a random song from our playlist
+        playlist[index].source.volume = playlist[0].volume * mvol; // set the volume
+        playlist[index].source.Play(); // play it
+        currentPlayingIndex = index;
     }
 
     // stop music
@@ -108,6 +135,16 @@ public class AudioManager : MonoBehaviour
                 currentPlayingIndex = 0; // reset list when max reached
             }
             playlist[currentPlayingIndex].source.Play(); // play that funky music
+        }
+
+        string current = SceneManager.GetActiveScene().name;
+        if (!current.Contains("BattleScene")){
+            PlayMusicIndex(0);
+            return;
+        }
+        if (levels.ContainsKey(current))
+        {
+            PlayMusicIndex(levels[current]);
         }
     }
 
