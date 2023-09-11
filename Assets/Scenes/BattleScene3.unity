@@ -6155,11 +6155,11 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: health
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: deff3a6b9f3e7a443ad37c099cb48d0b, type: 3}
       propertyPath: defeatScreen

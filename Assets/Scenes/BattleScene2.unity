@@ -5456,11 +5456,11 @@ PrefabInstance:
       objectReference: {fileID: 587776602}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: health
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2430640607760493153, guid: 452436d7e777ade46abfd2a423c73de8, type: 3}
       propertyPath: defeatScreen
