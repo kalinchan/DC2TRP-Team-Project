@@ -3759,6 +3759,8 @@ MonoBehaviour:
   musicVolumeSlider: {fileID: 1194914194}
   effectsVolumeSlider: {fileID: 1644027871}
   mainMenuButton: {fileID: 0}
+  levelSelectButton: {fileID: 0}
+  viewDeckButton: {fileID: 0}
 --- !u!1 &1644027869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,6 +3957,36 @@ MonoBehaviour:
   playlist:
   - name: 
     clip: {fileID: 8300000, guid: b02d61d9724359f4397806c74646c043, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 836595215f68dbf4a9408f3e2891edab, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 0fbef31a7b6b7ab4da5e3746262bf5d4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 75a28b9ac0052d046843356a0c9b7ead, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 947fc1cab44b1be4aabef45697a9d2ca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 
+    clip: {fileID: 8300000, guid: 6741451439b5a9543912ea3440d24345, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
