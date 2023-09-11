@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;      // store all our sounds
     public Sound[] playlist;    // store all our music
 
-    private int currentPlayingIndex = 999; // set high to signify no song playing
+    private int currentPlayingIndex = 999;
 
     // a play music flag so we can stop playing music during cutscenes etc
     private bool shouldPlayMusic = false;
@@ -30,9 +30,8 @@ public class AudioManager : MonoBehaviour
         levels.Add("BattleScene3", 3);
         levels.Add("BattleScene4", 4);
         levels.Add("BattleScene5", 5);
-
         //start the music
-        //PlayMusic();
+        PlayMusic();
     }
 
 
@@ -116,7 +115,10 @@ public class AudioManager : MonoBehaviour
         playlist[index].source.Play(); // play it
         while (timeElapsed < timeToFade)
         {
-            playlist[index].source.volume = Mathf.Lerp(0, 1 * mvol, timeElapsed / timeToFade); 
+            playlist[index].source.volume = Mathf.Lerp(0, 1 * mvol, timeElapsed / timeToFade);
+            Debug.Log(index);
+            Debug.Log(tempIndex);
+
             playlist[tempIndex].source.volume = Mathf.Lerp(1 * mvol, 0, timeElapsed / timeToFade);
             timeElapsed += Time.deltaTime;
         }
