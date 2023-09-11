@@ -141,7 +141,7 @@ public class MainMenuController : MonoBehaviour
         fadeScreen.SetActive(true);
         fadeAnimator.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
-        AudioManager.instance.StopMusic();
+        //AudioManager.instance.StopMusic();
         SceneManager.LoadScene("Credits");
     }
 
@@ -160,8 +160,7 @@ public class MainMenuController : MonoBehaviour
             continueButton.SetActive(true);
             
         }
-
-        AudioManager.instance.PlayMusic();
+        //AudioManager.instance.PlayMusic();
 
         versus.Add("BattleScene", "VS_L1");
         versus.Add("BattleScene2", "VS_L2");
