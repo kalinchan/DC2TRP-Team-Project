@@ -105,12 +105,23 @@ public class AudioManager : MonoBehaviour
         {
             return;
         }
-        playlist[currentPlayingIndex].source.Stop();
-        shouldPlayMusic = true;
-        // pick a random song from our playlist
-        playlist[index].source.volume = playlist[0].volume * mvol; // set the volume
-        playlist[index].source.Play(); // play it
+        int tempIndex = currentPlayingIndex;
         currentPlayingIndex = index;
+        float timeToFade = 0.25f;
+        float timeElapsed = 0;
+
+        
+        shouldPlayMusic = true;
+        
+        playlist[index].source.Play(); // play it
+        while (timeElapsed < timeToFade)
+        {
+            playlist[index].source.volume = Mathf.Lerp(0, 1 * mvol, timeElapsed / timeToFade); 
+            playlist[tempIndex].source.volume = Mathf.Lerp(1 * mvol, 0, timeElapsed / timeToFade);
+            timeElapsed += Time.deltaTime;
+        }
+        playlist[tempIndex].source.Stop();
+        
     }
 
     // stop music
