@@ -320,20 +320,26 @@ public class EnemyLogic : MonoBehaviour
     // change cursor on enemy hover to show it is interactible
     public void OnMouseEnter()
     {
-        // if selected card is attack card - ability to interact with enemies only and not player --
-        if (playerHand.currentlySelectedCard.group == "Attack")
-        {
-            Cursor.SetCursor(cursorSword, Vector2.zero, cursorMode);
+        if (playerHand != null && playerHand.currentlySelectedCard != null) {
+            // if selected card is attack card - ability to interact with enemies only and not player --
+            if (playerHand.currentlySelectedCard.group == "Attack")
+            {
+                Cursor.SetCursor(cursorSword, Vector2.zero, cursorMode);
+            }
+            else if (playerHand.currentlySelectedCard.group == "Defence")
+            {
+                Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
+            }
+            else if (playerHand.currentlySelectedCard.group == "Special")
+            {
+                Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
+            }
+            else
+            {
+                OnMouseExit();
+
+            }
         }
-        else if (playerHand.currentlySelectedCard.group == "Defence")
-        {
-            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
-        }
-        else if (playerHand.currentlySelectedCard.group == "Special")
-        {
-            Cursor.SetCursor(cursorX, Vector2.zero, cursorMode);
-        }
-        else { OnMouseExit(); }
     }
 
     // return cursor to arrow when exit interactable object

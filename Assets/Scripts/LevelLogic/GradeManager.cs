@@ -11,6 +11,7 @@ public class GradeManager : MonoBehaviour
     public TurnManager turnManager;
     public int moves;
     private const string GradeDict = "GradeDict";
+    public Scene currentScene;
 
 
     // Start is called before the first frame update
@@ -37,26 +38,135 @@ public class GradeManager : MonoBehaviour
 
     public void setVictoryGrade(string level)
     {
-        string grade;
-        if (moves <= 3)
+        
+        // level 1
+        if (level == "BattleScene")
         {
-            grade = "A+";
+            
+            if (moves <= 3)
+            {
+                grade = "A+";
+            }
+            else if (moves >= 4 && moves <= 6)
+            {
+                grade = "A";
+            }
+            else if (moves >= 7 && moves <= 9)
+            {
+                grade = "B";
+            }
+            else if (moves >= 10 && moves <= 12)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
         }
-        else if (moves >= 4 && moves <= 6)
+
+        // level 2
+        if (level == "BattleScene2")
         {
-            grade = "A";
+            
+            if (moves <= 4)
+            {
+                grade = "A+";
+            }
+            else if (moves >= 5 && moves <= 7)
+            {
+                grade = "A";
+            }
+            else if (moves >= 8 && moves <= 10)
+            {
+                grade = "B";
+            }
+            else if (moves >= 11 && moves <= 14)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
         }
-        else if (moves >= 7 && moves <= 9)
+
+        // level 3 
+        if (level == "BattleScene3")
         {
-            grade = "B";
+            
+            if (moves <= 6)
+            {
+                grade = "A+";
+            }
+            else if (moves >= 7 && moves <= 10)
+            {
+                grade = "A";
+            }
+            else if (moves >= 11 && moves <= 14)
+            {
+                grade = "B";
+            }
+            else if (moves >= 15 && moves <= 18)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
         }
-        else if (moves >= 10 && moves <= 12)
+
+        // level 4
+        if (level == "BattleScene4")
         {
-            grade = "C";
+            
+            if (moves <= 9)
+            {
+                grade = "A+";
+            }
+            else if (moves >= 10 && moves <= 14)
+            {
+                grade = "A";
+            }
+            else if (moves >= 15 && moves <= 18)
+            {
+                grade = "B";
+            }
+            else if (moves >= 19 && moves <= 22)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
         }
-        else
+
+        // level 5
+        if (level == "BattleScene5")
         {
-            grade = "D";
+            
+            if (moves <= 14)
+            {
+                grade = "A+";
+            }
+            else if (moves >= 15 && moves <= 20)
+            {
+                grade = "A";
+            }
+            else if (moves >= 21 && moves <= 29)
+            {
+                grade = "B";
+            }
+            else if (moves >= 30 && moves <= 35)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
         }
 
         // Check if the level key already exists in the dictionary with a different case
