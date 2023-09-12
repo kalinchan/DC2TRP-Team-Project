@@ -20,7 +20,6 @@ public class ProgressManager : MonoBehaviour
         levels.Add("BattleScene4");
         levels.Add("BattleScene5");
 
-        ResetFirstPlayDictionary(); // sets all levels as the first playthrough for special cards
     }
 
     // Update is called once per frame
