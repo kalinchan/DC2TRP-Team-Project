@@ -655,7 +655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: 180}
+  m_AnchoredPosition: {x: 431, y: 164}
   m_SizeDelta: {x: 206.0654, y: 143.8172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282775371
@@ -904,7 +904,11 @@ MonoBehaviour:
 
     The
     top right number shows the amount of energy the card costs, you must have at
-    least that amount of energy.'
+    least that amount of energy.
+
+
+    The Card will become inactive when there is
+    not enough energy to use to play them.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
@@ -2123,7 +2127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 562, y: 149}
+  m_AnchoredPosition: {x: 559, y: 97}
   m_SizeDelta: {x: 368.1359, y: 114.1693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042205747
@@ -3646,11 +3650,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Each Level is Graded on Turns, Player Health and the amount of attacks/defence
-    to defeat the emeny
+  m_text: 'Each Level is Graded on the amount of turns it takes to defeat the enemy.
 
 
-    The quicker and less turn '
+    Grades
+    can be found on the victory screen. Overall Grades will be presented on the graduation
+    screen when completing all levels.
+
+
+    Less turns, the better the grade. However,
+    rushing your turn, can lead to your downfall. Play Smart.
+
+
+    The Bosses are
+    tuff. Good Luck
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099bad20a9302e84588567483e355fc9, type: 2}
   m_sharedMaterial: {fileID: 4621934962934847640, guid: 099bad20a9302e84588567483e355fc9, type: 2}
