@@ -881,7 +881,6 @@ GameObject:
   - component: {fileID: 206075646807061967}
   - component: {fileID: 9177252880611246342}
   - component: {fileID: 5294497459944944846}
-  - component: {fileID: 4470880598656015842}
   m_Layer: 6
   m_Name: Card01
   m_TagString: Attack Card
@@ -1021,6 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Card: {fileID: 7241026101412582193}
   player: {fileID: 0}
+  background: {fileID: 0}
   PlayerArea: {fileID: 0}
   cardBorder: {fileID: 8236324266315889078}
   levelLoad: {fileID: 0}
@@ -1085,34 +1085,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &4470880598656015842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241026101412582193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87134a19c53c9634882ae1dc31470e17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerArea: {fileID: 0}
-  SpecialCardArea: {fileID: 0}
-  maxHandSize: 0
-  handSize: 0
-  cardUserPref: {fileID: 0}
-  selectCard: {fileID: 0}
-  availableCards: []
-  cardsToDeal: 0
-  cardsAtEnd: 1
-  Background01: {fileID: 21300000, guid: 0c6179260d772374b9159716a7eb32b8, type: 3}
-  Background02: {fileID: 21300000, guid: 5fd752a08e2f04a66ae9b5a05ed51b51, type: 3}
-  Background03: {fileID: 21300000, guid: f9a45a995c5c146aa86e1b4371f3ac72, type: 3}
-  Background04: {fileID: 0}
-  Background05: {fileID: 0}
-  backgroundParent: {fileID: 0}
-  cardDim: {fileID: 0}
 --- !u!1 &8236324266315889078
 GameObject:
   m_ObjectHideFlags: 0
