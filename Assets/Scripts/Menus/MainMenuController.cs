@@ -59,6 +59,13 @@ public class MainMenuController : MonoBehaviour
         fadeAnimator.SetBool("FadeOut", true);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("VS_L1");
+        PlayerPrefs.DeleteKey("CurrentLevel");
+        PlayerPrefs.DeleteKey("Deck");
+        PlayerPrefs.DeleteKey("SpecialCards");
+        PlayerPrefs.DeleteKey("GradeDict");
+        progressManager.ResetFirstPlayDictionary();
+        gradeManager.ResetGrades();
+        gradeManager.ResetMoves();
     }
 
     public void warningBack()
