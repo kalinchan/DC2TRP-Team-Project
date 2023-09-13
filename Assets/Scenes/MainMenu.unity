@@ -1018,6 +1018,7 @@ GameObject:
   - component: {fileID: 413993540}
   - component: {fileID: 413993541}
   - component: {fileID: 413993542}
+  - component: {fileID: 413993544}
   - component: {fileID: 413993543}
   m_Layer: 5
   m_Name: MainMenu
@@ -1093,7 +1094,8 @@ MonoBehaviour:
   mainMenu: {fileID: 413993539}
   optionsMenu: {fileID: 1489666654}
   continueButton: {fileID: 2105447407}
-  progress: {fileID: 0}
+  progress: {fileID: 2041247438}
+  cardUserPref: {fileID: 413993544}
   panel: {fileID: 2083252429}
   buttonToHide:
   - {fileID: 1074255697}
@@ -1119,6 +1121,33 @@ MonoBehaviour:
   cursorArrow: {fileID: 2800000, guid: 5d42aa3e0ad33074f9eee2e5f430340e, type: 3}
   cursorHand: {fileID: 2800000, guid: 037fd72d98560a8498cee29129a78b64, type: 3}
   cursorMode: 1
+--- !u!114 &413993544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413993539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7202537cea9e97441a2c1a5d6703f710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deck: []
+  specialCards: []
+  Card01: {fileID: 7241026101412582193, guid: c0be5b0377af75b4fb71738b9221eef7, type: 3}
+  Card02: {fileID: 7241026101412582193, guid: 8ade24247870b34409d974590125f958, type: 3}
+  Card03: {fileID: 1550772335203455360, guid: 4b831a5e55d943e4ab57e6549b56fe8f, type: 3}
+  Card04: {fileID: 7113903973978158019, guid: d2575dcb854b0b34ab2f377204311f6d, type: 3}
+  Card05: {fileID: 3267529769625528447, guid: c3bb535d58f5271498bf8321acb73110, type: 3}
+  Card06: {fileID: 8604379625322660539, guid: 1ac53e1a50d3ea84897c9cfd63eff60d, type: 3}
+  Card07: {fileID: 2202660001311629488, guid: a94fc23a53a46f248a9f6b98600a3613, type: 3}
+  Card08: {fileID: 4201483250616043627, guid: 8022c1b734c07844682bb587dfb9cf24, type: 3}
+  Card09: {fileID: 4201483250616043627, guid: 3de134cc967f70541bfcc3c49515b925, type: 3}
+  Card10: {fileID: 1060790213632547047, guid: b2fe47890bcf8d1409d5d89b6d053a3b, type: 3}
+  Card11: {fileID: 1060790213632547047, guid: 6ae233601c2d7814fa85110439e18cf1, type: 3}
+  Card12: {fileID: 1060790213632547047, guid: 9a3c439990eb8cc4ea2d0402a8d0aeb3, type: 3}
+  Card13: {fileID: 1060790213632547047, guid: e743ec1a6c7878b4bb5a9afa76e15254, type: 3}
 --- !u!1 &459756350
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,6 +5127,8 @@ MonoBehaviour:
   grade: 
   turnManager: {fileID: 0}
   moves: 0
+  currentScene:
+    m_Handle: 0
 --- !u!1 &2048678398
 GameObject:
   m_ObjectHideFlags: 0

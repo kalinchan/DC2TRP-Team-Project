@@ -39,16 +39,11 @@ public class CardUserPref : MonoBehaviour
                 ResetSpecialCards();
 
             }
+        DontDestroyOnLoad(gameObject);
+        // populate the card dictionary for saving/retrieval
+        PopulateCardDictionary();
+        
 
-            // populate the card dictionary for saving/retrieval
-            PopulateCardDictionary();
-
-        //}
-        //else
-        //{
-            // if an instance already exists, destroy it
-            //Destroy(gameObject);
-        //}
     }
 
 
