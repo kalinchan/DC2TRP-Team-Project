@@ -30,7 +30,6 @@ public class GradeManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject); // do not destroy me when a new scene loads
-        Debug.Log("GradeManager Awake");
         LoadGradesFromPlayerPrefs();
     }
 

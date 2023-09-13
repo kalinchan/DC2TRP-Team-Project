@@ -15,6 +15,7 @@ public class MainMenuController : MonoBehaviour
     private ProgressManager progressManager;
     private GradeManager gradeManager;
     public GameObject progress;
+    public CardUserPref cardUserPref;
     private Dictionary<string, string> versus = new Dictionary<string, string>();
     public GameObject panel;
     public List<GameObject> buttonToHide;
@@ -43,14 +44,11 @@ public class MainMenuController : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutNewGame());
-        PlayerPrefs.DeleteKey("CurrentLevel");
-        PlayerPrefs.DeleteKey("Deck");
-        PlayerPrefs.DeleteKey("SpecialCards");
-        PlayerPrefs.DeleteKey("GradeDict");
         progressManager.ResetFirstPlayDictionary();
         gradeManager.ResetGrades();
         gradeManager.ResetMoves();
-        
+        cardUserPref.ResetDeckToOriginal();
+
     }
 
     IEnumerator fadeOutNewGame()
@@ -66,6 +64,7 @@ public class MainMenuController : MonoBehaviour
         progressManager.ResetFirstPlayDictionary();
         gradeManager.ResetGrades();
         gradeManager.ResetMoves();
+        cardUserPref.ResetDeckToOriginal();
     }
 
     public void warningBack()
@@ -110,7 +109,8 @@ public class MainMenuController : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Button Click");
         StartCoroutine(fadeOutContinue());
-        
+        cardUserPref.LoadDeck();
+
     }
 
     IEnumerator fadeOutContinue()
